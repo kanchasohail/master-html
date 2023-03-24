@@ -15,15 +15,7 @@ class SideDrawer extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Center(child: Text("Let's Learn !")),
-          actions: const [
-            Icon(Icons.sunny),
-            ChangeThemeButtonWidget(),
-            Icon(Icons.shield_moon_sharp , color: lightBlack,),
-            SizedBox(
-              width: 5,
-            )
-          ],
+          title: const Text("Let's Learn !"),
         ),
         body: SafeArea(
           child: Container(
@@ -32,8 +24,8 @@ class SideDrawer extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.separated(
-                      itemBuilder: (ctx , index) => const ListTile(title: Text("Separated list items"),), separatorBuilder:  (ctx , index) => const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 18.0),
+                      itemBuilder: (ctx , index) => const ListTile(title: Text("Separated list items"), trailing: Icon(Icons.check_circle_outline),), separatorBuilder:  (ctx , index) => const Padding(
+                        padding: EdgeInsets.only(left: 18.0),
                         child: Divider( height: 2, thickness: 1.0 ,),
                       ),itemCount: 20),
                 ),
