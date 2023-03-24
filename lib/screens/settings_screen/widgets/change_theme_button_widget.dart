@@ -1,6 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/main.dart';
 
-import '../../../constants/consts.dart';
 import '../../../cubits/theme_cubit/theme_cubit.dart';
 
 class ChangeThemeButtonWidget extends StatelessWidget {
@@ -11,14 +12,15 @@ class ChangeThemeButtonWidget extends StatelessWidget {
     final themeCubit = BlocProvider.of<ThemeCubit>(context);
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
-        if (state is ThemeDarkState) {
-          return Switch.adaptive(
+        final bool isOn = pref.getBool(isDarkThemeString) ?? true ;
+        if (state is ThemeDarkState || isOn) {
+          return CupertinoSwitch(
               value: true,
               onChanged: (value) {
-                themeCubit.toggleTheme( value);
+                themeCubit.toggleTheme(value);
               });
         } else {
-          return Switch.adaptive(
+          return CupertinoSwitch(
               value: false,
               onChanged: (value) {
                 themeCubit.toggleTheme(value);

@@ -4,40 +4,30 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/consts.dart';
 import '../../main.dart';
 
-
+//String for shared-pref
+const String isDarkThemeString = "isDarkTheme";
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeInitialState());
 
   ThemeMode themeMode = ThemeMode.system;
 
-  bool get isDark => themeMode == ThemeMode.dark;
-
-  void toggleTheme( bool? isOn) {
-    // themeMode = isOn ? ThemeMode.dark : ThemeMode.light;
-    if (isOn == true && isOn != null) {
-      themeMode = ThemeMode.dark ;
-      pref.setString(currentThemeString, darkThemeString);
+  void toggleTheme(bool isOn) {
+    if (isOn) {
+      pref.setBool(isDarkThemeString, true);
       emit(ThemeDarkState());
-    } else if (isOn == false && isOn != null){
-      themeMode = ThemeMode.light ;
-      pref.setString(currentThemeString, lightThemeString);
+    } else {
+      pref.setBool(isDarkThemeString, false);
       emit(ThemeLightState());
-    }else if(isOn == null){
-      themeMode = ThemeMode.system ;
-      pref.setString(currentThemeString, systemThemeString);
-      emit(ThemeSystemState());
     }
   }
 
   void getInitialTheme(SharedPreferences pref) {
-    final String currTheme = pref.getString(currentThemeString).toString();
-    if (currTheme == "null") {
-      themeMode = ThemeMode.system;
-    } else if (currTheme == lightThemeString) {
-      themeMode = ThemeMode.light;
-    } else if (currTheme == darkThemeString) {
+    final bool isDarkTheme = pref.getBool(isDarkThemeString) ?? true;
+    if (isDarkTheme == true) {
       themeMode = ThemeMode.dark;
+    } else {
+      themeMode = ThemeMode.light;
     }
   }
 }
@@ -50,5 +40,3 @@ class ThemeInitialState extends ThemeState {}
 class ThemeDarkState extends ThemeState {}
 
 class ThemeLightState extends ThemeState {}
-
-class ThemeSystemState extends ThemeState{}

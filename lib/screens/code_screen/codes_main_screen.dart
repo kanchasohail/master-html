@@ -79,16 +79,13 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8.0),
-                      child: IconButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          icon: const Icon(
-                            CupertinoIcons.xmark,
-                          )),
-                    ),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: const Icon(
+                          CupertinoIcons.xmark,
+                        )),
                     Row(
                       children: [
                         InkWell(
@@ -138,6 +135,9 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                     isFirst
                         ? PopupMenuButton(
                             icon: const Icon(Icons.color_lens_outlined),
+                            shape: RoundedRectangleBorder(
+                                side: BorderSide(color: themeIconColor),
+                                borderRadius: BorderRadius.circular(12)),
                             onSelected: (value) {
                               setState(() {
                                 if (value == 'Atom') {
@@ -163,20 +163,8 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                                           child: Text(value),
                                         )))
                                     .toList())
-                        // : IconButton(
-                        //     onPressed: () {}, icon: const Icon(Icons.share)),
-                        : IconButton(onPressed: (){}, icon: const Icon(Icons.share)),
-                    PopupMenuButton(
-                      shape: RoundedRectangleBorder(
-                          side: BorderSide(color: themeIconColor),
-                          borderRadius: BorderRadius.circular(12)),
-                      itemBuilder: (context) => [
-                        const PopupMenuItem(child: Text("Save")),
-                        const PopupMenuItem(child: Text("Share")),
-                        const PopupMenuItem(child: Text("New")),
-                        const PopupMenuItem(child: Text("Open")),
-                      ],
-                    ),
+                        : IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.share)),
                   ],
                 ),
               ),
