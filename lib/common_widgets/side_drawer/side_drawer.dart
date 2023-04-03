@@ -1,8 +1,5 @@
-
-
 import '../../constants/consts.dart';
 import '../../screens/settings_screen/settings_screen.dart';
-import '../../screens/settings_screen/widgets/change_theme_button_widget.dart';
 
 class SideDrawer extends StatelessWidget {
   const SideDrawer({Key? key}) : super(key: key);
@@ -11,7 +8,7 @@ class SideDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
     return SizedBox(
-      width: deviceWidth - deviceWidth / 3,
+      width: deviceWidth - deviceWidth / 5,
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -24,10 +21,18 @@ class SideDrawer extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.separated(
-                      itemBuilder: (ctx , index) => const ListTile(title: Text("Separated list items"), trailing: Icon(Icons.check_circle_outline),), separatorBuilder:  (ctx , index) => const Padding(
-                        padding: EdgeInsets.only(left: 18.0),
-                        child: Divider( height: 2, thickness: 1.0 ,),
-                      ),itemCount: 20),
+                      itemBuilder: (ctx, index) =>  ListTile(
+                            title: const Text("Separated list items" , style: TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
+                            trailing: index % 2 == 0 ? const Icon(Icons.check_circle_outline) : const Icon(Icons.circle_outlined , color: darkBodyColor,),
+                          ),
+                      separatorBuilder: (ctx, index) => const Padding(
+                            padding: EdgeInsets.only(left: 18.0),
+                            child: Divider(
+                              height: 2,
+                              thickness: 1.0,
+                            ),
+                          ),
+                      itemCount: 20),
                 ),
                 SafeArea(
                   child: Padding(
@@ -35,8 +40,9 @@ class SideDrawer extends StatelessWidget {
                     child: ListTile(
                       title: const Text("Settings"),
                       trailing: const Icon(Icons.settings),
-                      onTap: (){
-                        Navigator.of(context).pushNamed(SettingScreen.routeName);
+                      onTap: () {
+                        Navigator.of(context)
+                            .pushNamed(SettingScreen.routeName);
                       },
                     ),
                   ),

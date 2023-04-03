@@ -10,23 +10,27 @@ class ChangeThemeButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeCubit = BlocProvider.of<ThemeCubit>(context);
-    return BlocBuilder<ThemeCubit, ThemeState>(
-      builder: (context, state) {
-        final bool isOn = pref.getBool(isDarkThemeString) ?? true ;
-        if (state is ThemeDarkState || isOn) {
-          return CupertinoSwitch(
-              value: true,
-              onChanged: (value) {
-                themeCubit.toggleTheme(value);
-              });
-        } else {
-          return CupertinoSwitch(
-              value: false,
-              onChanged: (value) {
-                themeCubit.toggleTheme(value);
-              });
-        }
-      },
+    return Transform.scale(
+      scale: 0.9,
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          final bool isOn = pref.getBool(isDarkThemeString) ?? true ;
+          if (state is ThemeDarkState || isOn) {
+            return CupertinoSwitch(
+              activeColor: CupertinoColors.activeOrange,
+                value: true,
+                onChanged: (value) {
+                  themeCubit.toggleTheme(value);
+                });
+          } else {
+            return CupertinoSwitch(
+                value: false,
+                onChanged: (value) {
+                  themeCubit.toggleTheme(value);
+                });
+          }
+        },
+      ),
     );
   }
 }
