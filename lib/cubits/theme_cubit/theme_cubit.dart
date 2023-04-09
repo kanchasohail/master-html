@@ -12,6 +12,19 @@ class ThemeCubit extends Cubit<ThemeState> {
 
   ThemeMode themeMode = ThemeMode.system;
 
+  //These two for checking if the learning was started or not
+  bool isGetStarted() {
+    return pref.getBool("isGetStarted") ?? true ;
+  }
+
+  void updateIsGetStarted(){
+    if(pref.getBool("isGetStarted") == false){
+      emit(ThemeInitialState());
+    }else{
+      return ;
+    }
+  }
+
   void toggleTheme(bool isOn) {
     if (isOn) {
       pref.setBool(isDarkThemeString, true);
