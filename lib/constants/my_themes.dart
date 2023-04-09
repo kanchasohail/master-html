@@ -4,7 +4,13 @@ class MyThemes {
   static final darkTheme = ThemeData(
     primarySwatch: darkThemePrimaryColor,
     scaffoldBackgroundColor: darkBodyColor,
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionHandleColor: Colors.transparent
+    ),
     iconTheme: const IconThemeData(color: orangeColor),
+    drawerTheme: const DrawerThemeData(
+      backgroundColor: lightBlack
+    ),
     textTheme: const TextTheme(
         bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
         bodyMedium: TextStyle(
@@ -34,15 +40,21 @@ class MyThemes {
 
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: lightBodyColor,
+    textSelectionTheme: const TextSelectionThemeData(
+        selectionHandleColor: Colors.transparent
+    ),
     iconTheme: const IconThemeData(color: orangeColor),
     appBarTheme: const AppBarTheme(
       backgroundColor: lightAppBarColor,
-      iconTheme: IconThemeData(color: orangeColor),
+      iconTheme: IconThemeData(color: orangeColor , size: 30),
       titleTextStyle: TextStyle(
-        fontSize: 20,
+        fontSize: 22,
         fontWeight: FontWeight.w600,
         color: Colors.black,
       ),
+    ),
+    drawerTheme: const DrawerThemeData(
+        backgroundColor: lightBodyColor
     ),
     textTheme: const TextTheme(
         bodyLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),

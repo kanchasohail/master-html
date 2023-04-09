@@ -5,7 +5,7 @@ import '../../../constants/consts.dart';
 Widget facebookCommunityWidget(){
   return Padding(
     padding: const EdgeInsets.symmetric(horizontal: 18.0),
-    child: InkWell(
+    child: GestureDetector(
       onTap: () async {
         Uri facebook = Uri.parse(
             "https://www.facebook.com/shimulmendes8008");
@@ -35,7 +35,7 @@ Widget facebookCommunityWidget(){
                   ),
                   Text(
                     "Facebook",
-                    style: TextStyle(fontSize: 35),
+                    style: TextStyle(fontSize: 31 , fontFamily: "Montserrat"),
                   )
                 ],
               ),

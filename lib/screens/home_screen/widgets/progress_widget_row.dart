@@ -89,8 +89,9 @@ class ProgressWidgetRow extends StatelessWidget {
                 child: const Text(
                   "What's this?",
                   style: TextStyle(
+                    height: 1.5,
                       color: orangeColor,
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.w300),
                 ),
               )

@@ -19,7 +19,7 @@ class FontFamilyCubit extends Cubit<FontFamilyState> {
 }
 
 //This is the list of available font Family options
-const List<String> fontFamily = ['Roboto Mono', 'Alkatra', 'Roboto' , 'Poppins' , 'Rubik' , 'Titillium Web'];
+const List<String> fontFamily = ['Roboto Mono', 'Alkatra', 'Roboto' , 'Poppins' , 'Rubik' , 'Titillium Web' , 'Anuphan'];
 
 // These are the states fot font size cubit
 abstract class FontFamilyState {}
