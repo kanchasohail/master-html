@@ -151,7 +151,7 @@ Device name = ${allInfo['product']}
 Device Manufacturer = ${allInfo['manufacturer']}
                             
 Device info = ${allInfo['fingerprint']}''';
-  String email = Uri.encodeComponent("thegeniuscoder9@gmail.com");
+  String email = Uri.encodeComponent("thegeniuscoder100@gmail.com");
   String subject =
       Uri.encodeComponent("Report a bug or issue - TheGeniusCoder");
   String body = Uri.encodeComponent(

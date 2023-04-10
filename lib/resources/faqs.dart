@@ -18,7 +18,7 @@ const List<Map<String , dynamic>> frequentlyAskedQuestions =
   },
   {"question" : "How can I contact the developer team?" , "answers" : [
                                                 "If you notice any bug or issue in our app, please click on 'Report a bug or issue' to write down your complain and send us the email.\n",
-                                                "If you have any suggestion for our App then email us at - thegeniuscoder100@gmail.com and on the subject field write down 'suggestions'.\n",
+                                                "If you have any suggestion for our App then email us at - thegeniuscoder100@gmail.com and write 'suggestions' in the subject field.\n",
                                                 "We always check out your email in 2 working days.\n"
                                                ]
   }

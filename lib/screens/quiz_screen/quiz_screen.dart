@@ -25,18 +25,25 @@ class QuizScreen extends StatelessWidget {
             correctAnswer: e['correct_answer']))
         .toList();
     final quizCubit = BlocProvider.of<QuizCubit>(context);
+    quizCubit.quizInitialSetup(quiz);
     return WillPopScope(
       onWillPop: () async {
-       return  await showDialog(context: context, builder: (context) => backConfirmationDialogue(context: context)) ?? false;
-
+        return await showDialog(
+                context: context,
+                builder: (context) =>
+                    backConfirmationDialogue(context: context)) ??
+            false;
       },
       child: Scaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () async {
-              final bool willPop = await showDialog(context: context, builder: (context) => backConfirmationDialogue(context: context)) ?? false;
-              willPop ?
-              Navigator.of(context).pop() : (){} ;
+              final bool willPop = await showDialog(
+                      context: context,
+                      builder: (context) =>
+                          backConfirmationDialogue(context: context)) ??
+                  false;
+              willPop ? Navigator.of(context).pop() : () {};
             },
             icon: const Icon(
               CupertinoIcons.xmark,
@@ -78,20 +85,30 @@ class QuizScreen extends StatelessWidget {
                             const SizedBox(height: 20),
                             Text(
                               quiz[quizCubit.currentQuestionIndex].question,
-                              style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 19 , fontFamily: 'Poppins'),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .headlineLarge
+                                  ?.copyWith(
+                                      fontSize: 19, fontFamily: 'Poppins'),
                             ),
                             const SizedBox(height: 20),
                             ...quiz[quizCubit.currentQuestionIndex]
                                 .options
                                 .map(
                                   (option) => Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5.0),
                                     child: optionContainer(
                                         context: context,
                                         text: option,
-                                        isChecked: quizCubit.currentSelectedAnswer == option,
+                                        isChecked:
+                                            quizCubit.currentSelectedAnswer ==
+                                                option,
                                         onTap: () {
                                           quizCubit.answerQuestion(
+                                              question: quiz[quizCubit
+                                                      .currentQuestionIndex]
+                                                  .question,
                                               selectedAnswer: option,
                                               correctAnswer: quiz[quizCubit
                                                       .currentQuestionIndex]
@@ -123,20 +140,31 @@ class QuizScreen extends StatelessWidget {
                                           quiz.length - 1
                                       ? customButton(
                                           text: "Next",
-                                          backgroundColor: state is QuizAnsweredState ?  orangeColor : Colors.grey,
+                                          backgroundColor:
+                                              state is QuizAnsweredState
+                                                  ? orangeColor
+                                                  : Colors.grey,
                                           context: context,
                                           onPressed: () {
-                                            state is QuizAnsweredState ?
-                                            quizCubit.nextQuestion(quiz.length) : (){};
+                                            state is QuizAnsweredState
+                                                ? quizCubit
+                                                    .nextQuestion(quiz.length)
+                                                : () {};
                                           },
                                         )
                                       : customButton(
                                           text: "Submit",
-                                          backgroundColor: state is QuizAnsweredState ? greenColor : Colors.grey,
+                                          backgroundColor:
+                                              state is QuizAnsweredState
+                                                  ? greenColor
+                                                  : Colors.grey,
                                           context: context,
                                           onPressed: () {
-                                            state is QuizAnsweredState ?
-                                           quizCubit.submitAnswers(context: context , quizLength: quiz.length) : (){};
+                                            state is QuizAnsweredState
+                                                ? quizCubit.submitAnswers(
+                                                    context: context,
+                                                  )
+                                                : () {};
                                           }),
                                 ),
                               ],

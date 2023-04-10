@@ -1,5 +1,3 @@
-
-
 import 'package:master_html/resources/faqs.dart';
 import 'package:master_html/resources/models/faq_model.dart';
 
@@ -73,7 +71,7 @@ class FaqCard extends StatelessWidget {
                   ),
                 ),
               ],
-            )),
+            ),),
       ),
     );
   }
