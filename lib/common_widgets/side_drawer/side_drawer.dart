@@ -13,12 +13,9 @@ class SideDrawer extends StatelessWidget {
     return SizedBox(
         width: deviceWidth - deviceWidth / 5,
         child: Scaffold(
-          appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(40),
-            child: AppBar(
-              automaticallyImplyLeading: false,
-              title: const Text("HTML Lessons"),
-            ),
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title: const Text("HTML Lessons"),
           ),
           body: SafeArea(
             child: Container(

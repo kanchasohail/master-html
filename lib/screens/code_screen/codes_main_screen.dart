@@ -10,7 +10,7 @@ import 'package:flutter_highlight/themes/darcula.dart';
 import 'package:flutter_highlight/themes/monokai-sublime.dart';
 import 'package:flutter_highlight/themes/vs.dart';
 
-import 'package:highlight/languages/dart.dart';
+import 'package:highlight/languages/html.dart';
 
 import 'package:master_html/screens/code_screen/widgets/edit_code_widget.dart';
 import 'package:master_html/screens/code_screen/widgets/result_widget.dart';
@@ -62,7 +62,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
         <text style="color:red ; font-size:50px">Hi my name is Md Sohail</text> 
     </body>
 </html>''', // Initial code
-    language: dart,
+    language: html,
   );
 
   Map<String, TextStyle> _textTheme = monokaiSublimeTheme;
