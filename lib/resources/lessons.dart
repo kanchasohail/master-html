@@ -24,9 +24,9 @@ const Map<String, List<Map<String, String>>> allLessons = {
     }
   ],
   // Second lesson
-  "Introduction2": [
+  "Code Editor": [
     {
-      "head": "What is HTML? From introduction 2",
+      "head": "What is HTML? From Code Editor",
       "article":
           "HTML stands for Hyper Text Markup Language, it is the backbone of web development. It is a simple, easy-to-learn language that describes the structure of web pages. Using HTML, you can create static web pages, dynamic web pages, and even entire websites.",
       "code_example": "null",

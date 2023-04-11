@@ -2,7 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../resources/models/quiz_model.dart';
-import '../../screens/quiz_screen/widgets/result_screen.dart';
+import '../../screens/result_screen/result_screen.dart';
+
+//These are the frequently used strings
+const String selectedAnswerConstString = "selectedAnswer";
+
+const String isCorrectConstString = "isCorrect";
+
+const String perfectConstString = "Perfect !";
+
+const String almostThereConstString = "Almost There !";
+
+const String pleaseStudyConstString = "Please Study !";
 
 class QuizCubit extends Cubit<QuizState> {
   QuizCubit() : super(QuizInitialState());
@@ -15,8 +26,8 @@ class QuizCubit extends Cubit<QuizState> {
     playedQuiz = quiz.map((element) {
       return {
         "question": element.question,
-        "selectedAnswer": "",
-        "isCorrect": false
+        selectedAnswerConstString: "",
+        isCorrectConstString: false
       };
     }).toList();
   }
@@ -27,12 +38,13 @@ class QuizCubit extends Cubit<QuizState> {
       required String selectedAnswer,
       required String correctAnswer}) {
     currentSelectedAnswer = selectedAnswer;
-    playedQuiz[currentQuestionIndex]["selectedAnswer"] = selectedAnswer;
+    playedQuiz[currentQuestionIndex][selectedAnswerConstString] =
+        selectedAnswer;
     if (selectedAnswer == correctAnswer) {
-      playedQuiz[currentQuestionIndex]["isCorrect"] = true;
+      playedQuiz[currentQuestionIndex][isCorrectConstString] = true;
       emit(QuizAnsweredState());
     } else {
-      playedQuiz[currentQuestionIndex]["isCorrect"] = false;
+      playedQuiz[currentQuestionIndex][isCorrectConstString] = false;
       emit(QuizAnsweredState());
     }
   }
@@ -46,51 +58,55 @@ class QuizCubit extends Cubit<QuizState> {
       currentQuestionIndex += 1;
       emit(QuizNextQuestionState());
     }
-    if (playedQuiz[currentQuestionIndex]['selectedAnswer'] != "") {
+    if (playedQuiz[currentQuestionIndex][selectedAnswerConstString] != "") {
       currentSelectedAnswer =
-          playedQuiz[currentQuestionIndex]['selectedAnswer'];
+          playedQuiz[currentQuestionIndex][selectedAnswerConstString];
       emit(QuizAnsweredState());
     }
   }
 
   // This method is for getting the previous question
   void previousQuestion() {
-    currentSelectedAnswer = playedQuiz[currentQuestionIndex]['selectedAnswer'];
+    currentSelectedAnswer =
+        playedQuiz[currentQuestionIndex][selectedAnswerConstString];
     if (currentQuestionIndex > 0) {
       currentQuestionIndex -= 1;
       emit(QuizPreviousQuestionState());
     } else {
       emit(QuizFirstQuestionState());
     }
-    if (playedQuiz[currentQuestionIndex]['selectedAnswer'] != "") {
+    if (playedQuiz[currentQuestionIndex][selectedAnswerConstString] != "") {
       currentSelectedAnswer =
-          playedQuiz[currentQuestionIndex]['selectedAnswer'];
+          playedQuiz[currentQuestionIndex][selectedAnswerConstString];
       emit(QuizAnsweredState());
     }
   }
 
   // This method is for finishing the quiz
-  void submitAnswers({required BuildContext context}) {
+  void submitAnswers(
+      {required BuildContext context, required String lessonName}) {
     int correctAnswersCount = 0;
     String resultText = 'Hello There !';
     for (var element in playedQuiz) {
-      if (element['isCorrect'] == true) {
+      if (element[isCorrectConstString] == true) {
         correctAnswersCount++;
       }
     }
-    if(correctAnswersCount == playedQuiz.length){
-      resultText = "Perfect !";
-    }else if(correctAnswersCount < playedQuiz.length && correctAnswersCount > playedQuiz.length - 2){
-      resultText = "Almost There !" ;
-    }else {
-      resultText = "Please Study !";
+    if (correctAnswersCount == playedQuiz.length) {
+      resultText = perfectConstString;
+    } else if (correctAnswersCount < playedQuiz.length &&
+        correctAnswersCount > playedQuiz.length - 2) {
+      resultText = almostThereConstString;
+    } else {
+      resultText = pleaseStudyConstString;
     }
-    Navigator.of(context).pushReplacementNamed(ResultScreen.routeName,
-        arguments: {
-          "playedQuiz": playedQuiz,
-          "correctAnswerCount": correctAnswersCount ,
-          "resultText" : resultText
-        });
+    Navigator.of(context)
+        .pushReplacementNamed(ResultScreen.routeName, arguments: {
+      "playedQuiz": playedQuiz,
+      "correctAnswerCount": correctAnswersCount,
+      "resultText": resultText,
+      "lessonName": lessonName,
+    });
   }
 }
 

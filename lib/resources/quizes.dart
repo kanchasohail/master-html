@@ -22,7 +22,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     }
   ],
 //Quiz for the second lesson
-  "Introduction2": [
+  "Code Editor": [
     {
       "question":
           "Which version of HTML is currently in use from Introduction2?",

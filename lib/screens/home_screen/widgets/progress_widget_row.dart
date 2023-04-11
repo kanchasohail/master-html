@@ -1,3 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
+import 'package:master_html/resources/lists/lessons_list.dart';
+
 import '../../../constants/consts.dart';
 
 class ProgressWidgetRow extends StatelessWidget {
@@ -6,6 +10,9 @@ class ProgressWidgetRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final smallTextTheme = Theme.of(context).textTheme.bodySmall;
+    final int completedLessonsCount = BlocProvider.of<LessonCubit>(context).getListOfCompletedLessons().length ;
+    final int allLessonsCount = AllLessonsList.length ;
+    final double percentage = completedLessonsCount / allLessonsCount * 100 ;
     return Padding(
       padding: const EdgeInsets.only(left: 24.0, right: 24, top: 20),
       child: Column(
@@ -103,18 +110,18 @@ class ProgressWidgetRow extends StatelessWidget {
           Stack(children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: const LinearProgressIndicator(
-                value: 0.3,
-                backgroundColor: Color(0xff986919),
+              child:  LinearProgressIndicator(
+                value: percentage / 100,
+                backgroundColor: const Color(0xff986919),
                 minHeight: 45,
-                color: Color(0xffFEA000),
+                color: const Color(0xffFEA000),
               ),
             ),
             Center(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                "30.00%",
+                "${percentage.toStringAsFixed(2)}%",
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
             ))

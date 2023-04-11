@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
+import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/cubits/profile_cubit/profile_image_cubit.dart';
 import 'package:master_html/cubits/profile_cubit/user_name_cubit.dart';
 import 'package:master_html/cubits/quiz_cubit/quiz_cubit.dart';
@@ -9,7 +10,7 @@ import 'package:master_html/screens/home_screen/home_screen.dart';
 import 'package:master_html/screens/learning_screen/learning_screen.dart';
 import 'package:master_html/screens/profile_screen/profile_screen.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
-import 'package:master_html/screens/quiz_screen/widgets/result_screen.dart';
+import 'package:master_html/screens/result_screen/result_screen.dart';
 import 'package:master_html/screens/settings_screen/settings_screen.dart';
 import 'package:master_html/screens/splash_screen/splash_screen.dart';
 
@@ -43,11 +44,12 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<FontSizeCubit>(create: (context) => FontSizeCubit()),
         BlocProvider<FontFamilyCubit>(create: (context) => FontFamilyCubit()),
+        BlocProvider<LessonCubit>(create: (context) => LessonCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
         final themeCubit = BlocProvider.of<ThemeCubit>(context);
         themeCubit.getInitialTheme(pref);
-        final bool isGetStarted = themeCubit.isGetStarted() ;
+        final bool isGetStarted = themeCubit.isGetStarted();
         return MaterialApp(
           title: 'Master Html',
           debugShowCheckedModeBanner: true,
@@ -59,7 +61,7 @@ class MyApp extends StatelessWidget {
             CodesMainScreen.routeName: (context) => const CodesMainScreen(),
             SettingScreen.routeName: (context) => const SettingScreen(),
             LearningScreen.routeName: (context) => const LearningScreen(),
-            ResultScreen.routeName : (context) => const ResultScreen(),
+            ResultScreen.routeName: (context) => const ResultScreen(),
             QuizScreen.routeName: (context) => BlocProvider(
                 create: (context) => QuizCubit(), child: const QuizScreen()),
             ProfileScreen.routeName: (context) => MultiBlocProvider(providers: [
@@ -71,7 +73,7 @@ class MyApp extends StatelessWidget {
                   ),
                 ], child: const ProfileScreen()),
           },
-          home:  HomeScreen(isGetStarted: isGetStarted),
+          home: HomeScreen(isGetStarted: isGetStarted),
         );
       }),
     );

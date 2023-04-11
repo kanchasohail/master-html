@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
 import 'package:master_html/cubits/fonts_cubit/fonts_family_cubit.dart';
+import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/resources/lessons.dart';
+import 'package:master_html/resources/lists/lessons_list.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
 
 import '../../constants/consts.dart';
@@ -15,14 +17,15 @@ class LearningScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    pref.setBool("isGetStarted", false).then((value) {
+    pref.setBool(isGetStartedKey, false).then((value) {
       BlocProvider.of<ThemeCubit>(context).updateIsGetStarted() ;
     });
     final double currentFontSize = BlocProvider.of<FontSizeCubit>(context).getCurrentFontSize.toDouble() ;
     final String currentFontFamily = BlocProvider.of<FontFamilyCubit>(context).getCurrentFontFamily ;
     final bool isDarkMode = BlocProvider.of<ThemeCubit>(context , listen: false).themeMode == ThemeMode.dark ;
     final Object?  argument = ModalRoute.of(context)?.settings.arguments ;
-    final String lessonName = argument.toString() == "null" ? "Introduction2" : argument.toString() ;
+    final int onGoingLessonIndex = BlocProvider.of<LessonCubit>(context).onGoingLesson ;
+    final String lessonName = argument.toString() == "null" ? AllLessonsList[onGoingLessonIndex] : argument.toString() ;
     final List<LessonModel> lessonsList = allLessons[lessonName]!.map((e) => LessonModel(header: e['head']!, article: e['article']!, codeExample: e['code_example']!, fact: e['fact']!)).toList();
     return Scaffold(
       appBar: AppBar(

@@ -2,18 +2,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/main.dart';
 
 // This is for shared pref
-const String savedFontSizeString = "savedFontSize";
+const String savedFontSizeStringKey = "savedFontSize";
 
 class FontSizeCubit extends Cubit<FontSizeState> {
   FontSizeCubit() : super(FontSizeInitialState());
 
   int get getCurrentFontSize {
-    final int fontSize = pref.getInt(savedFontSizeString) ?? 18;
+    final int fontSize = pref.getInt(savedFontSizeStringKey) ?? 18;
     return fontSize;
   }
 
   void changeFontSize(int fontSize) {
-    pref.setInt(savedFontSizeString, fontSize);
+    pref.setInt(savedFontSizeStringKey, fontSize);
     emit(FontSizeChangedState());
   }
 }

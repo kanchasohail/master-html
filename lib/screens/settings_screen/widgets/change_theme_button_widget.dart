@@ -14,7 +14,7 @@ class ChangeThemeButtonWidget extends StatelessWidget {
       scale: 0.9,
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {
-          final bool isOn = pref.getBool(isDarkThemeString) ?? true ;
+          final bool isOn = pref.getBool(isDarkThemeStringKey) ?? true ;
           if (state is ThemeDarkState || isOn) {
             return CupertinoSwitch(
               activeColor: CupertinoColors.activeOrange,
