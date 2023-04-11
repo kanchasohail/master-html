@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/cubits/quiz_cubit/quiz_cubit.dart';
 import 'package:master_html/resources/quizes.dart';
 import 'package:master_html/screens/quiz_screen/widgets/back_confirmation_dialogue.dart';
-import 'package:master_html/screens/quiz_screen/widgets/custom_button.dart';
+import 'package:master_html/common_widgets/custom_button.dart';
 import 'package:master_html/screens/quiz_screen/widgets/option_container.dart';
 
 import '../../constants/consts.dart';
@@ -163,6 +163,7 @@ class QuizScreen extends StatelessWidget {
                                             state is QuizAnsweredState
                                                 ? quizCubit.submitAnswers(
                                                     context: context,
+                                                    lessonName: lessonName,
                                                   )
                                                 : () {};
                                           }),

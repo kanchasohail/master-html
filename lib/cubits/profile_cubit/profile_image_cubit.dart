@@ -9,6 +9,9 @@ import 'package:image_picker/image_picker.dart';
 import '../../constants/consts.dart';
 import '../../main.dart';
 
+//These Strings are related to shared preferences
+const profileImageStringKey = 'profileImageKey';
+
 class ProfileImageCubit extends Cubit<ProfileImageState> {
   ProfileImageCubit() : super(ProfileImageInitialState()) {
     getImage();
@@ -46,14 +49,15 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
   //this method is for saving an Image
   void saveImage(List<int> imageBytes) async {
     String base64Image = base64Encode(imageBytes);
-    pref.setString("image", base64Image);
+    pref.setString(profileImageStringKey, base64Image);
     profileImage = null;
     emit(ProfileImageChangeState());
   }
 
 //this method is for getting the image
   void getImage() async {
-    Uint8List bytes = base64Decode(pref.getString("image") ?? "error");
+    Uint8List bytes =
+        base64Decode(pref.getString(profileImageStringKey) ?? "error");
     if (bytes.toString() == "error") {
       profileImagePath = '';
       profileImage = null;

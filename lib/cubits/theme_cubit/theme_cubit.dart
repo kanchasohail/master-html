@@ -4,8 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/consts.dart';
 import '../../main.dart';
 
-//String for shared-pref
-const String isDarkThemeString = "isDarkTheme";
+//These string are for shared preferences
+const String isGetStartedKey = "isGetStarted" ;
+const String isDarkThemeStringKey = "isDarkTheme";
 
 class ThemeCubit extends Cubit<ThemeState> {
   ThemeCubit() : super(ThemeInitialState());
@@ -14,29 +15,29 @@ class ThemeCubit extends Cubit<ThemeState> {
 
   //These two for checking if the learning was started or not
   bool isGetStarted() {
-    return pref.getBool("isGetStarted") ?? true ;
+    return pref.getBool(isGetStartedKey) ?? true;
   }
 
-  void updateIsGetStarted(){
-    if(pref.getBool("isGetStarted") == false){
+  void updateIsGetStarted() {
+    if (pref.getBool(isGetStartedKey) == false) {
       emit(ThemeInitialState());
-    }else{
-      return ;
+    } else {
+      return;
     }
   }
 
   void toggleTheme(bool isOn) {
     if (isOn) {
-      pref.setBool(isDarkThemeString, true);
+      pref.setBool(isDarkThemeStringKey, true);
       emit(ThemeDarkState());
     } else {
-      pref.setBool(isDarkThemeString, false);
+      pref.setBool(isDarkThemeStringKey, false);
       emit(ThemeLightState());
     }
   }
 
   void getInitialTheme(SharedPreferences pref) {
-    final bool isDarkTheme = pref.getBool(isDarkThemeString) ?? true;
+    final bool isDarkTheme = pref.getBool(isDarkThemeStringKey) ?? true;
     if (isDarkTheme == true) {
       themeMode = ThemeMode.dark;
     } else {

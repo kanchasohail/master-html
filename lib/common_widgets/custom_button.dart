@@ -1,4 +1,4 @@
-import '../../../constants/consts.dart';
+import '../constants/consts.dart';
 
 Widget customButton({required String text , required Color backgroundColor ,required BuildContext context , required VoidCallback onPressed}){
   return ElevatedButton(

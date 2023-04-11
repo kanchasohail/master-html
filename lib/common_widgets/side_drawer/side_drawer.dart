@@ -1,4 +1,5 @@
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/resources/lists/lessons_list.dart';
 import 'package:master_html/screens/learning_screen/learning_screen.dart';
 
@@ -10,6 +11,7 @@ class SideDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
+    final List<String> completedLessons = BlocProvider.of<LessonCubit>(context).getListOfCompletedLessons();
     return SizedBox(
         width: deviceWidth - deviceWidth / 5,
         child: Scaffold(
@@ -26,13 +28,15 @@ class SideDrawer extends StatelessWidget {
                   return true ;
                 },
                 child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
+                    final bool isCompleted = completedLessons.contains(AllLessonsList[index]) ;
                     return ListTile(
                       onTap: (){
-                        Navigator.of(context).popAndPushNamed(LearningScreen.routeName , arguments:lessonsList[index] );
+                        Navigator.of(context).popAndPushNamed(LearningScreen.routeName , arguments:AllLessonsList[index] );
                       },
-                      title: Text(lessonsList[index] , style: const TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
-                      trailing: index % 2 == 0 ? const Icon(Icons.check_circle_outline , color: orangeColor,) : const Icon(Icons.circle_outlined , color: darkBodyColor,),
+                      title: Text(AllLessonsList[index] , style: const TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
+                      trailing: isCompleted ? const Icon(Icons.check_circle_outline , color: orangeColor,) : const Icon(Icons.circle_outlined , color: darkBodyColor,),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {
@@ -44,7 +48,7 @@ class SideDrawer extends StatelessWidget {
                       ),
                     );
                   },
-                  itemCount: lessonsList.length,
+                  itemCount: AllLessonsList.length,
                 ),
               ),
             ),
