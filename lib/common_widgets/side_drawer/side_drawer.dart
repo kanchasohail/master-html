@@ -35,8 +35,8 @@ class SideDrawer extends StatelessWidget {
                       onTap: (){
                         Navigator.of(context).popAndPushNamed(LearningScreen.routeName , arguments:AllLessonsList[index] );
                       },
-                      title: Text(AllLessonsList[index] , style: const TextStyle(fontSize: 16 , fontWeight: FontWeight.w400),),
-                      trailing: isCompleted ? const Icon(Icons.check_circle_outline , color: orangeColor,) : const Icon(Icons.circle_outlined , color: darkBodyColor,),
+                      title: Text(AllLessonsList[index] , style: const TextStyle(fontSize: 15 , fontWeight: FontWeight.w400),),
+                      trailing: isCompleted ? const Icon(Icons.check_circle_outline , color: orangeColor, size: 22) : const Icon(Icons.circle_outlined , color: darkBodyColor, size: 22),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {

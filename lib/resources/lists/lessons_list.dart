@@ -46,6 +46,6 @@ final List<String> AllLessonsList = [
   'HTML Entities',
   'HTML SVG',
   'HTML Canvas',
-  'HTML Versus XHTML',
+  'HTML Vs XHTML',
   'What\'s next?'
 ];

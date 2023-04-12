@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/constants/consts.dart';
-import 'package:master_html/resources/lists/lessons_list.dart';
 import 'package:master_html/screens/learning_screen/learning_screen.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
 
@@ -12,7 +11,7 @@ const String onGoingLessonIndexKey = 'onGoingLessonIndex';
 const String completedLessonsListKey = 'completedLessonsList';
 
 class LessonCubit extends Cubit<LessonState> {
-  LessonCubit() : super(ResultInitialState());
+  LessonCubit() : super(LessonInitialState());
 
 
   List<String> completedLessonsList = [];
@@ -23,8 +22,9 @@ class LessonCubit extends Cubit<LessonState> {
   }
 
   //This method check if the use passed or failed the quiz
-  bool didPassQuiz({required String resultText}) {
+  bool didPassQuiz({required String resultText , required String lessonName}) {
     if (resultText == perfectConstString) {
+      passThisLesson(lessonName: lessonName);
       return true;
     } else {
       return false;
@@ -46,13 +46,22 @@ class LessonCubit extends Cubit<LessonState> {
   }
 
   //This method is for moving forward to the next lesson
-  void nextLesson({required BuildContext context , required String lessonName}) {
-    final int currentOngoingLesson = onGoingLesson;
-    pref.setInt(onGoingLessonIndexKey, currentOngoingLesson + 1);
-    completedLessonsList.add(lessonName);
-    pref.setStringList(completedLessonsListKey, completedLessonsList);
+  void nextLesson({required BuildContext context }) {
     Navigator.of(context).pop();
     Navigator.of(context).popAndPushNamed(LearningScreen.routeName);
+  }
+
+ //This method will mark the lesson as completed and update everything required
+  void passThisLesson({required String lessonName}){
+    final int currentOngoingLesson = onGoingLesson;
+    pref.setInt(onGoingLessonIndexKey, currentOngoingLesson + 1);
+    if(!completedLessonsList.contains(lessonName)){
+      completedLessonsList.add(lessonName);
+      pref.setStringList(completedLessonsListKey, completedLessonsList);
+      //Emitting this state to update the progress indicator
+      emit(LessonNextState());
+    }
+
   }
 
   int get onGoingLesson {
@@ -63,4 +72,6 @@ class LessonCubit extends Cubit<LessonState> {
 //These are the state classes for this cubit
 abstract class LessonState {}
 
-class ResultInitialState extends LessonState {}
+class LessonInitialState extends LessonState {}
+class LessonNextState extends LessonState {}
+

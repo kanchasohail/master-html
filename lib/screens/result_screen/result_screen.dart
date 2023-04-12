@@ -19,7 +19,8 @@ class ResultScreen extends StatelessWidget {
     final int correctAnswersCount = argsData['correctAnswerCount'];
     final String resultText = argsData['resultText'];
     final resultCubit = BlocProvider.of<LessonCubit>(context);
-    final bool didPassQuiz = resultCubit.didPassQuiz(resultText: resultText);
+    final bool didPassQuiz = resultCubit.didPassQuiz(
+        resultText: resultText, lessonName: argsData['lessonName']);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -92,7 +93,7 @@ class ResultScreen extends StatelessWidget {
                               backgroundColor: orangeColor,
                               context: context,
                               onPressed: () {
-                                resultCubit.nextLesson(context: context , lessonName:argsData['lessonName'] );
+                                resultCubit.nextLesson(context: context);
                               })
                           : Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
