@@ -47,6 +47,10 @@ class UserNameRow extends StatelessWidget {
                         child: TextField(
                           autofocus: true,
                           cursorColor: orangeColor,
+                          onSubmitted: (value){
+                            userNameCubit
+                                .saveName(value.trim());
+                          },
                           decoration: const InputDecoration(
                             enabledBorder: UnderlineInputBorder(
                               borderSide: BorderSide(color: orangeColor),

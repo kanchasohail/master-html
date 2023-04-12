@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../constants/consts.dart';
 import '../../main.dart';
@@ -22,6 +23,10 @@ class ProfileImageCubit extends Cubit<ProfileImageState> {
 
   // Change Image method
   Future<void> changeImage() async {
+    var status = await Permission.storage.status;
+    if(status.isRestricted || status.isDenied || status.isPermanentlyDenied){
+      await [Permission.storage].request();
+    }
     try {
       final XFile? img = await ImagePicker()
           .pickImage(source: ImageSource.gallery, imageQuality: 100);
