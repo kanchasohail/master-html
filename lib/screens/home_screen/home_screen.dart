@@ -33,7 +33,7 @@ class HomeScreen extends StatelessWidget {
               child: CircleAvatar(
                 backgroundColor: orangeColor,
                 child: IconButton(
-                  splashRadius: 25 ,
+                  splashRadius: 28 ,
                     onPressed: () {
                       Navigator.of(context).pushNamed(ProfileScreen.routeName);
                     },

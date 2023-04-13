@@ -11,13 +11,38 @@ class SideDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceWidth = MediaQuery.of(context).size.width;
-    final List<String> completedLessons = BlocProvider.of<LessonCubit>(context).getListOfCompletedLessons();
+    final List<String> completedLessons =
+        BlocProvider.of<LessonCubit>(context).getListOfCompletedLessons();
     return SizedBox(
-        width: deviceWidth - deviceWidth / 5,
+        width: deviceWidth - deviceWidth / 5.5,
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title: const Text("HTML Lessons"),
+            title:  const FittedBox(child: Text("HTML Lessons")),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 6.0 , top: 7 , bottom:7),
+                child: OutlinedButton.icon(
+                    style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: orangeColor) ,
+                     foregroundColor: Colors.orange
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      Navigator.of(context).popUntil((route) => route.isFirst);
+                    },
+                    icon: const Icon(
+                      Icons.home,
+                      color: orangeColor,
+                      size: 26,
+                    ),
+                    label: Text(
+                      "Home",
+                      style: TextStyle(
+                          color: Theme.of(context).textTheme.bodySmall?.color),
+                    )),
+              )
+            ],
           ),
           body: SafeArea(
             child: Container(
@@ -28,15 +53,25 @@ class SideDrawer extends StatelessWidget {
                   return true ;
                 },
                 child: ListView.separated(
-                  physics: const BouncingScrollPhysics(),
                   itemBuilder: (context, index) {
-                    final bool isCompleted = completedLessons.contains(AllLessonsList[index]) ;
+                    final bool isCompleted =
+                        completedLessons.contains(AllLessonsList[index]);
                     return ListTile(
-                      onTap: (){
-                        Navigator.of(context).popAndPushNamed(LearningScreen.routeName , arguments:AllLessonsList[index] );
+                      onTap: () {
+                        Navigator.of(context).popAndPushNamed(
+                            LearningScreen.routeName,
+                            arguments: AllLessonsList[index]);
                       },
-                      title: Text(AllLessonsList[index] , style: const TextStyle(fontSize: 15 , fontWeight: FontWeight.w400),),
-                      trailing: isCompleted ? const Icon(Icons.check_circle_outline , color: orangeColor, size: 22) : const Icon(Icons.circle_outlined , color: darkBodyColor, size: 22),
+                      title: Text(
+                        AllLessonsList[index],
+                        style: const TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w400),
+                      ),
+                      trailing: isCompleted
+                          ? const Icon(Icons.check_circle_outline,
+                              color: orangeColor, size: 22)
+                          : const Icon(Icons.circle_outlined,
+                              color: darkBodyColor, size: 22),
                     );
                   },
                   separatorBuilder: (BuildContext context, int index) {

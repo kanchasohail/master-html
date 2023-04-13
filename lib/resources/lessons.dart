@@ -4,7 +4,7 @@ const Map<String, List<Map<String, String>>> allLessons = {
     {
       "head": "What is HTML?",
       "article":
-          "HTML stands for Hyper Text Markup Language, it is the backbone of web development. It is a simple, easy-to-learn language that describes the structure of web pages. Using HTML, you can create static web pages, dynamic web pages, and even entire websites.",
+          "HTML stands for Hyper Text Markup Language, it is the backbone of web development.\n\nIt is a simple, easy-to-learn language that describes the structure of web pages.\n\nUsing HTML, you can create static web pages, dynamic web pages, and even entire websites.\n",
       "code_example": "null",
       "fact": "null"
     },

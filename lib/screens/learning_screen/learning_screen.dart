@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/common_widgets/side_drawer/side_drawer.dart';
 import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
 import 'package:master_html/cubits/fonts_cubit/fonts_family_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
@@ -28,18 +29,29 @@ class LearningScreen extends StatelessWidget {
     final String lessonName = argument.toString() == "null" ? AllLessonsList[onGoingLessonIndex] : argument.toString() ;
     final List<LessonModel> lessonsList = allLessons[lessonName]!.map((e) => LessonModel(header: e['head']!, article: e['article']!, codeExample: e['code_example']!, fact: e['fact']!)).toList();
     return Scaffold(
+      drawer: const SideDrawer(),
       appBar: AppBar(
+        centerTitle: true,
+        // title: Row(
+        //   children: [
+        //     IconButton(onPressed: (){
+        //       Navigator.of(context).pop();
+        //     }, icon: const Icon(Icons.arrow_back)),
+        //     Text(lessonName),
+        //   ],
+        // ),
         title: Text(lessonName),
-        actions: [
-          IconButton(onPressed: (){
-            Navigator.of(context).pushNamed(QuizScreen.routeName , arguments: lessonName);
-          }, icon: const Icon(Icons.play_arrow))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: (){
+        //     Navigator.of(context).pushNamed(QuizScreen.routeName , arguments: lessonName);
+        //   }, icon: const Icon(Icons.play_arrow)),
+        // ],
       ),
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(6.0),
+            padding: const EdgeInsets.all(4.0),
             child: SizedBox(
               width: double.infinity,
               child: Card(
@@ -55,20 +67,27 @@ class LearningScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ...lessonsList.map((element) => Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(element.header , style: const TextStyle(fontSize: 30 , fontWeight: FontWeight.bold),),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                                child: Text(element.header , style: const TextStyle(fontSize: 22 , fontWeight: FontWeight.bold),),
+                              ),
                               Text(element.article, style: TextStyle(fontSize: currentFontSize , fontFamily: currentFontFamily),),
                               element.fact != "null" ? Container(
                                 padding: const EdgeInsets.all(8),
                                 color: Colors.blueAccent,
                                 child: Text(element.fact),
                               ) : const SizedBox(),
+
                             ],
                           ),
-                        )).toList()
+                        )).toList() ,
+                        TextButton.icon(onPressed: (){
+                          Navigator.of(context).pushNamed(QuizScreen.routeName , arguments: lessonName);
+                        }, icon: const Icon(Icons.arrow_forward_ios), label: const Text("Play Quiz"))
                       ],
                     ),
                   ),

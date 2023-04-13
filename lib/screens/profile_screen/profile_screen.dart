@@ -1,3 +1,5 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/certificate_cubit/certificate_cubit.dart';
 import 'package:master_html/screens/profile_screen/widgets/certificate_image.dart';
 import 'package:master_html/screens/profile_screen/widgets/profile_image.dart';
 import 'package:master_html/screens/profile_screen/widgets/user_name_row.dart';
@@ -19,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
       body: NotificationListener<OverscrollIndicatorNotification>(
         onNotification: (OverscrollIndicatorNotification overscroll) {
           overscroll.disallowIndicator();
-          return true ;
+          return true;
         },
         child: SingleChildScrollView(
           child: Column(
@@ -35,11 +37,12 @@ class ProfileScreen extends StatelessWidget {
                       child: Icon(Icons.info),
                     ),
                     SizedBox(
-                        width: MediaQuery.of(context).size.width - 80,
-                        child: const Text(
-                          "Choose a professional looking photo for your certificate",
-                          style: TextStyle(fontSize: 14, color: Colors.grey),
-                        ),)
+                      width: MediaQuery.of(context).size.width - 80,
+                      child: const Text(
+                        "Choose a professional looking photo for your certificate",
+                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -52,9 +55,11 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: CertificateImage(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: BlocProvider(
+                    create: (context) => CertificateCubit(),
+                    child: const CertificateImage()),
               ),
             ],
           ),
