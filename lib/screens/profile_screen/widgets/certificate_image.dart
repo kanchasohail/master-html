@@ -1,8 +1,8 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:screenshot/screenshot.dart';
+import 'package:master_html/common_widgets/custom_button.dart';
 
 import '../../../constants/consts.dart';
+import '../../../cubits/certificate_cubit/certificate_cubit.dart';
 import '../../../cubits/profile_cubit/user_name_cubit.dart';
 
 
@@ -12,34 +12,10 @@ class CertificateImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userNameCubit = BlocProvider.of<UserNameCubit>(context);
-    final ScreenshotController screenshotController = ScreenshotController();
-    return InkWell(
-      onTap: () async {
-        final Uint8List image = await screenshotController.captureFromWidget(
-          Center(
-            child: SizedBox(
-              height: 250,
-              width: 420,
-              child: Stack(
-                children: [
-                  Image.asset(
-                    'assets/certificate.png',
-                    fit: BoxFit.cover,
-                  ),
-                  Align(
-                    alignment: const Alignment(-0.85, -0.08),
-                    child: Text(userNameCubit.userName ?? "Your Name"),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-        if (image.isEmpty) return;
-        // await saveImage(image);'
-      },
-      child: Center(
-        child: SizedBox(
+    final certificateCubit = BlocProvider.of<CertificateCubit>(context);
+    return Column(
+      children: [
+        SizedBox(
           height: 250,
           width: 420,
           child: Stack(
@@ -62,7 +38,16 @@ class CertificateImage extends StatelessWidget {
             ],
           ),
         ),
-      ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            customButton(text: "Save", backgroundColor: orangeColor, context: context, onPressed: (){
+              certificateCubit.captureCertificateScreenshot(userNameCubit: userNameCubit);
+            }),
+            customButton(text: "Share", backgroundColor: orangeColor, context: context, onPressed: (){}),
+          ],
+        )
+      ],
     );
   }
 }

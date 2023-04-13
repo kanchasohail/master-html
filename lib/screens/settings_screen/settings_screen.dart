@@ -25,55 +25,53 @@ class SettingScreen extends StatelessWidget {
           children: [
             headerContainer(context: context, text: "App Theme"),
             myListTile(
-              onTap: (){
-                final themeCubit = BlocProvider.of<ThemeCubit>(context);
-                final bool isOn = themeCubit.themeMode == ThemeMode.dark;
-                themeCubit.toggleTheme(!isOn) ;
-              },
+                onTap: () {
+                  final themeCubit = BlocProvider.of<ThemeCubit>(context);
+                  final bool isOn = themeCubit.themeMode == ThemeMode.dark;
+                  themeCubit.toggleTheme(!isOn);
+                },
                 context: context,
                 title: "Dark Mode",
                 trailing: const ChangeThemeButtonWidget()),
             headerContainer(context: context, text: "Font"),
             myListTile(
-              onTap: (){},
+                onTap: () {},
                 context: context,
                 title: "Font size",
                 trailing: const FontSizeDropDownButton()),
-            const Divider(thickness: 1),
+            const Divider(thickness: 1, height: 1),
             myListTile(
-              onTap: (){},
+                onTap: () {},
                 context: context,
                 title: "Font family",
                 trailing: const FontFamilyDropDownButton()),
             headerContainer(context: context, text: "About us"),
             myListTile(
-              onTap: (){
-                //Open twitter page
-              },
+                onTap: () {
+                  //Open twitter page
+                },
                 context: context,
                 title: "Follow us on twitter",
                 trailing: const Icon(Icons.people_alt_sharp)),
-            const Divider(thickness: 1),
+            const Divider(thickness: 1, height: 1),
             myListTile(
-              onTap: (){
-                //Open play store
-              },
+                onTap: () {
+                  //Open play store
+                },
                 context: context,
                 title: "Visit our website",
                 trailing: const Icon(Icons.web)),
-            const Divider(thickness: 1),
-
+            const Divider(thickness: 1, height: 1),
             myListTile(
-                onTap: (){
+                onTap: () {
                   //Open play store
                 },
                 context: context,
                 title: "Get Master CSS App",
                 trailing: const Icon(Icons.css)),
-            const Divider(thickness: 1),
-
+            const Divider(thickness: 1, height: 1),
             myListTile(
-                onTap: (){
+                onTap: () {
                   //Open play store
                 },
                 context: context,
