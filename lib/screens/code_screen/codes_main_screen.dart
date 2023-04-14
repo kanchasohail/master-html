@@ -71,6 +71,10 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
   Widget build(BuildContext context) {
     final Color themeIconColor =
         Theme.of(context).iconTheme.color ?? orangeColor;
+    final String codeText = ModalRoute.of(context)?.settings.arguments.toString() as String;
+    if(codeText != "null"){
+      codeController.text = codeText ;
+    }
     return Scaffold(
       body: Column(
         children: [

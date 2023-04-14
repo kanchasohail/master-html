@@ -19,13 +19,14 @@ class CertificateImage extends StatelessWidget {
           height: 250,
           width: 420,
           child: Stack(
+            alignment: Alignment.center,
             children: [
               Image.asset(
                 'assets/certificate.png',
                 fit: BoxFit.cover,
               ),
               Align(
-                alignment: const Alignment(-0.85, -0.08),
+                alignment: const Alignment(-0.72, -0.08),
                 child: BlocBuilder<UserNameCubit, UserNameState>(
                     builder: (context, state) {
                   return Text(
@@ -42,7 +43,7 @@ class CertificateImage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             customButton(text: "Save", backgroundColor: orangeColor, context: context, onPressed: (){
-              certificateCubit.captureCertificateScreenshot(userNameCubit: userNameCubit);
+              certificateCubit.captureCertificateScreenshot(userNameCubit: userNameCubit , context: context);
             }),
             customButton(text: "Share", backgroundColor: orangeColor, context: context, onPressed: (){}),
           ],

@@ -5,6 +5,10 @@ import 'package:master_html/cubits/fonts_cubit/fonts_family_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/resources/lessons.dart';
 import 'package:master_html/resources/lists/lessons_list.dart';
+import 'package:master_html/screens/code_screen/codes_main_screen.dart';
+import 'package:master_html/screens/learning_screen/widgets/code_example.dart';
+import 'package:master_html/screens/learning_screen/widgets/fact_container.dart';
+import 'package:master_html/screens/learning_screen/widgets/play_quiz_button.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
 
 import '../../constants/consts.dart';
@@ -41,12 +45,6 @@ class LearningScreen extends StatelessWidget {
         //   ],
         // ),
         title: Text(lessonName),
-        // actions: [
-        //   IconButton(
-        //       onPressed: (){
-        //     Navigator.of(context).pushNamed(QuizScreen.routeName , arguments: lessonName);
-        //   }, icon: const Icon(Icons.play_arrow)),
-        // ],
       ),
       body: SafeArea(
         child: Center(
@@ -54,6 +52,7 @@ class LearningScreen extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             child: SizedBox(
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               child: Card(
                 color: isDarkMode ? darkAppBarColor : lightAppBarColor,
                 elevation: 8,
@@ -75,19 +74,21 @@ class LearningScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                                 child: Text(element.header , style: const TextStyle(fontSize: 22 , fontWeight: FontWeight.bold),),
                               ),
-                              Text(element.article, style: TextStyle(fontSize: currentFontSize , fontFamily: currentFontFamily),),
-                              element.fact != "null" ? Container(
-                                padding: const EdgeInsets.all(8),
-                                color: Colors.blueAccent,
-                                child: Text(element.fact),
-                              ) : const SizedBox(),
-
+                              ...element.article.map((article) => Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 4),
+                                child: Text(article, style: TextStyle(fontSize: currentFontSize , fontFamily: currentFontFamily),),
+                              ),
+                              ).toList(),
+                              codeExample(codeExample: element.codeExample, onTap: (){
+                                Navigator.of(context).pushNamed(CodesMainScreen.routeName , arguments: element.codeExample);
+                              }),
+                              factContainer(factText: element.fact , context:context , fontSize: currentFontSize , fontFamily: currentFontFamily),
                             ],
                           ),
                         )).toList() ,
-                        TextButton.icon(onPressed: (){
+                        playQuizButton(onPressed: (){
                           Navigator.of(context).pushNamed(QuizScreen.routeName , arguments: lessonName);
-                        }, icon: const Icon(Icons.arrow_forward_ios), label: const Text("Play Quiz"))
+                        })
                       ],
                     ),
                   ),

@@ -14,11 +14,10 @@ class CertificateCubit extends Cubit<CertificateState> {
 
   //This method will capture the screenshot of the certificate
   Future<void> captureCertificateScreenshot(
-      {required UserNameCubit userNameCubit,}) async {
+      {required UserNameCubit userNameCubit, required BuildContext context}) async {
     final Uint8List image = await screenshotController.captureFromWidget(
       SizedBox(
-        height: 250,
-        width: 420,
+        height: 310,
         child: Stack(
           children: [
             Image.asset(
@@ -27,14 +26,23 @@ class CertificateCubit extends Cubit<CertificateState> {
             ),
             Align(
               alignment: const Alignment(-0.85, -0.08),
-              child: Text(userNameCubit.userName ?? "Your Name"),
+              child: Text(userNameCubit.userName ?? "Your Name" ,style: const TextStyle(
+                  fontFamily: 'Alkatra', color: Colors.deepPurple ,fontSize: 26),),
             ),
           ],
         ),
       ),
     );
     if (image.isEmpty) return;
-   await saveCertificate(image);
+   await saveCertificate(image).then((val) {
+     if(val.isNotEmpty){
+       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Certificate downloaded successfully!" , style: TextStyle(fontWeight: FontWeight.w600 , color: Colors.white),) , backgroundColor: Colors.green,));
+     }else{
+       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Failed to save Certificate!" , style: TextStyle(fontWeight: FontWeight.w600 , color: Colors.white),) , backgroundColor: Colors.red,));
+     }
+     return "_";
+   });
+
   }
 
   //This method will save the certificate in gallery
@@ -45,15 +53,7 @@ class CertificateCubit extends Cubit<CertificateState> {
        .replaceAll(':', '-');
    final name = 'screenshot_$time';
    final result = await ImageGallerySaver.saveImage(bytes, name: name);
-   // Fluttertoast.showToast(
-   //     msg: "This Shayari downloaded",
-   //     toastLength: Toast.LENGTH_SHORT,
-   //     gravity: ToastGravity.CENTER,
-   //     timeInSecForIosWeb: 1,
-   //     backgroundColor: greyColor,
-   //     textColor: Colors.white,
-   //     fontSize: 16.0);
-   return result['filepath'];
+   return result['filePath'];
  }
 }
 
