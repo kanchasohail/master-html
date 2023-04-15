@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 
 import 'package:code_text_field/code_text_field.dart';
+import 'package:master_html/cubits/codes_cubit/code_cubit.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import 'package:flutter_highlight/themes/atom-one-light.dart';
@@ -21,6 +22,7 @@ class CodesMainScreen extends StatefulWidget {
   static const routeName = "/codes-main-screen";
 
   const CodesMainScreen({Key? key}) : super(key: key);
+
 
   @override
   State<CodesMainScreen> createState() => _CodesMainScreenState();
@@ -41,6 +43,13 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
     webViewController = controller;
   }
 
+  @override
+  void dispose() {
+    CodeCubit.codeCubitCodeString = "";
+    super.dispose();
+  }
+
+//This method loads the html code for the webView
   void loadLocalHtml(String? htmlCode) async {
     final url = Uri.dataFromString(
       htmlCode!,
@@ -51,17 +60,9 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
   }
 
 // These are relate to code editing screen
+
   final codeController = CodeController(
-    text: '''<!DOCTYPE html>
-<html>
-    <head>
-        <h1>Hi this is a header</h1>
-    </head>
-    <body>
-        <h2>Hi this is a small body</h2>
-        <text style="color:red ; font-size:50px">Hi my name is Md Sohail</text> 
-    </body>
-</html>''', // Initial code
+  text: CodeCubit.codeCubitCodeString != "" ? CodeCubit.codeCubitCodeString : CodeCubit.getMainEditorCode,
     language: html,
   );
 
@@ -71,10 +72,6 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
   Widget build(BuildContext context) {
     final Color themeIconColor =
         Theme.of(context).iconTheme.color ?? orangeColor;
-    final String codeText = ModalRoute.of(context)?.settings.arguments.toString() as String;
-    if(codeText != "null"){
-      codeController.text = codeText ;
-    }
     return Scaffold(
       body: Column(
         children: [
