@@ -28,7 +28,8 @@ class Routes {
         return MaterialPageRoute(builder: (context) => const LearningScreen());
 //Result screen
       case ResultScreen.routeName:
-        return MaterialPageRoute(builder: (context) => const ResultScreen());
+        final Map<String, dynamic> argumentsData = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(builder: (context) =>  ResultScreen(argsData: argumentsData,));
 //Quiz screen
       case QuizScreen.routeName:
         final String lessonNameArgument = settings.arguments as String;
