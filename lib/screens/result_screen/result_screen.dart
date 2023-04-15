@@ -9,12 +9,11 @@ import '../../cubits/quiz_cubit/quiz_cubit.dart';
 class ResultScreen extends StatelessWidget {
   static const routeName = '/result-screen';
 
-  const ResultScreen({Key? key}) : super(key: key);
+  const ResultScreen({Key? key, required this.argsData}) : super(key: key);
+  final Map<String, dynamic> argsData;
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> argsData =
-        ModalRoute.of(context)?.settings.arguments as Map<String, dynamic>;
     final List<Map<String, dynamic>> playedQuiz = argsData['playedQuiz'];
     final int correctAnswersCount = argsData['correctAnswerCount'];
     final String resultText = argsData['resultText'];

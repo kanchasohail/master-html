@@ -6,6 +6,7 @@ import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/resources/lessons.dart';
 import 'package:master_html/resources/lists/lessons_list.dart';
 import 'package:master_html/screens/code_screen/codes_main_screen.dart';
+import 'package:master_html/screens/learning_screen/widgets/article_text.dart';
 import 'package:master_html/screens/learning_screen/widgets/code_example.dart';
 import 'package:master_html/screens/learning_screen/widgets/fact_container.dart';
 import 'package:master_html/screens/learning_screen/widgets/play_quiz_button.dart';
@@ -31,7 +32,7 @@ class LearningScreen extends StatelessWidget {
     final Object?  argument = ModalRoute.of(context)?.settings.arguments ;
     final int onGoingLessonIndex = BlocProvider.of<LessonCubit>(context).onGoingLesson ;
     final String lessonName = argument.toString() == "null" ? AllLessonsList[onGoingLessonIndex] : argument.toString() ;
-    final List<LessonModel> lessonsList = allLessons[lessonName]!.map((e) => LessonModel(header: e['head']!, article: e['article']!, codeExample: e['code_example']!, fact: e['fact']!)).toList();
+    final List<LessonModel> lessonsList = allLessons[lessonName]!.map((e) => LessonModel(header: e.header, article: e.article, codeExample: e.codeExample, outPutExample: e.outPutExample ,fact: e.fact)).toList();
     return Scaffold(
       drawer: const SideDrawer(),
       appBar: AppBar(
@@ -74,10 +75,7 @@ class LearningScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                                 child: Text(element.header , style: const TextStyle(fontSize: 22 , fontWeight: FontWeight.bold),),
                               ),
-                              ...element.article.map((article) => Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 4),
-                                child: Text(article, style: TextStyle(fontSize: currentFontSize , fontFamily: currentFontFamily),),
-                              ),
+                              ...element.article.map((article) => articleText(article: article, currentFontSize: currentFontSize, currentFontFamily: currentFontFamily),
                               ).toList(),
                               codeExample(codeExample: element.codeExample, onTap: (){
                                 Navigator.of(context).pushNamed(CodesMainScreen.routeName , arguments: element.codeExample);

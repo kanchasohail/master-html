@@ -3,13 +3,31 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
   "HTML Introduction": [
     {
       "question": "Which version of HTML is currently in use?",
-      "correct_answer": "HTML 5",
-      "options": ["HTML 4", "HTML 5", "HTML 6"]
+      "correct_answer": "HTML5",
+      "options": ["HTML4", "HTML5", "HTML6"]
+    },
+    {
+      "question": "Which element specifies a title for the web page?",
+      "correct_answer": "head",
+      "options": ["title", "head", "meta"]
+    },
+    {
+      "question": "How to tell the browser that our file is HTML5 file?",
+      "correct_answer": "By declaring <!DOCTYPE html>",
+      "options": [
+        "By declaring <!DOCTYPE html>",
+        "Writing <head> element twice",
+        "Writing meta elements"
+      ]
     },
     {
       "question": "What kind of language is HTML?",
       "correct_answer": "Markup Language",
-      "options": ["Programming Language", "Gaming Language", "Markup Language"]
+      "options": [
+        "Programming language",
+        "Gaming language",
+        "Markup Language"
+      ]
     },
     {
       "question": "What does HTML stand for?",
@@ -17,7 +35,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
       "options": [
         "Hyper Transformative markup language",
         "Hyper text markup language",
-        "Hyper real programming language"
+        "Hyper fast programming language"
       ]
     }
   ],
