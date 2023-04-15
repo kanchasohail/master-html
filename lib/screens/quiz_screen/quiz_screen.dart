@@ -12,12 +12,11 @@ import '../../resources/models/quiz_model.dart';
 class QuizScreen extends StatelessWidget {
   static const routeName = '/quiz-screen';
 
-  const QuizScreen({Key? key}) : super(key: key);
+  const QuizScreen({Key? key , required this.lessonName}) : super(key: key);
+  final String lessonName ;
 
   @override
   Widget build(BuildContext context) {
-    final String lessonName =
-        ModalRoute.of(context)?.settings.arguments as String;
     final List<QuizModel> quiz = allQuiz[lessonName]!
         .map((e) => QuizModel(
             question: e['question'],
