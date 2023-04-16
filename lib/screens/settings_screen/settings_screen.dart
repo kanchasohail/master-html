@@ -20,64 +20,72 @@ class SettingScreen extends StatelessWidget {
         title: const Text("Settings"),
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            headerContainer(context: context, text: "App Theme"),
-            myListTile(
-                onTap: () {
-                  final themeCubit = BlocProvider.of<ThemeCubit>(context);
-                  final bool isOn = themeCubit.themeMode == ThemeMode.dark;
-                  themeCubit.toggleTheme(!isOn);
-                },
-                context: context,
-                title: "Dark Mode",
-                trailing: const ChangeThemeButtonWidget()),
-            headerContainer(context: context, text: "Font"),
-            myListTile(
-                onTap: () {},
-                context: context,
-                title: "Font size",
-                trailing: const FontSizeDropDownButton()),
-            const Divider(thickness: 1, height: 1),
-            myListTile(
-                onTap: () {},
-                context: context,
-                title: "Font family",
-                trailing: const FontFamilyDropDownButton()),
-            headerContainer(context: context, text: "About us"),
-            myListTile(
-                onTap: () {
-                  //Open twitter page
-                },
-                context: context,
-                title: "Follow us on twitter",
-                trailing: const Icon(Icons.people_alt_sharp)),
-            const Divider(thickness: 1, height: 1),
-            myListTile(
-                onTap: () {
-                  //Open play store
-                },
-                context: context,
-                title: "Visit our website",
-                trailing: const Icon(Icons.web)),
-            const Divider(thickness: 1, height: 1),
-            myListTile(
-                onTap: () {
-                  //Open play store
-                },
-                context: context,
-                title: "Get Master CSS App",
-                trailing: const Icon(Icons.css)),
-            const Divider(thickness: 1, height: 1),
-            myListTile(
-                onTap: () {
-                  //Open play store
-                },
-                context: context,
-                title: "Get Master JavaScript App",
-                trailing: const Icon(Icons.javascript)),
-          ],
+        child: NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (OverscrollIndicatorNotification overscroll) {
+            overscroll.disallowIndicator();
+            return true ;
+          },
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                headerContainer(context: context, text: "App Theme"),
+                myListTile(
+                    onTap: () {
+                      final themeCubit = BlocProvider.of<ThemeCubit>(context);
+                      final bool isOn = themeCubit.themeMode == ThemeMode.dark;
+                      themeCubit.toggleTheme(!isOn);
+                    },
+                    context: context,
+                    title: "Dark Mode",
+                    trailing: const ChangeThemeButtonWidget()),
+                headerContainer(context: context, text: "Font"),
+                myListTile(
+                    onTap: () {},
+                    context: context,
+                    title: "Font size",
+                    trailing: const FontSizeDropDownButton()),
+                const Divider(thickness: 1, height: 1),
+                myListTile(
+                    onTap: () {},
+                    context: context,
+                    title: "Font family",
+                    trailing: const FontFamilyDropDownButton()),
+                headerContainer(context: context, text: "About us"),
+                myListTile(
+                    onTap: () {
+                      //Open twitter page
+                    },
+                    context: context,
+                    title: "Follow us on twitter",
+                    trailing: const Icon(Icons.people_alt_sharp)),
+                const Divider(thickness: 1, height: 1),
+                myListTile(
+                    onTap: () {
+                      //Open play store
+                    },
+                    context: context,
+                    title: "Visit our website",
+                    trailing: const Icon(Icons.web)),
+                const Divider(thickness: 1, height: 1),
+                myListTile(
+                    onTap: () {
+                      //Open play store
+                    },
+                    context: context,
+                    title: "Get Master CSS App",
+                    trailing: const Icon(Icons.css)),
+                const Divider(thickness: 1, height: 1),
+                myListTile(
+                    onTap: () {
+                      //Open play store
+                    },
+                    context: context,
+                    title: "Get Master JavaScript App",
+                    trailing: const Icon(Icons.javascript)),
+              ],
+            ),
+          ),
         ),
       ),
     );

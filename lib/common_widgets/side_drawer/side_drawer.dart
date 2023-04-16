@@ -18,15 +18,14 @@ class SideDrawer extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            title:  const FittedBox(child: Text("HTML Lessons")),
+            title: const FittedBox(child: Text("HTML Lessons")),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 6.0 , top: 7 , bottom:7),
+                padding: const EdgeInsets.only(right: 6.0, top: 7.5, bottom: 7.5),
                 child: OutlinedButton.icon(
                     style: OutlinedButton.styleFrom(
-                        side: const BorderSide(color: orangeColor) ,
-                     foregroundColor: Colors.orange
-                    ),
+                        side: const BorderSide(color: orangeColor),
+                        foregroundColor: Colors.orange),
                     onPressed: () {
                       Navigator.of(context).pop();
                       Navigator.of(context).popUntil((route) => route.isFirst);
@@ -50,7 +49,7 @@ class SideDrawer extends StatelessWidget {
               child: NotificationListener<OverscrollIndicatorNotification>(
                 onNotification: (OverscrollIndicatorNotification overscroll) {
                   overscroll.disallowIndicator();
-                  return true ;
+                  return true;
                 },
                 child: ListView.separated(
                   itemBuilder: (context, index) {
@@ -58,6 +57,11 @@ class SideDrawer extends StatelessWidget {
                         completedLessons.contains(AllLessonsList[index]);
                     return ListTile(
                       onTap: () {
+                        // Navigator.of(context)
+                        //     .popUntil((route) => route.);
+                        // Navigator.of(context).pushNamed(
+                        //     LearningScreen.routeName,
+                        //     arguments: AllLessonsList[index]);
                         Navigator.of(context).popAndPushNamed(
                             LearningScreen.routeName,
                             arguments: AllLessonsList[index]);
