@@ -31,11 +31,11 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     },
     {
       "question": "What does HTML stand for?",
-      "correct_answer": "Hyper text markup language",
+      "correct_answer": "Hyper Text Markup Language",
       "options": [
-        "Hyper Transformative markup language",
-        "Hyper text markup language",
-        "Hyper fast programming language"
+        "Hyper Transformative Markup Language",
+        "Hyper Text Markup Language",
+        "Hyper Fast Programming Language"
       ]
     }
   ],

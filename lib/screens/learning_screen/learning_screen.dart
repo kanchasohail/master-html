@@ -76,7 +76,7 @@ class LearningScreen extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 8.0),
-                                child: Text(element.header , style: const TextStyle(fontSize: 22 , fontWeight: FontWeight.bold),),
+                                child: Text(element.header , style: TextStyle(fontSize: currentFontSize + 4 /* was 22 before */ , fontWeight: FontWeight.bold),),
                               ),
                               ...element.article.map((article) => articleText(article: article, currentFontSize: currentFontSize, currentFontFamily: currentFontFamily , isDarkTheme: isDarkMode),
                               ).toList(),
