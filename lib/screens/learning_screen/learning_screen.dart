@@ -29,10 +29,13 @@ class LearningScreen extends StatelessWidget {
     final double currentFontSize = BlocProvider.of<FontSizeCubit>(context).getCurrentFontSize.toDouble() ;
     final String currentFontFamily = BlocProvider.of<FontFamilyCubit>(context).getCurrentFontFamily ;
     final bool isDarkMode = BlocProvider.of<ThemeCubit>(context , listen: false).themeMode == ThemeMode.dark ;
-    final Object?  argument = ModalRoute.of(context)?.settings.arguments ;
-    final int onGoingLessonIndex = BlocProvider.of<LessonCubit>(context).onGoingLesson ;
+    final int onGoingLessonIndex = BlocProvider.of<LessonCubit>(context).onGoingLessonIndex ;
+    final Object? argument = ModalRoute.of(context)?.settings.arguments ;
+    debugPrint(argument.toString());
     final String lessonName = argument.toString() == "null" ? AllLessonsList[onGoingLessonIndex] : argument.toString() ;
+    debugPrint("$lessonName ***********************");
     final List<LessonModel> lessonsList = allLessons[lessonName]!.map((e) => LessonModel(header: e.header, article: e.article, codeExample: e.codeExample, outPutExample: e.outPutExample ,fact: e.fact)).toList();
+
     return Scaffold(
       drawer: const SideDrawer(),
       appBar: AppBar(
@@ -75,7 +78,7 @@ class LearningScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                                 child: Text(element.header , style: const TextStyle(fontSize: 22 , fontWeight: FontWeight.bold),),
                               ),
-                              ...element.article.map((article) => articleText(article: article, currentFontSize: currentFontSize, currentFontFamily: currentFontFamily),
+                              ...element.article.map((article) => articleText(article: article, currentFontSize: currentFontSize, currentFontFamily: currentFontFamily , isDarkTheme: isDarkMode),
                               ).toList(),
                               codeExample(codeExample: element.codeExample, onTap: (){
                                 Navigator.of(context).pushNamed(CodesMainScreen.routeName , arguments: element.codeExample);

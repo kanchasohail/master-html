@@ -45,7 +45,9 @@ class CertificateImage extends StatelessWidget {
             customButton(text: "Save", backgroundColor: orangeColor, context: context, onPressed: (){
               certificateCubit.captureCertificateScreenshot(userNameCubit: userNameCubit , context: context);
             }),
-            customButton(text: "Share", backgroundColor: orangeColor, context: context, onPressed: (){}),
+            customButton(text: "Share", backgroundColor: orangeColor, context: context, onPressed: (){
+              certificateCubit.saveAndShareCertificate(userNameCubit: userNameCubit , context:  context);
+            }),
           ],
         )
       ],

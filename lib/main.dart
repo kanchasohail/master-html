@@ -4,6 +4,7 @@ import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/routes.dart';
 import 'package:master_html/screens/home_screen/home_screen.dart';
+import 'package:master_html/screens/learning_screen/learning_screen.dart';
 import 'package:master_html/screens/splash_screen/splash_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -50,6 +51,9 @@ class MyApp extends StatelessWidget {
           darkTheme: MyThemes.darkTheme,
           themeMode: themeCubit.themeMode,
           onGenerateRoute: Routes.onGenerateRoute,
+          routes: {
+                  LearningScreen.routeName : (context) => const LearningScreen(),
+          },
           home: HomeScreen(isGetStarted: isGetStarted),
         );
       }),
