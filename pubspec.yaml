@@ -102,39 +102,47 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Alkatra
-      fonts:
-        - asset: assets/fonts/Alkatra-VariableFont_wght.ttf
-    - family: Roboto Mono
-      fonts:
-        - asset: assets/fonts/RobotoMono-VariableFont_wght.ttf
-
+  #This is the default text theme also used in the fonts list ;
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
-
-    - family: Poppins
-      fonts:
-        - asset: assets/fonts/Poppins-Regular.ttf
-
-    - family: Rubik
-      fonts:
-        - asset: assets/fonts/Rubik-VariableFont_wght.ttf
-
-    - family: Titillium Web
-      fonts:
-        - asset: assets/fonts/TitilliumWeb-Regular.ttf
-
+  #This font is used in "frequently asked question" and fonts list as well ;
     - family: RobotoMedium
       fonts:
-        - asset: assets/fonts/TitilliumWeb-Regular.ttf
-
-    - family: Anuphan
-      fonts:
-        - asset: assets/fonts/Anuphan-VariableFont_wght.ttf
-
+        - asset: assets/fonts/Roboto-Medium.ttf
+  #This font is used on "Facebook" text only ;
     - family: Montserrat
       fonts:
         - asset: assets/fonts/Montserrat-Medium.ttf
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+  #These fonts are only used in the font family lists
+    - family: AnonymousPro
+      fonts:
+        - asset: assets/fonts/AnonymousPro-Regular.ttf
+
+    - family: AveriaSans
+      fonts:
+        - asset: assets/fonts/AveriaSansLibre-Regular.ttf
+
+    - family: ExpletusSans
+      fonts:
+        - asset: assets/fonts/ExpletusSans-Regular.ttf
+
+    - family: OverpassMono
+      fonts:
+        - asset: assets/fonts/OverpassMono-Regular.ttf
+
+    - family: ShareTechMono
+      fonts:
+        - asset: assets/fonts/ShareTechMono-Regular.ttf
+
+    - family: SpaceMono
+      fonts:
+        - asset: assets/fonts/SpaceMono-Regular.ttf
+
+    - family: SplineSans
+      fonts:
+        - asset: assets/fonts/SplineSansMono-Regular.ttf
+
+    - family: Arctik1.5
+      fonts:
+        - asset: assets/fonts/Arctik 1.5.ttf
