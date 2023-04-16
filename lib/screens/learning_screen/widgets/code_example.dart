@@ -4,10 +4,13 @@ Widget codeExample({required String codeExample, required VoidCallback onTap}) {
   if (codeExample != "null") {
     return Column(
       children: [
-        Card(
-          elevation: 8,
-          shadowColor: orangeColor,
-          child: Text(codeExample),
+        SizedBox(
+          width: double.infinity,
+          child: Card(
+            elevation: 8,
+            shadowColor: orangeColor,
+            child: Text(codeExample),
+          ),
         ),
         InkWell(
           onTap: onTap,

@@ -16,9 +16,11 @@ class Routes {
     switch (settings.name) {
 //Codes main screen
       case CodesMainScreen.routeName:
-        final String codeExampleArgument = settings.arguments.toString() ;
-        CodeCubit.codeCubitCodeString = codeExampleArgument;
-        return MaterialPageRoute(builder: (context) =>  const CodesMainScreen());
+        CodeCubit.codeCubitCodeString = settings.arguments as String?;
+        return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+                create: (context) => CodeCubit(),
+                child: const CodesMainScreen()));
 //Settings screen
       case SettingScreen.routeName:
         return MaterialPageRoute(builder: (context) => const SettingScreen());
@@ -27,8 +29,12 @@ class Routes {
 //         return MaterialPageRoute(builder: (context) =>  const LearningScreen());
 //Result screen
       case ResultScreen.routeName:
-        final Map<String, dynamic> argumentsData = settings.arguments as Map<String, dynamic>;
-        return MaterialPageRoute(builder: (context) =>  ResultScreen(argsData: argumentsData,));
+        final Map<String, dynamic> argumentsData =
+            settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+            builder: (context) => ResultScreen(
+                  argsData: argumentsData,
+                ));
 //Quiz screen
       case QuizScreen.routeName:
         final String lessonNameArgument = settings.arguments as String;
