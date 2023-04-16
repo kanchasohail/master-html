@@ -23,7 +23,6 @@ class CodesMainScreen extends StatefulWidget {
 
   const CodesMainScreen({Key? key}) : super(key: key);
 
-
   @override
   State<CodesMainScreen> createState() => _CodesMainScreenState();
 }
@@ -45,7 +44,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
 
   @override
   void dispose() {
-    CodeCubit.codeCubitCodeString = "";
+    CodeCubit.codeCubitCodeString = null;
     super.dispose();
   }
 
@@ -60,9 +59,8 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
   }
 
 // These are relate to code editing screen
-
   final codeController = CodeController(
-  text: CodeCubit.codeCubitCodeString != "" ? CodeCubit.codeCubitCodeString : CodeCubit.getMainEditorCode,
+    text: CodeCubit.codeCubitCodeString ?? CodeCubit.getMainEditorCode(),
     language: html,
   );
 

@@ -54,7 +54,9 @@ class LessonCubit extends Cubit<LessonState> {
  //This method will mark the lesson as completed and update everything required
   void passThisLesson({required String lessonName}){
     if(!completedLessonsList.contains(lessonName)){
-      final int lessonNameIndex = AllLessonsList.where((element) => element == lessonName).length ;
+      final int lessonNameIndex = AllLessonsList.indexOf(lessonName) ;
+      print(lessonNameIndex);
+      print(lessonName);
       pref.setInt(onGoingLessonIndexKey, lessonNameIndex + 1);
       completedLessonsList.add(lessonName);
       pref.setStringList(completedLessonsListKey, completedLessonsList);
