@@ -8,7 +8,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     },
     {
       "question": "Which element specifies a title for the web page?",
-      "correct_answer": "head",
+      "correct_answer": "title",
       "options": ["title", "head", "meta"]
     },
     {

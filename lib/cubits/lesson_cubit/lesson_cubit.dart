@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/constants/consts.dart';
+import 'package:master_html/resources/lists/lessons_list.dart';
 import 'package:master_html/screens/learning_screen/learning_screen.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
 
@@ -12,7 +13,6 @@ const String completedLessonsListKey = 'completedLessonsList';
 
 class LessonCubit extends Cubit<LessonState> {
   LessonCubit() : super(LessonInitialState());
-
 
   List<String> completedLessonsList = [];
   //This method gets the list of completed lessons
@@ -53,20 +53,21 @@ class LessonCubit extends Cubit<LessonState> {
 
  //This method will mark the lesson as completed and update everything required
   void passThisLesson({required String lessonName}){
-    final int currentOngoingLesson = onGoingLesson;
-    pref.setInt(onGoingLessonIndexKey, currentOngoingLesson + 1);
     if(!completedLessonsList.contains(lessonName)){
+      final int lessonNameIndex = AllLessonsList.where((element) => element == lessonName).length ;
+      pref.setInt(onGoingLessonIndexKey, lessonNameIndex + 1);
       completedLessonsList.add(lessonName);
       pref.setStringList(completedLessonsListKey, completedLessonsList);
       //Emitting this state to update the progress indicator
       emit(LessonNextState());
     }
-
   }
 
-  int get onGoingLesson {
+//This getter will get the on going lesson index for functioning the continue button
+  int get onGoingLessonIndex {
     return pref.getInt(onGoingLessonIndexKey) ?? 0;
   }
+
 }
 
 //These are the state classes for this cubit

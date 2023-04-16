@@ -3,7 +3,8 @@ import '../../../constants/consts.dart';
 Widget articleText(
     {required String article,
     required double currentFontSize,
-    required String currentFontFamily}) {
+    required String currentFontFamily ,
+    required bool isDarkTheme}) {
   final pattern = RegExp(
       "<(“[^”]*”|'[^’]*’|[^'”>])*>"); // matches words with exactly 5 characters
   final matches = pattern.allMatches(article);
@@ -42,7 +43,7 @@ Widget articleText(
               style: TextStyle(
                   fontSize: currentFontSize,
                   fontFamily: currentFontFamily,
-                  color: Colors.white),
+                 color: isDarkTheme ? Colors.white : Colors.black ),
             ),
           ),
         )
