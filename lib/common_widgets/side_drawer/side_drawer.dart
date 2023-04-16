@@ -21,7 +21,7 @@ class SideDrawer extends StatelessWidget {
             title: const FittedBox(child: Text("HTML Lessons")),
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 6.0, top: 7.5, bottom: 7.5),
+                padding: const EdgeInsets.only(right: 7.0, top: 7.5, bottom: 7.5),
                 child: OutlinedButton.icon(
                     style: OutlinedButton.styleFrom(
                         side: const BorderSide(color: orangeColor),
