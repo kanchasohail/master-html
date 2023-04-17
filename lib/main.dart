@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
+import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/routes.dart';
 import 'package:master_html/screens/home_screen/home_screen.dart';
@@ -45,14 +46,16 @@ class MyApp extends StatelessWidget {
         final bool isGetStarted = themeCubit.isGetStarted();
         return MaterialApp(
           title: 'Master Html',
-          debugShowCheckedModeBanner: true,
+          debugShowCheckedModeBanner: false,
           // showPerformanceOverlay: true,
           theme: MyThemes.lightTheme,
           darkTheme: MyThemes.darkTheme,
           themeMode: themeCubit.themeMode,
           onGenerateRoute: Routes.onGenerateRoute,
           routes: {
-                  LearningScreen.routeName : (context) => const LearningScreen(),
+            LearningScreen.routeName: (context) => BlocProvider(
+                create: (context) => LearningCubit(),
+                child: const LearningScreen()),
           },
           home: HomeScreen(isGetStarted: isGetStarted),
         );
