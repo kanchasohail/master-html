@@ -7,7 +7,7 @@ Widget codeExample({required String codeExample, required VoidCallback onTap}) {
         SizedBox(
           width: double.infinity,
           child: Card(
-            elevation: 8,
+            elevation: 6,
             shadowColor: orangeColor,
             child: Text(codeExample),
           ),

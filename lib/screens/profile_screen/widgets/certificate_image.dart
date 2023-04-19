@@ -39,15 +39,21 @@ class CertificateImage extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            customButton(text: "Save", backgroundColor: orangeColor, context: context, onPressed: (){
-              certificateCubit.captureCertificateScreenshot(userNameCubit: userNameCubit , context: context);
-            }),
-            customButton(text: "Share", backgroundColor: orangeColor, context: context, onPressed: (){
-              certificateCubit.saveAndShareCertificate(userNameCubit: userNameCubit , context:  context);
-            }),
+            Expanded(
+              child: customButton(text: "Save", backgroundColor: orangeColor, context: context, onPressed: (){
+                certificateCubit.captureCertificateScreenshot(userNameCubit: userNameCubit , context: context);
+              }),
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: customButton(text: "Share", backgroundColor: orangeColor, context: context, onPressed: (){
+                certificateCubit.saveAndShareCertificate(userNameCubit: userNameCubit , context:  context);
+              }),
+            ),
           ],
         )
       ],

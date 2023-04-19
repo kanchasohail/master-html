@@ -35,7 +35,7 @@ Widget articleText(
   textSpans.add(TextSpan(text: remainingText));
   return article != "null"
       ? Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           // child: Text(article, style: TextStyle(fontSize: currentFontSize , fontFamily: currentFontFamily),),
           child: RichText(
             text: TextSpan(

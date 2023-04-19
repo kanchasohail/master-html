@@ -14,7 +14,7 @@ class CodeCubit extends Cubit<CodeState> {
 
   //This getter will get the mainEditorCode from the device shared pref
   static String getMainEditorCode() {
-    return pref.getString(mainCodeStringKey) ?? "NO String found";
+    return pref.getString(mainCodeStringKey) ?? "";
   }
 
   //This method will save the code in sharedPref

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:master_html/cubits/fonts_cubit/fonts_family_cubit.dart';
+import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 
 import '../../../constants/consts.dart';
 
@@ -8,17 +8,17 @@ class FontFamilyDropDownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fontSizeCubit = BlocProvider.of<FontFamilyCubit>(context) ;
-    return BlocBuilder<FontFamilyCubit , FontFamilyState>(
+    final fontsCubit = BlocProvider.of<FontsCubit>(context) ;
+    return BlocBuilder<FontsCubit , FontsState>(
         builder: (context , state) {
           return DropdownButton(
-            value: fontSizeCubit.getCurrentFontFamily,
-            items: fontFamily
+            value: fontsCubit.getCurrentFontFamily,
+            items: fontFamiliesList
                 .map((element) =>
                 DropdownMenuItem(value: element, child: Text(element)))
                 .toList(),
             onChanged: (value) {
-              fontSizeCubit.changeFontFamily(value ?? 'Roboto');
+              fontsCubit.changeFontFamily(value ?? 'Roboto');
             },
             hint: const Text('Select a font Family'),
           );

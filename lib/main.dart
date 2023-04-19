@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
+import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/routes.dart';
@@ -11,7 +11,6 @@ import 'package:master_html/screens/splash_screen/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'constants/my_themes.dart';
-import 'cubits/fonts_cubit/fonts_family_cubit.dart';
 import 'cubits/theme_cubit/theme_cubit.dart';
 
 late SharedPreferences pref;
@@ -36,8 +35,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
-        BlocProvider<FontSizeCubit>(create: (context) => FontSizeCubit()),
-        BlocProvider<FontFamilyCubit>(create: (context) => FontFamilyCubit()),
+        BlocProvider<FontsCubit>(create: (context) => FontsCubit()),
         BlocProvider<LessonCubit>(create: (context) => LessonCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {

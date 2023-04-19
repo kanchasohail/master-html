@@ -5,18 +5,7 @@ Widget backConfirmationDialogue({required BuildContext context}) {
     backgroundColor: Theme.of(context).scaffoldBackgroundColor,
     actions: [
       TextButton(
-          onPressed: ()=> Navigator.pop(context , true),
-          style: ButtonStyle(
-            overlayColor: MaterialStateColor.resolveWith(
-                    (states) => Theme.of(context).cardTheme.color!),
-          ),
-          child: const Text(
-            "Quit",
-            style: TextStyle(
-                color: orangeColor, fontWeight: FontWeight.bold, fontSize: 16),
-          )),
-      TextButton(
-          onPressed: ()=> Navigator.pop(context , false),
+          onPressed: () => Navigator.pop(context, false),
           style: ButtonStyle(
             overlayColor: MaterialStateColor.resolveWith(
                 (states) => Theme.of(context).cardTheme.color!),
@@ -26,7 +15,17 @@ Widget backConfirmationDialogue({required BuildContext context}) {
             style: TextStyle(
                 color: orangeColor, fontWeight: FontWeight.bold, fontSize: 16),
           )),
-
+      TextButton(
+          onPressed: () => Navigator.pop(context, true),
+          style: ButtonStyle(
+            overlayColor: MaterialStateColor.resolveWith(
+                (states) => Theme.of(context).cardTheme.color!),
+          ),
+          child: const Text(
+            "Quit",
+            style: TextStyle(
+                color: orangeColor, fontWeight: FontWeight.bold, fontSize: 16),
+          )),
     ],
     alignment: Alignment.center,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -39,7 +38,10 @@ Widget backConfirmationDialogue({required BuildContext context}) {
           const SizedBox(height: 5),
           Text(
             "Exit Quiz",
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 22),
+            style: Theme.of(context)
+                .textTheme
+                .headlineLarge
+                ?.copyWith(fontSize: 22),
           ),
           const SizedBox(height: 10),
           Text(

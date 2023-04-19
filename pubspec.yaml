@@ -106,7 +106,7 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/Roboto-Regular.ttf
-  #This font is used in "frequently asked question" and fonts list as well ;
+  #This font is used in the app but not in the fonts list
     - family: RobotoMedium
       fonts:
         - asset: assets/fonts/Roboto-Medium.ttf
@@ -115,34 +115,22 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-Medium.ttf
   #These fonts are only used in the font family lists
-    - family: AnonymousPro
-      fonts:
-        - asset: assets/fonts/AnonymousPro-Regular.ttf
-
-    - family: AveriaSans
+    - family: Averia
       fonts:
         - asset: assets/fonts/AveriaSansLibre-Regular.ttf
 
-    - family: ExpletusSans
+    - family: Expletus
       fonts:
         - asset: assets/fonts/ExpletusSans-Regular.ttf
 
-    - family: OverpassMono
-      fonts:
-        - asset: assets/fonts/OverpassMono-Regular.ttf
-
-    - family: ShareTechMono
-      fonts:
-        - asset: assets/fonts/ShareTechMono-Regular.ttf
-
-    - family: SpaceMono
-      fonts:
-        - asset: assets/fonts/SpaceMono-Regular.ttf
-
-    - family: SplineSans
+    - family: Spline
       fonts:
         - asset: assets/fonts/SplineSansMono-Regular.ttf
 
-    - family: Arctik1.5
+    - family: HalfMoon
       fonts:
-        - asset: assets/fonts/Arctik 1.5.ttf
+        - asset: assets/fonts/halfmoon.ttf
+
+    - family: Dernier
+      fonts:
+        - asset: assets/fonts/dernier.ttf

@@ -1,19 +1,19 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../constants/consts.dart';
-import '../../../cubits/fonts_cubit/font_size_cubit.dart';
+import '../../../cubits/fonts_cubit/fonts_cubit.dart';
 
 class FontSizeDropDownButton extends StatelessWidget {
   const FontSizeDropDownButton({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final fontSizeCubit = BlocProvider.of<FontSizeCubit>(context) ;
-    return BlocBuilder<FontSizeCubit , FontSizeState>(
+    final fontSizeCubit = BlocProvider.of<FontsCubit>(context) ;
+    return BlocBuilder<FontsCubit , FontsState>(
       builder: (context , state) {
         return DropdownButton(
           value: fontSizeCubit.getCurrentFontSize,
-          items: fontSize
+          items: fontSizesList
               .map((element) =>
               DropdownMenuItem(value: element, child: Text('$element px')))
               .toList(),
