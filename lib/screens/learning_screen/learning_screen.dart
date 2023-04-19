@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/common_widgets/side_drawer/side_drawer.dart';
-import 'package:master_html/cubits/fonts_cubit/font_size_cubit.dart';
-import 'package:master_html/cubits/fonts_cubit/fonts_family_cubit.dart';
+import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/resources/lessons.dart';
@@ -30,10 +29,6 @@ class LearningScreen extends StatelessWidget {
     pref.setBool(isGetStartedKey, false).then((value) {
       BlocProvider.of<ThemeCubit>(context).updateIsGetStarted();
     });
-    // final double currentFontSize =
-    //     BlocProvider.of<FontSizeCubit>(context).getCurrentFontSize.toDouble();
-    final String currentFontFamily =
-        BlocProvider.of<FontFamilyCubit>(context).getCurrentFontFamily;
     final bool isDarkMode =
         BlocProvider.of<ThemeCubit>(context, listen: false).themeMode ==
             ThemeMode.dark;
@@ -69,19 +64,22 @@ class LearningScreen extends StatelessWidget {
         // ),
         title: Text(lessonName),
         actions: [
-          IconButton(
-              onPressed: () {
-                learningCubit.popUpCard();
-              },
-              icon: BlocBuilder<LearningCubit, LearningState>(
-                  builder: (context, state) {
-                if (state is LearningCardPopupState) {
-                  return const Icon(CupertinoIcons.xmark);
-                } else {
-                  return const Icon(Icons.menu_book_rounded);
-                }
-              }),
-              splashRadius: 28),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+                onPressed: () {
+                  learningCubit.popUpCard();
+                },
+                icon: BlocBuilder<LearningCubit, LearningState>(
+                    builder: (context, state) {
+                  if (state is LearningCardPopupState) {
+                    return const Icon(CupertinoIcons.xmark);
+                  } else {
+                    return const Icon(Icons.menu_book_rounded , size: 31,);
+                  }
+                }),
+                splashRadius: 28),
+          ),
         ],
       ),
       body: SafeArea(
@@ -111,116 +109,76 @@ class LearningScreen extends StatelessWidget {
                             return const SizedBox();
                           }
                         }),
-                        BlocBuilder<FontSizeCubit , FontSizeState>(
-                          builder: (context , state) {
-                            final double currentFontSize =
-                            BlocProvider.of<FontSizeCubit>(context).getCurrentFontSize.toDouble();
-                            return Column(
-                              children: [
-                                ...lessonsList
-                                    .map((element) => Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 12.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
+                        BlocBuilder<FontsCubit, FontsState>(
+                            builder: (context, state) {
+                          final fontsCubit =
+                              BlocProvider.of<FontsCubit>(context);
+                          final double currentFontSize =
+                              fontsCubit.getCurrentFontSize.toDouble();
+                          final String currentFontFamily =
+                              fontsCubit.getCurrentFontFamily;
+                          return Column(
+                            children: [
+                              ...lessonsList
+                                  .map((element) => Padding(
                                         padding: const EdgeInsets.symmetric(
-                                            vertical: 8.0),
-                                        child: Text(
-                                          element.header,
-                                          style: TextStyle(
-                                              fontSize: currentFontSize +
-                                                  4 /* was 22 before */,
-                                              fontWeight: FontWeight.bold),
+                                            horizontal: 12.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                   EdgeInsets.only(
+                                                      top: currentFontSize < 16 ? 13.0 : 15, bottom: currentFontSize < 16 ? 4.5 : 5),
+                                              child: Text(
+                                                element.header,
+                                                style: TextStyle(
+                                                    fontSize: currentFontSize +
+                                                        5 /* was 22 before */,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                            ...element.article
+                                                .map(
+                                                  (article) => articleText(
+                                                      article: article,
+                                                      currentFontSize:
+                                                          currentFontSize,
+                                                      currentFontFamily:
+                                                          currentFontFamily,
+                                                      isDarkTheme: isDarkMode),
+                                                )
+                                                .toList(),
+                                            codeExample(
+                                                codeExample:
+                                                    element.codeExample,
+                                                onTap: () {
+                                                  Navigator.of(context)
+                                                      .pushNamed(
+                                                          CodesMainScreen
+                                                              .routeName,
+                                                          arguments: element
+                                                              .codeExample);
+                                                }),
+                                            factContainer(
+                                                factText: element.fact,
+                                                context: context,
+                                                fontSize: currentFontSize,
+                                                fontFamily: currentFontFamily),
+                                          ],
                                         ),
-                                      ),
-                                      ...element.article
-                                          .map(
-                                            (article) => articleText(
-                                            article: article,
-                                            currentFontSize:
-                                            currentFontSize,
-                                            currentFontFamily:
-                                            currentFontFamily,
-                                            isDarkTheme: isDarkMode),
-                                      )
-                                          .toList(),
-                                      codeExample(
-                                          codeExample: element.codeExample,
-                                          onTap: () {
-                                            Navigator.of(context).pushNamed(
-                                                CodesMainScreen.routeName,
-                                                arguments: element.codeExample);
-                                          }),
-                                      factContainer(
-                                          factText: element.fact,
-                                          context: context,
-                                          fontSize: currentFontSize,
-                                          fontFamily: currentFontFamily),
-                                    ],
-                                  ),
-                                ))
-                                    .toList(),
-                                playQuizButton(onPressed: () {
-                                  Navigator.of(context).pushNamed(QuizScreen.routeName,
-                                      arguments: lessonName);
-                                }),
-                              ],
-                            );
-                          }
-                        ),
-                        // ...lessonsList
-                        //     .map((element) => Padding(
-                        //           padding: const EdgeInsets.symmetric(
-                        //               horizontal: 12.0),
-                        //           child: Column(
-                        //             crossAxisAlignment:
-                        //                 CrossAxisAlignment.start,
-                        //             children: [
-                        //               Padding(
-                        //                 padding: const EdgeInsets.symmetric(
-                        //                     vertical: 8.0),
-                        //                 child: Text(
-                        //                   element.header,
-                        //                   style: TextStyle(
-                        //                       fontSize: currentFontSize +
-                        //                           4 /* was 22 before */,
-                        //                       fontWeight: FontWeight.bold),
-                        //                 ),
-                        //               ),
-                        //               ...element.article
-                        //                   .map(
-                        //                     (article) => articleText(
-                        //                         article: article,
-                        //                         currentFontSize:
-                        //                             currentFontSize,
-                        //                         currentFontFamily:
-                        //                             currentFontFamily,
-                        //                         isDarkTheme: isDarkMode),
-                        //                   )
-                        //                   .toList(),
-                        //               codeExample(
-                        //                   codeExample: element.codeExample,
-                        //                   onTap: () {
-                        //                     Navigator.of(context).pushNamed(
-                        //                         CodesMainScreen.routeName,
-                        //                         arguments: element.codeExample);
-                        //                   }),
-                        //               factContainer(
-                        //                   factText: element.fact,
-                        //                   context: context,
-                        //                   fontSize: currentFontSize,
-                        //                   fontFamily: currentFontFamily),
-                        //             ],
-                        //           ),
-                        //         ))
-                        //     .toList(),
-                        // playQuizButton(onPressed: () {
-                        //   Navigator.of(context).pushNamed(QuizScreen.routeName,
-                        //       arguments: lessonName);
-                        // }),
+                                      ))
+                                  .toList(),
+                              playQuizButton(onPressed: () {
+                                Navigator.of(context).pushNamed(
+                                    QuizScreen.routeName,
+                                    arguments: lessonName);
+                              }),
+                            ],
+                          );
+                        }),
                       ],
                     ),
                   ),
