@@ -126,11 +126,3 @@ flutter:
     - family: Spline
       fonts:
         - asset: assets/fonts/SplineSansMono-Regular.ttf
-
-    - family: HalfMoon
-      fonts:
-        - asset: assets/fonts/halfmoon.ttf
-
-    - family: Dernier
-      fonts:
-        - asset: assets/fonts/dernier.ttf

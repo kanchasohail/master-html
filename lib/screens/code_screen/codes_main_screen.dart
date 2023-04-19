@@ -2,21 +2,22 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 
+import '../../constants/consts.dart';
+
 import 'package:code_text_field/code_text_field.dart';
 import 'package:master_html/cubits/codes_cubit/code_cubit.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
+import 'package:webview_flutter/webview_flutter.dart';
 import 'package:flutter_highlight/themes/atom-one-light.dart';
 import 'package:flutter_highlight/themes/darcula.dart';
 import 'package:flutter_highlight/themes/monokai-sublime.dart';
+
 import 'package:flutter_highlight/themes/vs.dart';
-
-import 'package:highlight/languages/html.dart';
-
 import 'package:master_html/screens/code_screen/widgets/edit_code_widget.dart';
+
 import 'package:master_html/screens/code_screen/widgets/result_widget.dart';
 
-import '../../constants/consts.dart';
+import 'package:highlight/languages/dart.dart';
 
 class CodesMainScreen extends StatefulWidget {
   static const routeName = "/codes-main-screen";
@@ -61,7 +62,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
 // These are relate to code editing screen
   final codeController = CodeController(
     text: CodeCubit.codeCubitCodeString ?? CodeCubit.getMainEditorCode(),
-    language: html,
+    language: dart,
   );
 
   Map<String, TextStyle> _textTheme = monokaiSublimeTheme;

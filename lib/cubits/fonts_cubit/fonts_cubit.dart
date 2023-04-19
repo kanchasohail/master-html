@@ -75,9 +75,6 @@ const List<String> fontFamiliesList = [
   'Expletus',
   'Averia',
   'Spline',
-  'HalfMoon',
-  'Dernier',
-
 ];
 
 // These are the states fot font size cubit
