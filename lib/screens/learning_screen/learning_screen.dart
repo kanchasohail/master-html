@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/common_widgets/custom_outlined_button.dart';
 import 'package:master_html/common_widgets/side_drawer/side_drawer.dart';
 import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
@@ -11,7 +12,6 @@ import 'package:master_html/screens/learning_screen/widgets/article_text.dart';
 import 'package:master_html/screens/learning_screen/widgets/code_example.dart';
 import 'package:master_html/screens/learning_screen/widgets/fact_container.dart';
 import 'package:master_html/screens/learning_screen/widgets/font_changing_card.dart';
-import 'package:master_html/screens/learning_screen/widgets/play_quiz_button.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
 
 import '../../constants/consts.dart';
@@ -49,7 +49,9 @@ class LearningScreen extends StatelessWidget {
             fact: e.fact))
         .toList();
     final learningCubit = BlocProvider.of<LearningCubit>(context);
-
+    //These two variables are related for scrolling
+    ScrollController scrollController = ScrollController();
+    double scrollOffset = 0;
     return Scaffold(
       drawer: const SideDrawer(),
       appBar: AppBar(
@@ -73,9 +75,19 @@ class LearningScreen extends StatelessWidget {
                 icon: BlocBuilder<LearningCubit, LearningState>(
                     builder: (context, state) {
                   if (state is LearningCardPopupState) {
+                    scrollOffset = scrollController.offset;
+                    scrollController.animateTo(-100,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
                     return const Icon(CupertinoIcons.xmark);
                   } else {
-                    return const Icon(Icons.menu_book_rounded , size: 31,);
+                    scrollController.animateTo(scrollOffset,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeInOut);
+                    return const Icon(
+                      Icons.menu_book_rounded,
+                      size: 31,
+                    );
                   }
                 }),
                 splashRadius: 28),
@@ -98,6 +110,7 @@ class LearningScreen extends StatelessWidget {
                     return true;
                   },
                   child: SingleChildScrollView(
+                    controller: scrollController,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -128,9 +141,13 @@ class LearningScreen extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Padding(
-                                              padding:
-                                                   EdgeInsets.only(
-                                                      top: currentFontSize < 16 ? 13.0 : 15, bottom: currentFontSize < 16 ? 4.5 : 5),
+                                              padding: EdgeInsets.only(
+                                                  top: currentFontSize < 16
+                                                      ? 13.0
+                                                      : 15,
+                                                  bottom: currentFontSize < 16
+                                                      ? 4.5
+                                                      : 5),
                                               child: Text(
                                                 element.header,
                                                 style: TextStyle(
@@ -171,11 +188,16 @@ class LearningScreen extends StatelessWidget {
                                         ),
                                       ))
                                   .toList(),
-                              playQuizButton(onPressed: () {
-                                Navigator.of(context).pushNamed(
-                                    QuizScreen.routeName,
-                                    arguments: lessonName);
-                              }),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20.0 , bottom: 12 , right: 16 , left: 16),
+                                child: customOutlinedButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pushNamed(
+                                          QuizScreen.routeName,
+                                          arguments: lessonName);
+                                    },
+                                    buttonText: "Play Quiz"),
+                              ),
                             ],
                           );
                         }),

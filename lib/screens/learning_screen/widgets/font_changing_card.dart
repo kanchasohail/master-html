@@ -51,9 +51,8 @@ class FontChangingCard extends StatelessWidget {
             BlocBuilder<FontsCubit , FontsState>(
               builder: (context , state) {
                 final String currentFontFamily = fontsCubit.getCurrentFontFamily ;
-                return Wrap(
-                // return Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceAround,
+                return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: fontFamiliesList.map((font) => GestureDetector(
                     onTap: (){
                       fontsCubit.changeFontFamily(font);
