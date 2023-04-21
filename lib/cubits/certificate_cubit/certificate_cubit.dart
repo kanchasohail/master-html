@@ -3,43 +3,30 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/cubits/profile_cubit/user_name_cubit.dart';
-import 'package:screenshot/screenshot.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../constants/consts.dart';
 
 class CertificateCubit extends Cubit<CertificateState> {
   CertificateCubit() : super(CertificateInitialState());
-  final ScreenshotController screenshotController = ScreenshotController();
 
-  //This method will capture the screenshot of the certificate
-  Future<Uint8List?> captureCertificateScreenshot(
-      {required UserNameCubit userNameCubit,
-      required BuildContext context}) async {
-    final Uint8List image = await screenshotController.captureFromWidget(
-      SizedBox(
-        height: 310,
-        child: Stack(
-          children: [
-            Image.asset(
-              'assets/certificate.png',
-              fit: BoxFit.cover,
-            ),
-            Align(
-              alignment: const Alignment(-0.85, -0.08),
-              child: Text(
-                userNameCubit.userName ?? "Your Name",
-                style: const TextStyle(color: Colors.deepPurple, fontSize: 26),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-    if (image.isEmpty) return null;
-    await saveCertificate(image).then((val) {
+  // WidgetsToImageController to access widget
+  WidgetsToImageController widgetsToImageController =
+      WidgetsToImageController();
+
+  // to save image bytes of widget
+  Uint8List? bytes;
+
+//This method will capture the certificateWidget and convert it into image
+  Future<Uint8List?> captureCertificateWidget(
+      {required BuildContext context}) async {
+    final imageBytes = await widgetsToImageController.capture();
+    bytes = imageBytes;
+    if (bytes == null) return null;
+    await saveCertificate(bytes!).then((val) {
       if (val.isNotEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
@@ -59,7 +46,7 @@ class CertificateCubit extends Cubit<CertificateState> {
       }
       return "_";
     });
-    return image;
+    return bytes;
   }
 
   //This method will save the certificate in gallery
@@ -80,14 +67,13 @@ class CertificateCubit extends Cubit<CertificateState> {
     late final Uint8List imageBytes;
     final directory =
         await getApplicationDocumentsDirectory().then((val) async {
-      imageBytes = (await captureCertificateScreenshot(
-          userNameCubit: userNameCubit, context: context))!;
+      imageBytes = (await captureCertificateWidget(context: context))!;
       return val;
     });
     final image = File('${directory.path}/certificate.png');
     image.writeAsBytesSync(imageBytes);
     const text =
-        'Hey checkout this shayari \n I have downloaded it from Yourshayari - here comes the link ';
+        'I am excited to share that I got a certificate for mastering HTML from this amazing app  \n If you also want to learn HTML from you phone , download this application - here comes the link ';
     await Share.shareXFiles([XFile(image.path)], text: text);
   }
 }

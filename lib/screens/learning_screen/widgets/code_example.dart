@@ -1,5 +1,6 @@
 import 'package:master_html/common_widgets/custom_outlined_button.dart';
 
+
 import '../../../constants/consts.dart';
 
 Widget codeExample({required String codeExample, required VoidCallback onTap}) {
@@ -11,7 +12,10 @@ Widget codeExample({required String codeExample, required VoidCallback onTap}) {
           child: Card(
             elevation: 4,
             shadowColor: orangeColor,
-            child: Text(codeExample),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(codeExample),
+            ),
           ),
         ),
         Padding(
