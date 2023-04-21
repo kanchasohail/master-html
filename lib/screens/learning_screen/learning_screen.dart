@@ -19,6 +19,7 @@ import '../../cubits/theme_cubit/theme_cubit.dart';
 import '../../main.dart';
 import '../../resources/models/lesson_model.dart';
 
+
 class LearningScreen extends StatelessWidget {
   static const routeName = "/learning-screen";
 

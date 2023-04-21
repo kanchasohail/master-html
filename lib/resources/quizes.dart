@@ -40,7 +40,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     }
   ],
 //Quiz for the second lesson
-  "Code Editor": [
+  "HTML Boilerplate": [
     {
       "question":
           "Which version of HTML is currently in use from Introduction2?",

@@ -39,13 +39,12 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black,
         body: SafeArea(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Learn Html" , style: TextStyle(color: redColor , fontSize: 30 , fontWeight: FontWeight.bold),),
+                // const Text("Learn Html" , style: TextStyle(color: redColor , fontSize: 30 , fontWeight: FontWeight.bold),),
                 const SizedBox(height: 30,),
                 Center(
                   child: _controller.value.isInitialized

@@ -1,5 +1,6 @@
 final List<String> AllLessonsList = [
   'HTML Introduction',
+  'HTML Boilerplate',
   'Code Editor',
   'HTML Elements',
   'HTML Attributes',

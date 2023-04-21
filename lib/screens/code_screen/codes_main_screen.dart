@@ -17,7 +17,8 @@ import 'package:master_html/screens/code_screen/widgets/edit_code_widget.dart';
 
 import 'package:master_html/screens/code_screen/widgets/result_widget.dart';
 
-import 'package:highlight/languages/dart.dart';
+
+import 'package:highlight/languages/xml.dart';
 
 class CodesMainScreen extends StatefulWidget {
   static const routeName = "/codes-main-screen";
@@ -62,7 +63,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
 // These are relate to code editing screen
   final codeController = CodeController(
     text: CodeCubit.codeCubitCodeString ?? CodeCubit.getMainEditorCode(),
-    language: dart,
+    language: xml,
   );
 
   Map<String, TextStyle> _textTheme = monokaiSublimeTheme;

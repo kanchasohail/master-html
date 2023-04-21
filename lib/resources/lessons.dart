@@ -62,7 +62,7 @@ const Map<String, List<LessonModel>> allLessons = {
         fact: "HTML is a markup language and not a programming language."),
   ],
   //Second lesson
-  "Code Editor": <LessonModel>[
+  "HTML Boilerplate": <LessonModel>[
     LessonModel(
         header: "What is HTML? From code editor",
         article: <String>[
