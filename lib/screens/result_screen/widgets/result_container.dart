@@ -12,7 +12,7 @@ Widget resultContainer(
   return Container(
     width: double.infinity,
     margin: const EdgeInsets.all(8),
-    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
     decoration: BoxDecoration(
       border: Border(
         left: BorderSide(color: borderColor, width: 8),
@@ -31,7 +31,6 @@ Widget resultContainer(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          // "${index + 1}. ${playedQuiz[index]['question']}",
           questionText,
           style: Theme.of(context)
               .textTheme
@@ -41,7 +40,6 @@ Widget resultContainer(
         const SizedBox(height: 10),
         Row(
           children: [
-            // playedQuiz[index]['isCorrect']
             isCorrect
                 ? const Icon(
                     Icons.check,
@@ -54,12 +52,10 @@ Widget resultContainer(
                     size: 19,
                   ),
             const SizedBox(width: 5),
-            // Text(playedQuiz[index]
-            // ['selectedAnswer']),
             Text(selectedAnswer),
           ],
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
       ],
     ),
   );

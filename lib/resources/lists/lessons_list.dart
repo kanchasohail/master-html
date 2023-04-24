@@ -1,7 +1,7 @@
 final List<String> AllLessonsList = [
   'HTML Introduction',
-  'HTML Boilerplate',
   'Code Editor',
+  'HTML Boilerplate',
   'HTML Elements',
   'HTML Attributes',
   'HTML Comments',
