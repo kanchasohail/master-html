@@ -190,7 +190,7 @@ class LearningScreen extends StatelessWidget {
                                       ))
                                   .toList(),
                               Padding(
-                                padding: const EdgeInsets.only(top: 20.0 , bottom: 12 , right: 16 , left: 16),
+                                padding: const EdgeInsets.only(top: 28.0 , bottom: 12 , right: 16 , left: 16),
                                 child: customOutlinedButton(
                                     onPressed: () {
                                       Navigator.of(context).pushNamed(

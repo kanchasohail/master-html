@@ -88,7 +88,7 @@ class QuizScreen extends StatelessWidget {
                                   .textTheme
                                   .headlineLarge
                                   ?.copyWith(
-                                      fontSize: 19, fontFamily: 'Poppins'),
+                                      fontSize: 20, fontFamily: 'Poppins'),
                             ),
                             const SizedBox(height: 20),
                             ...quiz[quizCubit.currentQuestionIndex]

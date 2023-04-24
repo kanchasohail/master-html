@@ -17,27 +17,29 @@ class CertificateImage extends StatelessWidget {
       children: [
         WidgetsToImage(
           controller: certificateCubit.widgetsToImageController,
-          child: Stack(
-            children: [
-              Image.asset(
-                'assets/certificate.png',
-                fit: BoxFit.cover,
+          child: Container(
+            height: 300,
+            width: 380,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage('assets/certificate.png'),
+                    fit: BoxFit.fill)),
+            child: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 16, bottom: 20),
+                child: BlocBuilder<UserNameCubit, UserNameState>(
+                    builder: (context, state) {
+                  return Text(
+                    userNameCubit.userName ?? "Your Name",
+                    style: const TextStyle(
+                        color: orangeColor,
+                        fontStyle: FontStyle.italic,
+                        fontSize: 22),
+                  );
+                }),
               ),
-              Positioned(
-                top: 108,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 12.0, horizontal: 16),
-                  child: BlocBuilder<UserNameCubit, UserNameState>(
-                      builder: (context, state) {
-                    return Text(
-                      userNameCubit.userName ?? "Your Name",
-                      style: const TextStyle(color: orangeColor),
-                    );
-                  }),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
         const SizedBox(height: 10),

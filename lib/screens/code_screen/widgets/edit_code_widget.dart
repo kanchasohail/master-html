@@ -13,9 +13,15 @@ class EditCodeWidget extends StatelessWidget {
     return Expanded(
       child: CodeTheme(
         data: CodeThemeData(styles: _textTheme),
-        child: SingleChildScrollView(
-          child: CodeField(
-            controller: controller,
+        child: NotificationListener<OverscrollIndicatorNotification>(
+          onNotification: (OverscrollIndicatorNotification overscroll) {
+            overscroll.disallowIndicator();
+            return true ;
+          },
+          child: SingleChildScrollView(
+            child: CodeField(
+              controller: controller,
+            ),
           ),
         ),
       ),
