@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/screens/code_screen/widgets/code_theme_changing_card.dart';
 
 import '../../constants/consts.dart';
 
@@ -8,15 +10,9 @@ import 'package:code_text_field/code_text_field.dart';
 import 'package:master_html/cubits/codes_cubit/code_cubit.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
-import 'package:flutter_highlight/themes/atom-one-light.dart';
-import 'package:flutter_highlight/themes/darcula.dart';
-import 'package:flutter_highlight/themes/monokai-sublime.dart';
-
-import 'package:flutter_highlight/themes/vs.dart';
 import 'package:master_html/screens/code_screen/widgets/edit_code_widget.dart';
 
 import 'package:master_html/screens/code_screen/widgets/result_widget.dart';
-
 
 import 'package:highlight/languages/xml.dart';
 
@@ -32,7 +28,6 @@ class CodesMainScreen extends StatefulWidget {
 class _CodesMainScreenState extends State<CodesMainScreen> {
   bool isFirst = true;
 
-  //These are relate to result screen ;
   late final WebViewController webViewController;
 
   @override
@@ -46,11 +41,13 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
 
   @override
   void dispose() {
+    if(CodeCubit.codeCubitCodeString == null ){
+      CodeCubit.saveMainEditorCode(codeText: codeController.text);
+    }
     CodeCubit.codeCubitCodeString = null;
     super.dispose();
   }
 
-//This method loads the html code for the webView
   void loadLocalHtml(String? htmlCode) async {
     final url = Uri.dataFromString(
       htmlCode!,
@@ -60,19 +57,24 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
     webViewController.loadRequest(Uri.parse(url));
   }
 
-// These are relate to code editing screen
   final codeController = CodeController(
     text: CodeCubit.codeCubitCodeString ?? CodeCubit.getMainEditorCode(),
     language: xml,
   );
 
-  Map<String, TextStyle> _textTheme = monokaiSublimeTheme;
-
   @override
   Widget build(BuildContext context) {
     final Color themeIconColor =
         Theme.of(context).iconTheme.color ?? orangeColor;
+    final codeCubit = BlocProvider.of<CodeCubit>(context);
     return Scaffold(
+      floatingActionButton: isFirst && CodeCubit.codeCubitCodeString == null ?  FloatingActionButton(
+        backgroundColor: Colors.orange.shade50,
+        onPressed: (){
+          CodeCubit.saveMainEditorCode(codeText: codeController.text);
+        },
+        child: const Icon(Icons.save , color: orangeColor,),
+      ) : const SizedBox(),
       body: Column(
         children: [
           Container(
@@ -138,45 +140,81 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                       ],
                     ),
                     isFirst
-                        ? PopupMenuButton(
-                            icon: const Icon(Icons.color_lens_outlined),
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(color: themeIconColor),
-                                borderRadius: BorderRadius.circular(12)),
-                            onSelected: (value) {
-                              setState(() {
-                                if (value == 'Atom') {
-                                  _textTheme = atomOneLightTheme;
-                                } else if (value == 'Monokai-subline') {
-                                  _textTheme = monokaiSublimeTheme;
-                                } else if (value == 'VS') {
-                                  _textTheme = vsTheme;
-                                } else if (value == 'Darcula') {
-                                  _textTheme = darculaTheme;
-                                }
-                              });
+                        ? IconButton(
+                            onPressed: () {
+                              codeCubit.popUpCard();
                             },
-                            itemBuilder: (context) => <String>[
-                                  'Atom',
-                                  'Monokai-subline',
-                                  'VS',
-                                  'Darcula'
-                                ]
-                                    .map((value) => PopupMenuItem(
-                                            child: PopupMenuItem(
-                                          value: value,
-                                          child: Text(value),
-                                        )))
-                                    .toList())
+                            icon: BlocBuilder<CodeCubit, CodeState>(
+                                builder: (context, state) {
+                              if (state is CodeThemeCardOpenState) {
+                                return const Icon(CupertinoIcons.xmark);
+                              } else {
+                                return const Icon(
+                                  Icons.settings,
+                                );
+                              }
+                            }),
+                            splashRadius: 28)
                         : IconButton(
-                            onPressed: () {}, icon: const Icon(Icons.share)),
+                            onPressed: () {},
+                            icon: const Icon(Icons.read_more)),
+                    // : PopupMenuButton(
+                    //   icon: const Icon(Icons.read_more),
+                    //   elevation: 4,
+                    //   shadowColor: orangeColor,
+                    //   shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(4),
+                    //     side: const BorderSide(color: orangeColor , width: 0.2)
+                    //   ),
+                    //   onSelected: (value) async {
+                    //     final String currentUrl = await webViewController.currentUrl() ?? "" ;
+                    //     switch (value){
+                    //       case '/share':
+                    //         print("Share Option selected");
+                    //         break ;
+                    //       case '/openInBrowser':
+                    //         print("Open in browser option selected");
+                    //         print(currentUrl);
+                    //         launchUrl(Uri.parse(currentUrl));
+                    //         break ;
+                    //     }
+                    //   },
+                    //   itemBuilder: (BuildContext bc) {
+                    //     return  [
+                    //       const PopupMenuItem(
+                    //         value: '/openInBrowser',
+                    //         child: Text("Open In Browser"),
+                    //       ),
+                    //       const PopupMenuItem(
+                    //         value: '/share',
+                    //         child:  Text("Share"),
+                    //       )
+                    //     ];
+                    //   },
+                    // ),
                   ],
                 ),
               ),
             ),
           ),
+          if (isFirst)
+            BlocBuilder<CodeCubit, CodeState>(builder: (context, state) {
+              if (state is CodeThemeCardOpenState) {
+                return const CodeThemeChangingCard();
+              } else {
+                return const SizedBox();
+              }
+            }),
           isFirst
-              ? EditCodeWidget(codeController, _textTheme)
+              ? BlocBuilder<CodeCubit, CodeState>(builder: (context, state) {
+                  final codeTextTheme = codeCubit.getCurrentCodeTheme();
+                  final bool isWrapOn = codeCubit.getWrapCodeCurrentSetting();
+                  return EditCodeWidget(
+                    controller: codeController,
+                    textTheme: codeTextTheme,
+                    isWrapOn: isWrapOn,
+                  );
+                })
               : ResultWidget(
                   webViewController, loadLocalHtml, codeController.text)
         ],

@@ -7,11 +7,14 @@ import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/resources/lessons.dart';
 import 'package:master_html/resources/lists/lessons_list.dart';
+import 'package:master_html/resources/lists/photos_list.dart';
 import 'package:master_html/screens/code_screen/codes_main_screen.dart';
 import 'package:master_html/screens/learning_screen/widgets/article_text.dart';
 import 'package:master_html/screens/learning_screen/widgets/code_example.dart';
 import 'package:master_html/screens/learning_screen/widgets/fact_container.dart';
 import 'package:master_html/screens/learning_screen/widgets/font_changing_card.dart';
+import 'package:master_html/screens/learning_screen/widgets/output_example.dart';
+import 'package:master_html/screens/learning_screen/widgets/photos_container.dart';
 import 'package:master_html/screens/quiz_screen/quiz_screen.dart';
 
 import '../../constants/consts.dart';
@@ -97,112 +100,116 @@ class LearningScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: SizedBox(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              child: Card(
-                color: isDarkMode ? darkAppBarColor : lightAppBarColor,
-                elevation: 8,
-                child: NotificationListener<OverscrollIndicatorNotification>(
-                  onNotification: (OverscrollIndicatorNotification overscroll) {
-                    overscroll.disallowIndicator();
-                    return true;
-                  },
-                  child: SingleChildScrollView(
-                    controller: scrollController,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        BlocBuilder<LearningCubit, LearningState>(
-                            builder: (context, state) {
-                          if (state is LearningCardPopupState) {
-                            return const FontChangingCard();
-                          } else {
-                            return const SizedBox();
-                          }
-                        }),
-                        BlocBuilder<FontsCubit, FontsState>(
-                            builder: (context, state) {
-                          final fontsCubit =
-                              BlocProvider.of<FontsCubit>(context);
-                          final double currentFontSize =
-                              fontsCubit.getCurrentFontSize.toDouble();
-                          final String currentFontFamily =
-                              fontsCubit.getCurrentFontFamily;
-                          return Column(
-                            children: [
-                              ...lessonsList
-                                  .map((element) => Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: currentFontSize < 16
-                                                      ? 13.0
-                                                      : 15,
-                                                  bottom: currentFontSize < 16
-                                                      ? 4.5
-                                                      : 5),
-                                              child: Text(
-                                                element.header,
-                                                style: TextStyle(
-                                                    fontSize: currentFontSize +
-                                                        5 /* was 22 before */,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+          child: Scrollbar(
+            controller: scrollController,
+            child: Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: MediaQuery.of(context).size.height,
+                child: Card(
+                  color: isDarkMode ? darkAppBarColor : lightAppBarColor,
+                  elevation: 8,
+                  child: NotificationListener<OverscrollIndicatorNotification>(
+                    onNotification: (OverscrollIndicatorNotification overscroll) {
+                      overscroll.disallowIndicator();
+                      return true;
+                    },
+                    child: SingleChildScrollView(
+                      controller: scrollController,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          BlocBuilder<LearningCubit, LearningState>(
+                              builder: (context, state) {
+                            if (state is LearningCardPopupState) {
+                              return const FontChangingCard();
+                            } else {
+                              return const SizedBox();
+                            }
+                          }),
+                          BlocBuilder<FontsCubit, FontsState>(
+                              builder: (context, state) {
+                            final fontsCubit =
+                                BlocProvider.of<FontsCubit>(context);
+                            final double currentFontSize =
+                                fontsCubit.getCurrentFontSize.toDouble();
+                            final String currentFontFamily =
+                                fontsCubit.getCurrentFontFamily;
+                            return Column(
+                              children: [
+                                ...lessonsList
+                                    .map((element) => Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 12.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: currentFontSize < 16
+                                                        ? 13.0
+                                                        : 15,
+                                                    bottom: currentFontSize < 16
+                                                        ? 4.5
+                                                        : 5),
+                                                child: Text(
+                                                  element.header,
+                                                  style: TextStyle(
+                                                      fontSize: currentFontSize +
+                                                          5 /* was 22 before */,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
                                               ),
-                                            ),
-                                            ...element.article
-                                                .map(
-                                                  (article) => articleText(
-                                                      article: article,
-                                                      currentFontSize:
-                                                          currentFontSize,
-                                                      currentFontFamily:
-                                                          currentFontFamily,
-                                                      isDarkTheme: isDarkMode),
-                                                )
-                                                .toList(),
-                                            codeExample(
-                                                codeExample:
-                                                    element.codeExample,
-                                                onTap: () {
-                                                  Navigator.of(context)
-                                                      .pushNamed(
-                                                          CodesMainScreen
-                                                              .routeName,
-                                                          arguments: element
-                                                              .codeExample);
-                                                }),
-                                            factContainer(
-                                                factText: element.fact,
-                                                context: context,
-                                                fontSize: currentFontSize,
-                                                fontFamily: currentFontFamily),
-                                          ],
-                                        ),
-                                      ))
-                                  .toList(),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 28.0 , bottom: 12 , right: 16 , left: 16),
-                                child: customOutlinedButton(
-                                    onPressed: () {
-                                      Navigator.of(context).pushNamed(
-                                          QuizScreen.routeName,
-                                          arguments: lessonName);
-                                    },
-                                    buttonText: "Play Quiz"),
-                              ),
-                            ],
-                          );
-                        }),
-                      ],
+                                              ...element.article
+                                                  .map(
+                                                    (article) => !photosList.contains(article) ? articleText(
+                                                        article: article,
+                                                        currentFontSize:
+                                                            currentFontSize,
+                                                        currentFontFamily:
+                                                            currentFontFamily,
+                                                        isDarkTheme: isDarkMode) : photosContainer(article),
+                                                  )
+                                                  .toList(),
+                                              codeExample(
+                                                  codeExample:
+                                                      element.codeExample,
+                                                  onTap: () {
+                                                    Navigator.of(context)
+                                                        .pushNamed(
+                                                            CodesMainScreen
+                                                                .routeName,
+                                                            arguments: element
+                                                                .codeExample);
+                                                  }),
+                                              if(element.outPutExample != "null") outputExample(codeExample: element.codeExample),
+                                              factContainer(
+                                                  factText: element.fact,
+                                                  context: context,
+                                                  fontSize: currentFontSize,
+                                                  fontFamily: currentFontFamily),
+                                            ],
+                                          ),
+                                        ))
+                                    .toList(),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 28.0 , bottom: 12 , right: 16 , left: 16),
+                                  child: customOutlinedButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pushNamed(
+                                            QuizScreen.routeName,
+                                            arguments: lessonName);
+                                      },
+                                      buttonText: "Play Quiz"),
+                                ),
+                              ],
+                            );
+                          }),
+                        ],
+                      ),
                     ),
                   ),
                 ),
