@@ -32,6 +32,13 @@ class MyThemes {
         borderRadius: BorderRadius.circular(8),
       ),
     ),
+    scrollbarTheme: ScrollbarThemeData(
+      thumbColor: MaterialStateProperty.resolveWith((states) {
+        return Colors.grey;
+      }),
+      radius: const Radius.circular(4),
+      mainAxisMargin: 10
+    ),
     colorScheme: const ColorScheme.dark(),
   );
 
@@ -68,6 +75,13 @@ class MyThemes {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
         )),
+    scrollbarTheme: ScrollbarThemeData(
+      thumbColor: MaterialStateProperty.resolveWith((states) {
+        return Colors.grey;
+      }),
+        radius: const Radius.circular(4),
+        mainAxisMargin: 10
+    ),
     colorScheme: const ColorScheme.light(),
   );
 }
