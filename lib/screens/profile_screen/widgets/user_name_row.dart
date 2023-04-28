@@ -37,8 +37,8 @@ class UserNameRow extends StatelessWidget {
                     builder: (context, state) {
                   if (state is UserNameInitialState) {
                     return Text(
-                      userNameCubit.userName ?? "Your Name",
-                      style: const TextStyle(fontSize: 18),
+                      userNameCubit.userName ?? "Your Name Here",
+                      style: userNameCubit.userName == null ? const TextStyle(color: Colors.grey , fontSize: 18) :  const TextStyle(fontSize: 18),
                     );
                   } else if (state is UserNameEditingState) {
                     return SizedBox(

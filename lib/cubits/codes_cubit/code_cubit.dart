@@ -82,6 +82,12 @@ class CodeCubit extends Cubit<CodeState> {
     }
   }
 
+
+  //This method will share the code result in image form
+  void shareCodeResult(){
+
+  }
+
   @override
   Future<void> close() {
     codeCubitCodeString = null;

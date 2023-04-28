@@ -157,7 +157,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             splashRadius: 28)
                         : IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.read_more)),
+                            icon: const Icon(Icons.share_outlined)),
                     // : PopupMenuButton(
                     //   icon: const Icon(Icons.read_more),
                     //   elevation: 4,
