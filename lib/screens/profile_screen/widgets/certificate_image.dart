@@ -18,7 +18,7 @@ class CertificateImage extends StatelessWidget {
         WidgetsToImage(
           controller: certificateCubit.widgetsToImageController,
           child: Container(
-            height: 300,
+            height: 270,
             width: 380,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -31,7 +31,7 @@ class CertificateImage extends StatelessWidget {
                 child: BlocBuilder<UserNameCubit, UserNameState>(
                     builder: (context, state) {
                   return Text(
-                    userNameCubit.userName ?? "Your Name",
+                    userNameCubit.userName ?? "Your Name Here",
                     style: const TextStyle(
                         color: orangeColor,
                         fontStyle: FontStyle.italic,

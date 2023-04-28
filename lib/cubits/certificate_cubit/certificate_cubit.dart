@@ -73,7 +73,7 @@ class CertificateCubit extends Cubit<CertificateState> {
     final image = File('${directory.path}/certificate.png');
     image.writeAsBytesSync(imageBytes);
     const text =
-        'I am excited to share that I got a certificate for mastering HTML from this amazing app  \n If you also want to learn HTML from you phone , download this application - here comes the link ';
+        'I am excited to share that I got a certificate for learning HTML from this app.\nIf you also want to learn HTML from you phone, then download this app from here - (link)';
     await Share.shareXFiles([XFile(image.path)], text: text);
   }
 }
