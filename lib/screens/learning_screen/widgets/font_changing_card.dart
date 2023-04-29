@@ -15,9 +15,8 @@ class FontChangingCard extends StatelessWidget {
         BlocProvider.of<ThemeCubit>(context, listen: false).themeMode ==
             ThemeMode.dark;
     return  Card(
-      elevation: 6,
+      elevation: 4,
       color: Colors.blueGrey,
-      shadowColor: Colors.blue,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 8 , horizontal: 10),
         width: double.infinity,

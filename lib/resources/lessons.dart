@@ -11,7 +11,10 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "What's the difference between HTML and HTML5?",
         article: <String>[
@@ -21,7 +24,10 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "Example - Simple HTML code",
         article: <String>["null"],
@@ -36,7 +42,10 @@ const Map<String, List<LessonModel>> allLessons = {
  </body>
  </html>''',
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "Example Breakdown -",
         article: <String>[
@@ -50,7 +59,10 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "How will you learn?",
         article: <String>[
@@ -59,7 +71,10 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "HTML is a markup language and not a programming language."),
+        fact: "HTML is a markup language and not a programming language.",
+        update: "null",
+        note: "null",
+        warning: "null"),
   ],
   //Second lesson (code Editor)
   "Code Editor": <LessonModel>[
@@ -68,16 +83,20 @@ const Map<String, List<LessonModel>> allLessons = {
         article: <String>[
           "In a text editor! which is also known as code editor. There are code editors available for all sorts of device. So, whether you are on Computer or on an Android phone, you can create and write HTML. And the most popular code editors are completely free!",
           "Let's look at a list of some of the free and most popular code editors -",
-          "• Visual Studio Code (for computer)",
-          "• Sublime (for computer)",
-          "• Spck Code Editor",
-          "• TrebEdit",
-          "• This App! We implemented a code editor in our app so the users can both learn and practice HTML without having to leave this app.",
+          "      • Visual Studio Code (for computer)",
+          "      • Sublime (for computer)",
+          "      • Spck Code Editor",
+          "      • TrebEdit",
+          "      • This App!",
+          "We implemented a code editor in our app so the users can both learn and practice HTML without having to leave this app.",
           "You can use any of those apps that are mentioned here to create, write and edit HTML files.",
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "How do I create a HTML file?",
         article: <String>[
@@ -85,12 +104,15 @@ const Map<String, List<LessonModel>> allLessons = {
           "Below you can see us creating a HTML file named 'index.html' inside "
               'My First Website'
               "folder on a code editor - ",
-              "photo1",
-              "photo2",
+          "photo1",
+          "photo2",
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
   ],
 
   //Third lesson (Html Boilerplate)
@@ -104,7 +126,10 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "HTML Boilerplate code -",
         article: <String>["null"],
@@ -122,7 +147,10 @@ const Map<String, List<LessonModel>> allLessons = {
 </body>
 </html>''',
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
     LessonModel(
         header: "Boilerplate code breakdown - ",
         article: <String>[
@@ -130,6 +158,9 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null"),
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
   ],
 };

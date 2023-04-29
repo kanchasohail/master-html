@@ -22,7 +22,6 @@ import '../../cubits/theme_cubit/theme_cubit.dart';
 import '../../main.dart';
 import '../../resources/models/lesson_model.dart';
 
-
 class LearningScreen extends StatelessWidget {
   static const routeName = "/learning-screen";
 
@@ -50,7 +49,10 @@ class LearningScreen extends StatelessWidget {
             article: e.article,
             codeExample: e.codeExample,
             outPutExample: e.outPutExample,
-            fact: e.fact))
+            fact: e.fact,
+            update: e.update,
+            note: e.note,
+            warning: e.warning))
         .toList();
     final learningCubit = BlocProvider.of<LearningCubit>(context);
     //These two variables are related for scrolling
@@ -111,7 +113,8 @@ class LearningScreen extends StatelessWidget {
                   color: isDarkMode ? darkAppBarColor : lightAppBarColor,
                   elevation: 8,
                   child: NotificationListener<OverscrollIndicatorNotification>(
-                    onNotification: (OverscrollIndicatorNotification overscroll) {
+                    onNotification:
+                        (OverscrollIndicatorNotification overscroll) {
                       overscroll.disallowIndicator();
                       return true;
                     },
@@ -139,64 +142,105 @@ class LearningScreen extends StatelessWidget {
                             return Column(
                               children: [
                                 ...lessonsList
-                                    .map((element) => Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 12.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: currentFontSize < 16
-                                                        ? 13.0
-                                                        : 15,
-                                                    bottom: currentFontSize < 16
-                                                        ? 4.5
-                                                        : 5),
-                                                child: Text(
-                                                  element.header,
-                                                  style: TextStyle(
-                                                      fontSize: currentFontSize +
-                                                          5 /* was 22 before */,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                ),
-                                              ),
-                                              ...element.article
-                                                  .map(
-                                                    (article) => !photosList.contains(article) ? articleText(
+                                    .map((element) => Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: currentFontSize < 16
+                                                  ? 13.0
+                                                  : 15,
+                                              right: 12,
+                                              left: 12,
+                                              bottom: currentFontSize < 16
+                                                  ? 4.5
+                                                  : 5),
+                                          child: Text(
+                                            element.header,
+                                            style: TextStyle(
+                                                fontSize: currentFontSize +
+                                                    5 /* was 22 before */,
+                                                fontWeight:
+                                                    FontWeight.bold),
+                                          ),
+                                        ),
+                                        ...element.article
+                                            .map(
+                                              (article) => Padding(
+                                                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                                                child: !photosList
+                                                        .contains(article)
+                                                    ? articleText(
                                                         article: article,
                                                         currentFontSize:
                                                             currentFontSize,
                                                         currentFontFamily:
                                                             currentFontFamily,
-                                                        isDarkTheme: isDarkMode) : photosContainer(article),
-                                                  )
-                                                  .toList(),
-                                              codeExample(
-                                                  codeExample:
-                                                      element.codeExample,
-                                                  onTap: () {
-                                                    Navigator.of(context)
-                                                        .pushNamed(
-                                                            CodesMainScreen
-                                                                .routeName,
-                                                            arguments: element
-                                                                .codeExample);
-                                                  }),
-                                              if(element.outPutExample != "null") outputExample(codeExample: element.codeExample),
-                                              factContainer(
-                                                  factText: element.fact,
-                                                  context: context,
-                                                  fontSize: currentFontSize,
-                                                  fontFamily: currentFontFamily),
-                                            ],
-                                          ),
-                                        ))
+                                                        isDarkTheme:
+                                                            isDarkMode)
+                                                    : photosContainer(
+                                                        article),
+                                              ),
+                                            )
+                                            .toList(),
+                                        codeExample(
+                                            codeExample:
+                                                element.codeExample,
+                                            onTap: () {
+                                              Navigator.of(context)
+                                                  .pushNamed(
+                                                      CodesMainScreen
+                                                          .routeName,
+                                                      arguments: element
+                                                          .codeExample);
+                                            }),
+                                        if (element.outPutExample !=
+                                            "null")
+                                          outputExample(
+                                              codeExample:
+                                                  element.codeExample),
+                                        factContainer(
+                                            factText: element.fact,
+                                            fontSize: currentFontSize,
+                                            fontFamily: currentFontFamily,
+                                            containerColor:
+                                                const Color(0xff0A272F) ,
+                                        leadingIcon: const Icon(Icons.lightbulb_outlined , size: 20) ,
+                                        leadingText: "Interesting Fact -"),
+                                        factContainer(
+                                            factText: element.update,
+                                            fontSize: currentFontSize,
+                                            fontFamily: currentFontFamily,
+                                            containerColor:
+                                                const Color(0xff230807) ,
+                                        leadingIcon: const Icon(Icons.warning_amber_sharp, size: 20) ,
+                                        leadingText: "Update -"),
+                                        factContainer(
+                                            factText: element.note,
+                                            fontSize: currentFontSize,
+                                            fontFamily: currentFontFamily,
+                                            containerColor:
+                                                const Color(0xff291903),
+                                            leadingIcon: const Icon(Icons.warning_amber_sharp, size: 20),
+                                        leadingText: "Note -"),
+                                        factContainer(
+                                            factText: element.warning,
+                                            fontSize: currentFontSize,
+                                            fontFamily: currentFontFamily,
+                                            containerColor:
+                                                const Color(0xff291903),
+                                            leadingIcon: const Icon(Icons.warning_amber_sharp, size: 20),
+                                        leadingText: "Warning -"),
+                                      ],
+                                    ))
                                     .toList(),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 28.0 , bottom: 12 , right: 16 , left: 16),
+                                  padding: const EdgeInsets.only(
+                                      top: 28.0,
+                                      bottom: 12,
+                                      right: 16,
+                                      left: 16),
                                   child: customOutlinedButton(
                                       onPressed: () {
                                         Navigator.of(context).pushNamed(

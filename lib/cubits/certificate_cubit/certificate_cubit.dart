@@ -61,9 +61,7 @@ class CertificateCubit extends Cubit<CertificateState> {
   }
 
   //This method will share the certificate
-  Future<void> saveAndShareCertificate(
-      {required UserNameCubit userNameCubit,
-      required BuildContext context}) async {
+  Future<void> saveAndShareCertificate({required BuildContext context}) async {
     late final Uint8List imageBytes;
     final directory =
         await getApplicationDocumentsDirectory().then((val) async {

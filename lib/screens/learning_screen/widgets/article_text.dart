@@ -3,11 +3,13 @@ import '../../../constants/consts.dart';
 Widget articleText(
     {required String article,
     required double currentFontSize,
-    required String currentFontFamily ,
+    required String currentFontFamily,
     required bool isDarkTheme}) {
-  final pattern = RegExp(
-      "<(“[^”]*”|'[^’]*’|[^'”>])*>"); // matches words with exactly 5 characters
-  final matches = pattern.allMatches(article);
+  if (article == "null") {
+    return const SizedBox();
+  }
+  RegExp regex = RegExp(r"<(“[^”]*”|'[^’]*’|[^'”>])*>|'([\w.]+)'");
+  final matches = regex.allMatches(article);
 
   final List<TextSpan> textSpans = [];
 
@@ -21,31 +23,26 @@ Widget articleText(
     // add the text before the match
     textSpans.add(TextSpan(text: preMatchText));
 
-    // add the matched text with a yellow background color
+    // add the matched text
     textSpans.add(TextSpan(
         text: matchText,
         style: const TextStyle(
-            color: Colors.blueAccent, fontWeight: FontWeight.bold)));
-
+            color: Colors.orange, fontWeight: FontWeight.bold)));
     lastMatchEnd = match.end;
   }
-
   // add any remaining text after the last match
   final remainingText = article.substring(lastMatchEnd);
   textSpans.add(TextSpan(text: remainingText));
-  return article != "null"
-      ? Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          // child: Text(article, style: TextStyle(fontSize: currentFontSize , fontFamily: currentFontFamily),),
-          child: RichText(
-            text: TextSpan(
-              children: textSpans,
-              style: TextStyle(
-                  fontSize: currentFontSize,
-                  fontFamily: currentFontFamily,
-                 color: isDarkTheme ? Colors.white : Colors.black ),
-            ),
-          ),
-        )
-      : const SizedBox();
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8),
+    child: RichText(
+      text: TextSpan(
+        children: textSpans,
+        style: TextStyle(
+            fontSize: currentFontSize,
+            fontFamily: currentFontFamily,
+            color: isDarkTheme ? Colors.white : Colors.black),
+      ),
+    ),
+  );
 }

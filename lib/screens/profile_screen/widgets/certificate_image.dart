@@ -31,7 +31,7 @@ class CertificateImage extends StatelessWidget {
                 child: BlocBuilder<UserNameCubit, UserNameState>(
                     builder: (context, state) {
                   return Text(
-                    userNameCubit.userName ?? "Your Name Here",
+                    userNameCubit.userName ?? "",
                     style: const TextStyle(
                         color: orangeColor,
                         fontStyle: FontStyle.italic,
@@ -62,8 +62,7 @@ class CertificateImage extends StatelessWidget {
                   backgroundColor: orangeColor,
                   context: context,
                   onPressed: () {
-                    certificateCubit.saveAndShareCertificate(
-                        userNameCubit: userNameCubit, context: context);
+                    certificateCubit.saveAndShareCertificate(context: context);
                   }),
             ),
           ],

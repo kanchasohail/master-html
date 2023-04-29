@@ -1,8 +1,15 @@
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_highlight/themes/atom-one-light.dart';
 import 'package:flutter_highlight/themes/darcula.dart';
 import 'package:flutter_highlight/themes/monokai-sublime.dart';
 import 'package:flutter_highlight/themes/vs.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../constants/consts.dart';
 import '../../main.dart';
@@ -17,6 +24,69 @@ class CodeCubit extends Cubit<CodeState> {
 
   //This string is for sending codes as argument
   static String? codeCubitCodeString;
+
+  final WidgetsToImageController widgetsToImageController = WidgetsToImageController() ;
+
+  // to save image bytes of widget
+  Uint8List? bytes;
+
+//This method will capture the certificateWidget and convert it into image
+  Future<Uint8List?> captureResultWidget(
+      {required BuildContext context}) async {
+    final imageBytes = await widgetsToImageController.capture();
+    bytes = imageBytes;
+    if (bytes == null) return null;
+    await saveResultImage(bytes!).then((val) {
+      if (val.isNotEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "Result Image downloaded successfully!",
+            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+          backgroundColor: Colors.green,
+        ));
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "Failed to save Result Image!",
+            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
+          ),
+          backgroundColor: Colors.red,
+        ));
+      }
+      return "_";
+    });
+    return bytes;
+  }
+
+  //This method will save the result Image in gallery
+  Future<String> saveResultImage(Uint8List bytes) async {
+    final time = DateTime.now()
+        .toIso8601String()
+        .replaceAll('.', '-')
+        .replaceAll(':', '-');
+    final name = 'screenshot_$time';
+    final result = await ImageGallerySaver.saveImage(bytes, name: name);
+    return result['filePath'];
+  }
+
+
+  //This method will share the certificate
+  Future<void> saveAndShareResultImage(
+      {required BuildContext context}) async {
+    late final Uint8List imageBytes;
+    final directory =
+    await getApplicationDocumentsDirectory().then((val) async {
+      imageBytes = (await captureResultWidget(context: context))!;
+      return val;
+    });
+    final image = File('${directory.path}/resultImage.png');
+    image.writeAsBytesSync(imageBytes);
+    const text =
+        'I have learnt to make this design in HTML from this app , You can also learn HTML from this app. Get the application from here - (link)';
+    await Share.shareXFiles([XFile(image.path)], text: text);
+  }
+
 
   //This getter will get the mainEditorCode from the device shared pref
   static String getMainEditorCode() {
