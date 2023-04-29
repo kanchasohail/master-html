@@ -12,11 +12,10 @@ Widget codeExample({required String codeExample, required VoidCallback onTap}) {
         SizedBox(
           width: double.infinity,
           child: Card(
-            elevation: 4,
-            shadowColor: orangeColor,
+            elevation: 2,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-                child: HighlightView(codeExample , language: "html" , theme: monokaiSublimeTheme , padding: const EdgeInsets.all(8))),
+                child: HighlightView(codeExample , textStyle: const TextStyle(height: 1.4),language: "html" , theme: monokaiSublimeTheme , padding: const EdgeInsets.all(8))),
           ),
         ),
         Padding(

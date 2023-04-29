@@ -13,10 +13,8 @@ class ResultWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     loadLocalHtml(htmlCode) ;
-    return Expanded(
-      child: WebViewWidget(
-        controller: _controller,
-      ),
+    return WebViewWidget(
+      controller: _controller,
     );
   }
 }

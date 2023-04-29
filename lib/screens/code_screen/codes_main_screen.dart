@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/screens/code_screen/widgets/code_theme_changing_card.dart';
+import 'package:widgets_to_image/widgets_to_image.dart';
 
 import '../../constants/consts.dart';
 
@@ -102,14 +103,14 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             });
                           },
                           child: Container(
-                            height: 40,
+                            height: 38,
                             width: 100,
                             decoration: BoxDecoration(
                                 border:
                                     Border.all(color: themeIconColor, width: 1),
                                 borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(8),
-                                    bottomLeft: Radius.circular(8)),
+                                    topLeft: Radius.circular(5),
+                                    bottomLeft: Radius.circular(5)),
                                 color: isFirst
                                     ? themeIconColor
                                     : Colors.transparent),
@@ -123,14 +124,14 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             });
                           },
                           child: Container(
-                            height: 40,
+                            height: 38,
                             width: 100,
                             decoration: BoxDecoration(
                                 border:
                                     Border.all(color: themeIconColor, width: 1),
                                 borderRadius: const BorderRadius.only(
-                                    bottomRight: Radius.circular(8),
-                                    topRight: Radius.circular(8)),
+                                    bottomRight: Radius.circular(5),
+                                    topRight: Radius.circular(5)),
                                 color: isFirst
                                     ? Colors.transparent
                                     : themeIconColor),
@@ -147,7 +148,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             icon: BlocBuilder<CodeCubit, CodeState>(
                                 builder: (context, state) {
                               if (state is CodeThemeCardOpenState) {
-                                return const Icon(CupertinoIcons.xmark);
+                                return const Icon(CupertinoIcons.xmark , size: 25);
                               } else {
                                 return const Icon(
                                   Icons.settings,
@@ -156,7 +157,9 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             }),
                             splashRadius: 28)
                         : IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              codeCubit.saveAndShareResultImage(context: context);
+                            },
                             icon: const Icon(Icons.share_outlined)),
                     // : PopupMenuButton(
                     //   icon: const Icon(Icons.read_more),
@@ -215,8 +218,13 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                     isWrapOn: isWrapOn,
                   );
                 })
-              : ResultWidget(
-                  webViewController, loadLocalHtml, codeController.text)
+              : Expanded(
+                child: WidgetsToImage(
+            controller: codeCubit.widgetsToImageController,
+                  child: ResultWidget(
+                      webViewController, loadLocalHtml, codeController.text),
+                ),
+              )
         ],
       ),
     );

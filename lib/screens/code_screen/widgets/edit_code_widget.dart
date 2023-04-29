@@ -29,6 +29,7 @@ class EditCodeWidget extends StatelessWidget {
               child: Scrollbar(
                 child: CodeField(
                   wrap: isWrapOn,
+                  textStyle: const TextStyle(height: 1.4),
                   controller: controller,
                 ),
               ),

@@ -15,9 +15,9 @@ Widget customOutlinedButton({required VoidCallback onPressed , required String b
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children:  [
-            Text(buttonText , style: const TextStyle(color: orangeColor , fontWeight: FontWeight.bold),),
+            Text(buttonText , style: const TextStyle(color: orangeColor , fontWeight: FontWeight.bold , fontSize: 15),),
             const SizedBox(width: 5),
-            const Icon(Icons.arrow_forward_ios , size: 17,)
+            const Icon(Icons.arrow_forward_ios , size: 16,)
           ],
         ),
       ),

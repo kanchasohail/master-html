@@ -1,28 +1,26 @@
 
 import '../../../constants/consts.dart';
 
-Widget factContainer({required String factText  , required BuildContext context , required double fontSize , required String fontFamily}){
-  final deviceWidth = MediaQuery.of(context).size.width ;
+Widget factContainer({required String factText , required double fontSize , required String fontFamily , required Color containerColor , required Icon leadingIcon , required String leadingText}){
   return factText != "null" ? Container(
-    color: const Color(0xff0A272F),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 15),
-        Text("Interesting Fact -" , style: TextStyle(fontSize: fontSize + 3 , fontWeight: FontWeight.bold),),
-        const SizedBox(height: 10),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.lightbulb_outlined , size: 20),
-            const SizedBox(width: 5),
-            SizedBox(
-                // width: MediaQuery.of(context).size.width - 90,
-                width: MediaQuery.of(context).orientation == Orientation.portrait ? deviceWidth - 90 : deviceWidth - 120 ,
-                child: Text(factText , style: TextStyle(fontSize: fontSize ,fontFamily: fontFamily ),)),
-          ],
-        ),
-      ],
+    margin: const EdgeInsets.symmetric(horizontal: 8),
+    color: containerColor,
+    width: double.infinity,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0 , vertical: 12),
+      child: Wrap(
+        // crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          leadingIcon,
+          const SizedBox(width: 5),
+          Text(leadingText , style: TextStyle(fontSize: fontSize + 3 , fontWeight: FontWeight.bold),),
+          // width: MediaQuery.of(context).orientation == Orientation.portrait ? deviceWidth - 90 : deviceWidth - 120 ,
+          Padding(
+            padding: const EdgeInsets.only(left: 4.0 , right: 6 , bottom: 4),
+            child: Text(factText , style: TextStyle(fontSize: fontSize ,fontFamily: fontFamily ),),
+          ),
+        ],
+      ),
     ),
   ) : const SizedBox();
 }
