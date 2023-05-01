@@ -21,6 +21,7 @@ const Map<String, List<LessonModel>> allLessons = {
           "HTML5 is the fifth and current version of HTML.",
           "HTML5 introduced a lot of new features and improvements on top of it's previous version and it offers a lot of functionality for building websites.",
           "HTML5 was released in 2014 and has been the standard version of web since and it is what we will learn in the following lessons!",
+          "Let's see an example of simple HTML code below.",
         ],
         codeExample: "null",
         outPutExample: "null",
@@ -29,7 +30,7 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
     LessonModel(
-        header: "Example - Simple HTML code",
+        header: "HTML Code Example -",
         article: <String>["null"],
         codeExample: '''<!DOCTYPE html>
  <html>
@@ -41,7 +42,7 @@ const Map<String, List<LessonModel>> allLessons = {
      <p>This is your first paragraph.</p>
  </body>
  </html>''',
-        outPutExample: "null",
+        outPutExample: "true",
         fact: "null",
         update: "null",
         note: "null",
@@ -57,7 +58,8 @@ const Map<String, List<LessonModel>> allLessons = {
           "• The <h1> element defines a large heading.",
           "• The <p> element defines a paragraph.",
         ],
-        codeExample: "null",
+        // codeExample: "null",
+        codeExample: "<h1>This is your first Heading</h1>",
         outPutExample: "null",
         fact: "null",
         update: "null",

@@ -42,7 +42,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
 
   @override
   void dispose() {
-    if(CodeCubit.codeCubitCodeString == null ){
+    if (CodeCubit.codeCubitCodeString == null) {
       CodeCubit.saveMainEditorCode(codeText: codeController.text);
     }
     CodeCubit.codeCubitCodeString = null;
@@ -59,7 +59,7 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
   }
 
   final codeController = CodeController(
-    text: CodeCubit.codeCubitCodeString ?? CodeCubit.getMainEditorCode(),
+    text: CodeCubit.codeCubitCodeString != null ?   CodeCubit.addBoilerPlateCode(CodeCubit.codeCubitCodeString!)  : CodeCubit.getMainEditorCode(),
     language: xml,
   );
 
@@ -69,13 +69,18 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
         Theme.of(context).iconTheme.color ?? orangeColor;
     final codeCubit = BlocProvider.of<CodeCubit>(context);
     return Scaffold(
-      floatingActionButton: isFirst && CodeCubit.codeCubitCodeString == null ?  FloatingActionButton(
-        backgroundColor: Colors.orange.shade50,
-        onPressed: (){
-          CodeCubit.saveMainEditorCode(codeText: codeController.text);
-        },
-        child: const Icon(Icons.save , color: orangeColor,),
-      ) : const SizedBox(),
+      floatingActionButton: isFirst && CodeCubit.codeCubitCodeString == null
+          ? FloatingActionButton(
+              backgroundColor: Colors.orange.shade50,
+              onPressed: () {
+                CodeCubit.saveMainEditorCode(codeText: codeController.text);
+              },
+              child: const Icon(
+                Icons.save,
+                color: orangeColor,
+              ),
+            )
+          : const SizedBox(),
       body: Column(
         children: [
           Container(
@@ -148,7 +153,8 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             icon: BlocBuilder<CodeCubit, CodeState>(
                                 builder: (context, state) {
                               if (state is CodeThemeCardOpenState) {
-                                return const Icon(CupertinoIcons.xmark , size: 25);
+                                return const Icon(CupertinoIcons.xmark,
+                                    size: 25);
                               } else {
                                 return const Icon(
                                   Icons.settings,
@@ -158,7 +164,8 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                             splashRadius: 28)
                         : IconButton(
                             onPressed: () {
-                              codeCubit.saveAndShareResultImage(context: context);
+                              codeCubit.saveAndShareResultImage(
+                                  context: context);
                             },
                             icon: const Icon(Icons.share_outlined)),
                     // : PopupMenuButton(
@@ -219,12 +226,12 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
                   );
                 })
               : Expanded(
-                child: WidgetsToImage(
-            controller: codeCubit.widgetsToImageController,
-                  child: ResultWidget(
-                      webViewController, loadLocalHtml, codeController.text),
-                ),
-              )
+                  child: WidgetsToImage(
+                    controller: codeCubit.widgetsToImageController,
+                    child: ResultWidget(
+                        webViewController, loadLocalHtml, codeController.text),
+                  ),
+                )
         ],
       ),
     );

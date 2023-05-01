@@ -1,3 +1,4 @@
+// import 'package:flutter/scheduler.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../constants/consts.dart';
@@ -13,9 +14,13 @@ class _SplashScreenState extends State<SplashScreen> {
 
   late VideoPlayerController _controller;
 
+  // late final bool isDarkMode ;
+
   @override
   void initState() {
     super.initState();
+
+    // isDarkMode = SchedulerBinding.instance.window.platformBrightness == Brightness.dark;
 
     _controller = VideoPlayerController.asset('assets/animated_logo.mp4')
       ..initialize().then((_) => setState(() {}))
@@ -39,29 +44,18 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        // backgroundColor: isDarkMode ? const Color(0xff303031) : const Color(0xffFFFFFF),
+        backgroundColor: const Color(0xffFFFFFF),
         body: SafeArea(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // const Text("Learn Html" , style: TextStyle(color: redColor , fontSize: 30 , fontWeight: FontWeight.bold),),
-                const SizedBox(height: 30,),
-                Center(
-                  child: _controller.value.isInitialized
-                      ? AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(
-                      _controller,
-                    ),
-                  )
-                      : Container(),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(40.0),
-                  child: Text("Version : 1.1.0" , style: TextStyle(color: Colors.white , fontSize: 16 , fontWeight: FontWeight.w400),),
-                )
-              ],
-            ),
+            child: _controller.value.isInitialized
+                ? AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: VideoPlayer(
+                _controller,
+              ),
+            )
+                : Container(),
           ),
         ),
       ),

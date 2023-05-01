@@ -62,9 +62,17 @@ class SideDrawer extends StatelessWidget {
                         // Navigator.of(context).pushNamed(
                         //     LearningScreen.routeName,
                         //     arguments: AllLessonsList[index]);
-                        Navigator.of(context).popAndPushNamed(
+                        // Navigator.of(context).popAndPushNamed(
+                        //     LearningScreen.routeName,
+                        //     arguments: AllLessonsList[index]);
+
+                        Navigator.of(context).pop();
+                        Navigator.of(context)
+                            .popUntil((route) => route.isFirst);
+                        Navigator.of(context).pushNamed(
                             LearningScreen.routeName,
                             arguments: AllLessonsList[index]);
+
                       },
                       title: Text(
                         AllLessonsList[index],

@@ -13,10 +13,10 @@ Widget factContainer({required String factText , required double fontSize , requ
         children: [
           leadingIcon,
           const SizedBox(width: 5),
-          Text(leadingText , style: TextStyle(fontSize: fontSize + 3 , fontWeight: FontWeight.bold),),
+          Text(leadingText , style: TextStyle(fontSize: fontSize + 3 , fontFamily: 'RobotoMedium'),),
           // width: MediaQuery.of(context).orientation == Orientation.portrait ? deviceWidth - 90 : deviceWidth - 120 ,
           Padding(
-            padding: const EdgeInsets.only(left: 4.0 , right: 6 , bottom: 4),
+            padding: const EdgeInsets.only(top: 5 ,left: 4.0 , right: 6 , bottom: 4),
             child: Text(factText , style: TextStyle(fontSize: fontSize ,fontFamily: fontFamily ),),
           ),
         ],
