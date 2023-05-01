@@ -194,12 +194,12 @@ class LearningScreen extends StatelessWidget {
                                                           .routeName,
                                                       arguments: element
                                                           .codeExample);
-                                            }),
+                                            },ctx: context),
                                         if (element.outPutExample !=
                                             "null")
                                           outputExample(
                                               codeExample:
-                                                  element.codeExample),
+                                                  element.codeExample , fontSize: currentFontSize),
                                         factContainer(
                                             factText: element.fact,
                                             fontSize: currentFontSize,

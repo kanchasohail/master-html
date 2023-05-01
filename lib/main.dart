@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/codes_cubit/code_cubit.dart';
 import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
 import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
@@ -16,8 +17,8 @@ import 'cubits/theme_cubit/theme_cubit.dart';
 late SharedPreferences pref;
 
 Future<void> main() async {
-  // runApp(const SplashScreen());
-  // await Future.delayed(const Duration(seconds: 3));
+  runApp(const SplashScreen());
+  await Future.delayed(const Duration(seconds: 3));
 
   WidgetsFlutterBinding.ensureInitialized();
   pref = await SharedPreferences.getInstance();
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()),
         BlocProvider<FontsCubit>(create: (context) => FontsCubit()),
         BlocProvider<LessonCubit>(create: (context) => LessonCubit()),
+        BlocProvider<CodeCubit>(create: (context) => CodeCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
         final themeCubit = BlocProvider.of<ThemeCubit>(context);

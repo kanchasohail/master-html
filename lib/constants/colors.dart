@@ -4,16 +4,6 @@ const Color redColor = Colors.red;
 
 const Color greenColor = Colors.green;
 
-const Color lightGreen = Color(0xff00FF52);
-const Color blueColor = Colors.blue;
-
-const Color darkBlue = Color(0xff0f162b);
-
-const Color lightViolet = Color(0xff4F4DBF);
-const Color pinkColor = Colors.pink;
-
-const Color whiteColor = Colors.white;
-
 const Color orangeColor = Colors.orange;
 
 const Color lightBlack = Colors.black54;
@@ -33,7 +23,7 @@ const Color darkBodyColor = Color(0xff303031);
 const Color darkCardColor = Color(0xff242424);
 const Color darkSettingsHeaderColor = Color(0xff15151a);
 const Color darkSettingsOptionColor = Color(0xff1e1e21);
-const Color darkBodyMediumTextColor = Colors.white ;
+const Color darkBodyMediumTextColor = Colors.white;
 
 // this map is for dark theme primary color
 const Map<int, Color> _darkThemeColorsMap = {

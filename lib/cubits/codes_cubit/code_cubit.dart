@@ -25,6 +25,26 @@ class CodeCubit extends Cubit<CodeState> {
   //This string is for sending codes as argument
   static String? codeCubitCodeString;
 
+  // This method will add the boiler plate code if it's not there.
+ static String addBoilerPlateCode(String codeExample) {
+    if (!codeExample.contains("<!DOCTYPE html>", 0)) {
+      const String preCode = '''<!DOCTYPE html>
+  <html>
+    <head>
+        <title>Web page Title</title>
+    </head>
+ <body>
+''';
+      const String postCode = '''
+ </body>
+ </html>''';
+
+      return "$preCode\t      $codeExample\n$postCode";
+    } else {
+      return codeExample;
+    }
+  }
+
   final WidgetsToImageController widgetsToImageController = WidgetsToImageController() ;
 
   // to save image bytes of widget
@@ -101,14 +121,14 @@ class CodeCubit extends Cubit<CodeState> {
 
   //This method will get the current code theme name
   String getCurrentCodeThemeName() {
-    return pref.getString(currentCodeThemeStringKey) ?? "";
+    return pref.getString(currentCodeThemeStringKey) ?? "Monokai";
   }
 
   Map<String, TextStyle> getCurrentCodeTheme() {
     switch (getCurrentCodeThemeName()) {
       case 'Atom':
         return atomOneLightTheme;
-      case 'Monokai-subline':
+      case 'Monokai':
         return monokaiSublimeTheme;
       case 'VS':
         return vsTheme;
@@ -165,7 +185,7 @@ class CodeCubit extends Cubit<CodeState> {
   }
 }
 
-List<String> codeThemesList = ['Atom', 'Monokai-subline', 'VS', 'Darcula'];
+List<String> codeThemesList = ['Atom', 'Monokai', 'VS', 'Darcula'];
 
 //These are the state classes for this cubit
 abstract class CodeState {}

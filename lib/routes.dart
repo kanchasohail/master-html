@@ -18,9 +18,7 @@ class Routes {
       case CodesMainScreen.routeName:
         CodeCubit.codeCubitCodeString = settings.arguments as String?;
         return MaterialPageRoute(
-            builder: (context) => BlocProvider(
-                create: (context) => CodeCubit(),
-                child: const CodesMainScreen()));
+            builder: (context) => const CodesMainScreen());
 //Settings screen
       case SettingScreen.routeName:
         return MaterialPageRoute(builder: (context) => const SettingScreen());

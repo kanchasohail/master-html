@@ -60,7 +60,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.12.0
   flutter_lints: ^2.0.1
 flutter_native_splash:
-  color: "#ffffff"
+  color: "#FFFFFF"
 #  image: assets/splash_logo.png
 
 flutter_icons:
