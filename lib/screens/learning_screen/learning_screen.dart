@@ -162,7 +162,7 @@ class LearningScreen extends StatelessWidget {
                                                 fontSize: currentFontSize +
                                                     5 /* was 22 before */,
                                                 fontWeight:
-                                                    FontWeight.bold),
+                                                    FontWeight.bold , color: isDarkMode ? const Color(0xffe6e6e6) : const Color(0xff2C2C2C)),
                                           ),
                                         ),
                                         ...element.article

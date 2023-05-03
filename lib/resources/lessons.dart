@@ -29,7 +29,9 @@ const Map<String, List<LessonModel>> allLessons = {
         update: "null",
         note: "null",
         warning: "null"),
-    LessonModel(
+
+        // <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
+LessonModel(
         header: "HTML Code Example -",
         article: <String>["null"],
         codeExample: '''<!DOCTYPE html>
@@ -38,8 +40,8 @@ const Map<String, List<LessonModel>> allLessons = {
      <title>Web page Title</title>
  </head>
  <body>
-     <h1>This is your first Heading</h1>
-     <p>This is your first paragraph.</p>
+     <h1>This is a Heading</h1>
+     <p>This is a paragraph.</p>
  </body>
  </html>''',
         outPutExample: "true",
@@ -59,7 +61,7 @@ const Map<String, List<LessonModel>> allLessons = {
           "• The <p> element defines a paragraph.",
         ],
         // codeExample: "null",
-        codeExample: "<h1>This is your first Heading</h1>",
+        codeExample: "null",
         outPutExample: "null",
         fact: "null",
         update: "null",

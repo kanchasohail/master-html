@@ -17,9 +17,9 @@ class MyThemes {
       labelMedium:
           TextStyle(fontSize: 17, fontWeight: FontWeight.w600, height: 1.4),
       headlineLarge: TextStyle(
-          fontSize: 24, fontWeight: FontWeight.w600, color: Colors.white),
+          fontSize: 24, fontWeight: FontWeight.w600, color: Color(0xffe6e6e6)),
       bodySmall: TextStyle(
-          fontSize: 16, color: Colors.white, fontWeight: FontWeight.w400),
+          fontSize: 16, color: Color(0xffe6e6e6), fontWeight: FontWeight.w400),
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: darkAppBarColor,

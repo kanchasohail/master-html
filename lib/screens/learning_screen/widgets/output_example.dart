@@ -14,14 +14,17 @@ Widget outputExample ({required String codeExample , required double fontSize}){
         ),
         Card(
           elevation: 4,
-          color: Colors.white,
-          child: Html(
-            style: {
-              "body": Style(
-                color: Colors.black
-              ),
-            },
-            data: codeExample,
+          color: const Color(0xffdbdbdb),
+          child: Padding(
+            padding: const EdgeInsets.only(left: 8 , right: 8 , bottom: 20),
+            child: Html(
+              style: {
+                "body": Style(
+                  color: Colors.black
+                ),
+              },
+              data: codeExample,
+            ),
           ),
         ),
       ],

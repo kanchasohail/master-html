@@ -17,8 +17,8 @@ import 'cubits/theme_cubit/theme_cubit.dart';
 late SharedPreferences pref;
 
 Future<void> main() async {
-  runApp(const SplashScreen());
-  await Future.delayed(const Duration(seconds: 3));
+  // runApp(const SplashScreen());
+  // await Future.delayed(const Duration(seconds: 3));
 
   WidgetsFlutterBinding.ensureInitialized();
   pref = await SharedPreferences.getInstance();
