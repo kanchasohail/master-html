@@ -41,7 +41,7 @@ Widget articleText(
         style: TextStyle(
             fontSize: currentFontSize,
             fontFamily: currentFontFamily,
-            color: isDarkTheme ? Colors.white : Colors.black),
+            color: isDarkTheme ? const Color(0xffe3e3e3) : Colors.black),
       ),
     ),
   );

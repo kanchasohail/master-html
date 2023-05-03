@@ -126,7 +126,7 @@ class ProgressWidgetRow extends StatelessWidget {
                 child: Text(
                   "${percentage.toStringAsFixed(2)}%",
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                    color: Colors.white ,
+                    color: const Color(0xffe6e6e6) ,
                     shadows: <Shadow>[
                       const Shadow(
                         offset: Offset(0.7, 0.95),

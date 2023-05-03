@@ -11,29 +11,28 @@ Widget codeExample(
     required BuildContext ctx}) {
   if (codeExample != "null") {
     final CodeCubit codeCubit = BlocProvider.of<CodeCubit>(ctx);
+    final bool isOneLinedCode = !codeExample.contains("<!DOCTYPE html>", 0) ;
     return Column(
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 6.0),
           child: SizedBox(
             width: double.infinity,
-            child: FittedBox(
-              child: Card(
-                elevation: 2,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: BlocBuilder<CodeCubit, CodeState>(
-                        builder: (context, state) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: HighlightView(codeExample,
-                            textStyle: const TextStyle(height: 1.4),
-                            language: "html",
-                            theme: codeCubit.getCurrentCodeTheme(),
-                            padding: const EdgeInsets.all(8)),
-                      );
-                    })),
-              ),
+            child: Card(
+              elevation: 2,
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: BlocBuilder<CodeCubit, CodeState>(
+                      builder: (context, state) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(4),
+                      child: HighlightView(codeExample,
+                          textStyle: TextStyle(height: 1.4 , fontWeight: isOneLinedCode ? FontWeight.w600 : FontWeight.normal),
+                          language: "html",
+                          theme: codeCubit.getCurrentCodeTheme(),
+                          padding: const EdgeInsets.all(8)),
+                    );
+                  })),
             ),
           ),
         ),
