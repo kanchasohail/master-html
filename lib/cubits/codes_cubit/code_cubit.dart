@@ -2,10 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_highlight/themes/atom-one-light.dart';
-import 'package:flutter_highlight/themes/darcula.dart';
+import 'package:flutter_highlight/themes/ascetic.dart';
+import 'package:flutter_highlight/themes/default.dart';
+import 'package:flutter_highlight/themes/hybrid.dart';
+import 'package:flutter_highlight/themes/idea.dart';
 import 'package:flutter_highlight/themes/monokai-sublime.dart';
-import 'package:flutter_highlight/themes/vs.dart';
+import 'package:flutter_highlight/themes/ocean.dart';
+import 'package:flutter_highlight/themes/isbl-editor-light.dart';
+import 'package:flutter_highlight/themes/vs2015.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -16,7 +20,8 @@ import '../../main.dart';
 
 //These strings are for shared pref
 const String mainCodeStringKey = "mainCodeStringKey";
-const String currentCodeThemeStringKey = "currentCodeThemeKey";
+const String currentCodeDarkThemeStringKey = "currentCodeDarkThemeKey";
+const String currentCodeLightThemeStringKey = "currentCodeLightThemeKey";
 const String wrapCodeSettingStringKey = "wrapCodeSettingStringKey";
 
 class CodeCubit extends Cubit<CodeState> {
@@ -26,7 +31,7 @@ class CodeCubit extends Cubit<CodeState> {
   static String? codeCubitCodeString;
 
   // This method will add the boiler plate code if it's not there.
- static String addBoilerPlateCode(String codeExample) {
+  static String addBoilerPlateCode(String codeExample) {
     if (!codeExample.contains("<!DOCTYPE html>", 0)) {
       const String preCode = '''<!DOCTYPE html>
   <html>
@@ -45,7 +50,8 @@ class CodeCubit extends Cubit<CodeState> {
     }
   }
 
-  final WidgetsToImageController widgetsToImageController = WidgetsToImageController() ;
+  final WidgetsToImageController widgetsToImageController =
+      WidgetsToImageController();
 
   // to save image bytes of widget
   Uint8List? bytes;
@@ -90,13 +96,11 @@ class CodeCubit extends Cubit<CodeState> {
     return result['filePath'];
   }
 
-
   //This method will share the certificate
-  Future<void> saveAndShareResultImage(
-      {required BuildContext context}) async {
+  Future<void> saveAndShareResultImage({required BuildContext context}) async {
     late final Uint8List imageBytes;
     final directory =
-    await getApplicationDocumentsDirectory().then((val) async {
+        await getApplicationDocumentsDirectory().then((val) async {
       imageBytes = (await captureResultWidget(context: context))!;
       return val;
     });
@@ -107,54 +111,95 @@ class CodeCubit extends Cubit<CodeState> {
     await Share.shareXFiles([XFile(image.path)], text: text);
   }
 
-
   //This getter will get the mainEditorCode from the device shared pref
   static String getMainEditorCode() {
     return pref.getString(mainCodeStringKey) ?? "";
   }
 
   //This method will save the code in sharedPref
- static void saveMainEditorCode({required String codeText}) {
+  static void saveMainEditorCode({required String codeText}) {
     debugPrint("Main Editor code Saved");
     pref.setString(mainCodeStringKey, codeText);
   }
 
   //This method will get the current code theme name
-  String getCurrentCodeThemeName() {
-    return pref.getString(currentCodeThemeStringKey) ?? "Monokai";
+  String getCurrentCodeThemeName({bool? isDarkMode}) {
+    if (isDarkMode != null && !isDarkMode) {
+      return pref.getString(currentCodeLightThemeStringKey) ?? "Isbl";
+    } else {
+      return pref.getString(currentCodeDarkThemeStringKey) ?? "vs2015";
+    }
   }
 
-  Map<String, TextStyle> getCurrentCodeTheme() {
-    switch (getCurrentCodeThemeName()) {
-      case 'Atom':
-        return atomOneLightTheme;
+  //This method will get the card color according to the theme
+  Color getCardColorAccordingToTheme({required bool isDarkMode}) {
+    switch (getCurrentCodeThemeName(isDarkMode: isDarkMode)) {
+      case 'vs2015':
+        return const Color(0xff1E1E1E);
+      case 'Monokai':
+        return const Color(0xff23251E);
+      case 'Hybrid':
+        return const Color(0xff1E1F21);
+      case 'Ocean':
+        return const Color(0xff2D313B);
+      case 'Isbl':
+        return const Color(0xffFEFFFE);
+      case 'Idea':
+        return const Color(0xffFEFFFE);
+      case 'Ascetic':
+        return const Color(0xffFEFFFE);
+      case 'Default':
+        return const Color(0xffF1F1F0);
+      default:
+        return const Color(0xff1E1E1E);
+    }
+  }
+
+  Map<String, TextStyle> getCurrentCodeTheme({required bool isDarkMode}) {
+    switch (getCurrentCodeThemeName(isDarkMode: isDarkMode)) {
+      case 'vs2015':
+        return vs2015Theme;
       case 'Monokai':
         return monokaiSublimeTheme;
-      case 'VS':
-        return vsTheme;
-      case 'Darcula':
-        return darculaTheme;
+      case 'Hybrid':
+        return hybridTheme;
+      case 'Ocean':
+        return oceanTheme;
+      case 'Isbl':
+        return isblEditorLightTheme;
+      case 'Idea':
+        return ideaTheme;
+      case 'Ascetic':
+        return asceticTheme;
+      case 'Default':
+        return defaultTheme;
       default:
         return monokaiSublimeTheme;
     }
   }
+
   //This method will change the wrap code switch setting
-  void changeWrapCodeSetting(bool isOn){
-    if(isOn){
+  void changeWrapCodeSetting(bool isOn) {
+    if (isOn) {
       pref.setBool(wrapCodeSettingStringKey, isOn);
-    }else{
+    } else {
       pref.setBool(wrapCodeSettingStringKey, isOn);
     }
     emit(CodeWrapSettingChangedState());
     emit(CodeThemeCardOpenState());
   }
-  //This getter will get the current switch state
-  bool getWrapCodeCurrentSetting(){
-    return pref.getBool(wrapCodeSettingStringKey) ?? false ;
-}
 
-  void changeCodeTheme(String codeThemeName) {
-    pref.setString(currentCodeThemeStringKey, codeThemeName);
+  //This getter will get the current switch state
+  bool getWrapCodeCurrentSetting() {
+    return pref.getBool(wrapCodeSettingStringKey) ?? false;
+  }
+
+  void changeCodeTheme(String codeThemeName, {required bool isDarkMode}) {
+    if (isDarkMode) {
+      pref.setString(currentCodeDarkThemeStringKey, codeThemeName);
+    } else {
+      pref.setString(currentCodeLightThemeStringKey, codeThemeName);
+    }
     emit(CodeThemeChangedState());
     emit(CodeThemeCardOpenState());
   }
@@ -172,11 +217,8 @@ class CodeCubit extends Cubit<CodeState> {
     }
   }
 
-
   //This method will share the code result in image form
-  void shareCodeResult(){
-
-  }
+  void shareCodeResult() {}
 
   @override
   Future<void> close() {
@@ -185,8 +227,11 @@ class CodeCubit extends Cubit<CodeState> {
   }
 }
 
-List<String> codeThemesList = ['Atom', 'Monokai', 'VS', 'Darcula'];
+List<String> darkCodeThemesList = ['vs2015', 'Monokai', 'Hybrid', 'Ocean'];
+List<String> lightCodeThemesList = ['Isbl', 'Idea', 'Ascetic', 'Default'];
 
+// vs2015 (default), monokai-sublime, hybrid, ocean
+// Isbl editor light, idea, ascetic, default
 //These are the state classes for this cubit
 abstract class CodeState {}
 
@@ -197,4 +242,5 @@ class CodeThemeCardOpenState extends CodeState {}
 class CodeThemeCardCloseState extends CodeState {}
 
 class CodeThemeChangedState extends CodeState {}
+
 class CodeWrapSettingChangedState extends CodeState {}

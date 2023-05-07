@@ -34,7 +34,7 @@ class SettingScreen extends StatelessWidget {
                     onTap: () {
                       final themeCubit = BlocProvider.of<ThemeCubit>(context);
                       final bool isOn = themeCubit.themeMode == ThemeMode.dark;
-                      themeCubit.toggleTheme(!isOn);
+                      themeCubit.toggleTheme(!isOn , ctx: context);
                     },
                     context: context,
                     title: "Dark Mode",

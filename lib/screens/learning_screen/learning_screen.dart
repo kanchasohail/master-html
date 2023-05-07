@@ -194,7 +194,7 @@ class LearningScreen extends StatelessWidget {
                                                           .routeName,
                                                       arguments: element
                                                           .codeExample);
-                                            },ctx: context),
+                                            },ctx: context , isDarkMode: isDarkMode),
                                         if (element.outPutExample !=
                                             "null")
                                           outputExample(

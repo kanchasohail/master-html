@@ -86,4 +86,86 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
       ]
     }
   ],
+
+  //Quiz for the fourth lesson(HTML Boilerplate)
+  //Quiz for the fifth lesson(HTML Boilerplate)
+  //Quiz for the sixth lesson(HTML Comments)
+  "HTML Comments": [
+    {
+      "question":
+      "Why should we use comments in HTML?",
+      "correct_answer": "To write something important",
+      "options": ["To write something important", "For code decoration", "To make our code faster"]
+    },
+    {
+      "question": "Which one is comment tag in HTML?",
+      "correct_answer": "<!-- -->",
+      "options": ["<comment></comment>", "<xx- -xx>", "<!-- -->"]
+    },
+    {
+      "question": "Are Comments displayed by browsers?",
+      "correct_answer": "Yes",
+      "options": [
+        "Yes",
+        "No",
+        "Sometimes"
+      ]
+    }
+  ],
+
+  // A
+  //  Lot
+  //  Of
+  //  lessons
+  //  to
+  //  come
+  //  here
+
+  //Thirty seventh lesson (HTML Subscript Text)
+  "HTML Subscript Text": [
+    {
+      "question":
+      "Where are subscript texts placed?",
+      "correct_answer": "Below Baseline",
+      "options": ["Above Baseline", "Below Baseline", "Normal Baseline"]
+    },
+    {
+      "question": "How do the superscript texts look?",
+      "correct_answer": "Bigger than usual text",
+      "options": ["Bigger than usual text", "Smaller than usual text", "Normal text"]
+    },
+    {
+      "question": "Which one below is superscript element?",
+      "correct_answer": "<sub>",
+      "options": [
+        "<sup>",
+        "<sub>",
+        "<superscript>"
+      ]
+    }
+  ],
+
+  //Thirty eighth lesson (Html Superscript Text)
+  "Html Superscript Text": [
+    {
+      "question":
+      "Where are superscript texts placed?",
+      "correct_answer": "Above Baseline",
+      "options": ["Above Baseline", "Below Baseline", "Normal Baseline"]
+    },
+    {
+      "question": "How do the superscript texts look?",
+      "correct_answer": "Smaller than usual text",
+      "options": ["Bigger than usual text", "Smaller than usual text", "Normal text"]
+    },
+    {
+      "question": "Which one below is superscript element?",
+      "correct_answer": "<sup>",
+      "options": [
+        "<sup>",
+        "<sub>",
+        "<superscript>"
+      ]
+    }
+  ],
 };
