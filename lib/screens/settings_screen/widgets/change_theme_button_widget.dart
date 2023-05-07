@@ -20,13 +20,13 @@ class ChangeThemeButtonWidget extends StatelessWidget {
               activeColor: CupertinoColors.activeOrange,
                 value: true,
                 onChanged: (value) {
-                  themeCubit.toggleTheme(value);
+                  themeCubit.toggleTheme(value , ctx: context);
                 });
           } else {
             return CupertinoSwitch(
                 value: false,
                 onChanged: (value) {
-                  themeCubit.toggleTheme(value);
+                  themeCubit.toggleTheme(value , ctx: context);
                 });
           }
         },

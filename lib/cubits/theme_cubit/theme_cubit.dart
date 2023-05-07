@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/codes_cubit/code_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants/consts.dart';
@@ -26,12 +27,15 @@ class ThemeCubit extends Cubit<ThemeState> {
     }
   }
 
-  void toggleTheme(bool isOn) {
+  void toggleTheme(bool isOn , {required BuildContext ctx}) {
+    final codeCubit = BlocProvider.of<CodeCubit>(ctx);
     if (isOn) {
       pref.setBool(isDarkThemeStringKey, true);
+      codeCubit.changeCodeTheme(codeCubit.getCurrentCodeThemeName(isDarkMode: true) , isDarkMode: true);
       emit(ThemeDarkState());
     } else {
       pref.setBool(isDarkThemeStringKey, false);
+      codeCubit.changeCodeTheme(codeCubit.getCurrentCodeThemeName(isDarkMode: false) , isDarkMode: false);
       emit(ThemeLightState());
     }
   }

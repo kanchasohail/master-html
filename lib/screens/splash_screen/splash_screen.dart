@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // isDarkMode = SchedulerBinding.instance.window.platformBrightness == Brightness.dark;
+    // isDarkMode = Binding.instance.window.platformBrightness == Brightness.dark;
 
     _controller = VideoPlayerController.asset('assets/animated_logo.mp4')
       ..initialize().then((_) => setState(() {}))

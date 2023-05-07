@@ -1,7 +1,7 @@
 import 'package:master_html/resources/models/lesson_model.dart';
 
 const Map<String, List<LessonModel>> allLessons = {
-  //First lesson
+  //First lesson (HTML Introduction)
   "HTML Introduction": <LessonModel>[
     LessonModel(
         header: "What is HTML?",
@@ -30,8 +30,8 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
 
-        // <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
-LessonModel(
+    // <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
+    LessonModel(
         header: "HTML Code Example -",
         article: <String>["null"],
         codeExample: '''<!DOCTYPE html>
@@ -80,6 +80,7 @@ LessonModel(
         note: "null",
         warning: "null"),
   ],
+
   //Second lesson (code Editor)
   "Code Editor": <LessonModel>[
     LessonModel(
@@ -166,5 +167,161 @@ LessonModel(
         update: "null",
         note: "null",
         warning: "null"),
+  ],
+
+  //Fourth Lesson
+  //Fifth Lesson
+  //Sixth Lesson
+  //Third lesson (Html Comments)
+  "HTML Comments": <LessonModel>[
+    LessonModel(
+        header: "What are comments in HTML?",
+        article: <String>[
+          "Comments are texts kept as a note inside an HTML file.",
+          "Comments aren't displayed by browsers and only the person writing or editing the code can see it.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Why use comments in HTML?",
+        article: <String>[
+          "Comments are a short form of keeping Notes in an HTML file.",
+          "It can also be used as a way to tell other developers that what a part of the code is doing or why is it there.",
+          "Comments in HTML looks like this <!-- comment goes here -->",
+          "Below we will see an example on how comments in HTML look like and proper use case."
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "HTML Comments Example -",
+        article: <String>["null"],
+        codeExample: '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web page Title</title>
+</head>
+<body>
+
+<p>This is a paragraph</p>
+
+<!-- This is a comment in HTML -->
+
+<!-- This comment has multiple lines,
+     also known as multi-line comment -->
+
+<p>This is another paragraph</p>
+
+</body>
+</html>''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "When to use comments in HTML?",
+        article: <String>[
+          "Comments shouldn't be used everywhere and it should only be used to explain something difficult or something that should be done later.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+  ],
+ // A
+ //  Lot
+ //  Of
+ //  lessons
+ //  to
+ //  come
+ //  here
+  //Thirty seventh lesson (HTML Subscript Text)
+  "HTML Subscript Text": <LessonModel>[
+    LessonModel(
+        header: "HTML Subscript Text",
+        article: <String>[
+          "Subscript texts are placed below baseline and smaller than usual.",
+          "To make a text appear as subscript, we need to use the <sub> element.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Example -",
+        article: <String>["null" ],
+        codeExample: '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web page Title</title>
+</head>
+<body>
+    <!-- writing a mathematical equation -->
+   <p> x<sup>3</sup> + 3x + 2x<sup>2</sup> + 6 </p>
+</body>
+</html>''',
+        // outPutExample: "null",
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "The <sub> element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
+        warning: "null"),
+
+  ],
+  //Thirty eighth lesson (Html Superscript Text)
+  "Html Superscript Text": <LessonModel>[
+    LessonModel(
+        header: "HTML Superscript Text",
+        article: <String>[
+          "Superscript texts are placed above baseline and smaller than usual.",
+          "To make a text appear as superscript, we need to use the <sup> element.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Example -",
+        article: <String>["null" ],
+        codeExample: '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web page Title</title>
+</head>
+<body>
+    <!-- writing a chemical equation -->
+   <p> N<sup>2</sup> + H<sup>2</sup> &rarr; NH<sup>3</sup></p>
+</body>
+</html>''',
+        // outPutExample: "null",
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "The '<sup>' element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
+        warning: "null"),
+
   ],
 };

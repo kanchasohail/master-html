@@ -3,7 +3,7 @@ import '../../../constants/consts.dart';
 
 Widget factContainer({required String factText , required double fontSize , required String fontFamily , required Color containerColor , required Icon leadingIcon , required String leadingText}){
   return factText != "null" ? Container(
-    margin: const EdgeInsets.symmetric(horizontal: 8),
+    margin: const EdgeInsets.only(left: 8 ,right: 8 , top: 16 ),
     decoration: BoxDecoration(
       color: containerColor,
       borderRadius: BorderRadius.circular(4)

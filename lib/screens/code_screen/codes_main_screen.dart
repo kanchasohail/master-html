@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/theme_cubit/theme_cubit.dart';
 import 'package:master_html/screens/code_screen/widgets/code_theme_changing_card.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
@@ -217,7 +218,8 @@ class _CodesMainScreenState extends State<CodesMainScreen> {
             }),
           isFirst
               ? BlocBuilder<CodeCubit, CodeState>(builder: (context, state) {
-                  final codeTextTheme = codeCubit.getCurrentCodeTheme();
+                final bool isDarkMode = BlocProvider.of<ThemeCubit>(this.context).themeMode == ThemeMode.dark ;
+                  final codeTextTheme = codeCubit.getCurrentCodeTheme(isDarkMode: isDarkMode);
                   final bool isWrapOn = codeCubit.getWrapCodeCurrentSetting();
                   return EditCodeWidget(
                     controller: codeController,

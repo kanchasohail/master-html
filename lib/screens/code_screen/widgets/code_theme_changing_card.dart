@@ -8,13 +8,13 @@ import '../../../cubits/theme_cubit/theme_cubit.dart';
 class CodeThemeChangingCard extends StatelessWidget {
   const CodeThemeChangingCard({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     final codeCubit = BlocProvider.of<CodeCubit>(context);
     final bool isDarkMode =
         BlocProvider.of<ThemeCubit>(context, listen: false).themeMode ==
             ThemeMode.dark;
+    final List<String> availableThemesList = isDarkMode ? darkCodeThemesList : lightCodeThemesList;
     return  Card(
       elevation: 4,
       color: Colors.blueGrey,
@@ -28,12 +28,12 @@ class CodeThemeChangingCard extends StatelessWidget {
             const SizedBox(height: 5,),
             BlocBuilder<CodeCubit , CodeState>(
                 builder: (context , state) {
-                  final String currentCodeThemeName = codeCubit.getCurrentCodeThemeName() ;
+                  final String currentCodeThemeName = codeCubit.getCurrentCodeThemeName(isDarkMode: isDarkMode) ;
                   return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: codeThemesList.map((codeTheme) => GestureDetector(
+                      children: availableThemesList.map((codeTheme) => GestureDetector(
                         onTap: (){
-                          codeCubit.changeCodeTheme(codeTheme);
+                          codeCubit.changeCodeTheme(codeTheme , isDarkMode: isDarkMode);
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 4.0),
