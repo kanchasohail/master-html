@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:master_html/cubits/ad_cubit/ad_cubit.dart';
 import 'package:master_html/cubits/codes_cubit/code_cubit.dart';
 import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<FontsCubit>(create: (context) => FontsCubit()),
         BlocProvider<LessonCubit>(create: (context) => LessonCubit()),
         BlocProvider<CodeCubit>(create: (context) => CodeCubit()),
+        BlocProvider<AdCubit>(create: (context) => AdCubit()),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
         final themeCubit = BlocProvider.of<ThemeCubit>(context);

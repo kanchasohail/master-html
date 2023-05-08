@@ -52,6 +52,8 @@ dependencies:
   path_provider: ^2.0.14
   widgets_to_image: ^0.0.2
   flutter_html: ^3.0.0-alpha.6
+  google_mobile_ads: ^3.0.0
+  connectivity_plus: ^3.0.6
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +63,8 @@ dev_dependencies:
   flutter_lints: ^2.0.1
 flutter_native_splash:
   color: "#FFFFFF"
-#  image: assets/splash_logo.png
+#  branding: assets/logo.png
+  image: assets/splash_light.png
 
 flutter_icons:
   android: true
