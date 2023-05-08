@@ -8,7 +8,6 @@ import 'package:master_html/cubits/lesson_cubit/lesson_cubit.dart';
 import 'package:master_html/routes.dart';
 import 'package:master_html/screens/home_screen/home_screen.dart';
 import 'package:master_html/screens/learning_screen/learning_screen.dart';
-import 'package:master_html/screens/splash_screen/splash_screen.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,9 +17,6 @@ import 'cubits/theme_cubit/theme_cubit.dart';
 late SharedPreferences pref;
 
 Future<void> main() async {
-  // runApp(const SplashScreen());
-  // await Future.delayed(const Duration(seconds: 3));
-
   WidgetsFlutterBinding.ensureInitialized();
   pref = await SharedPreferences.getInstance();
   // This will remove the splash icon only after the initialization of firebase ;
