@@ -203,27 +203,14 @@ const Map<String, List<LessonModel>> allLessons = {
     LessonModel(
         header: "HTML Comments Example -",
         article: <String>["null"],
-        codeExample: '''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web page Title</title>
-</head>
-<body>
-
-<p>This is a paragraph</p>
+        codeExample: '''<p>This is a paragraph</p>
 
 <!-- This is a comment in HTML -->
 
 <!-- This comment has multiple lines,
      also known as multi-line comment -->
 
-<p>This is another paragraph</p>
-
-</body>
-</html>''',
+<p>This is another paragraph</p>''',
         outPutExample: "true",
         fact: "null",
         update: "null",
@@ -265,19 +252,11 @@ const Map<String, List<LessonModel>> allLessons = {
     LessonModel(
         header: "Example -",
         article: <String>["null" ],
-        codeExample: '''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web page Title</title>
-</head>
-<body>
-    <!-- writing a mathematical equation -->
-   <p> x<sup>3</sup> + 3x + 2x<sup>2</sup> + 6 </p>
-</body>
-</html>''',
+        codeExample: '''
+<!-- writing a mathematical equation -->
+    
+<p> x<sub>3</sub> + 3x + 2x<sub>2</sub> + 6 </p>
+   ''',
         // outPutExample: "null",
         outPutExample: "true",
         fact: "null",
@@ -303,19 +282,11 @@ const Map<String, List<LessonModel>> allLessons = {
     LessonModel(
         header: "Example -",
         article: <String>["null" ],
-        codeExample: '''<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web page Title</title>
-</head>
-<body>
-    <!-- writing a chemical equation -->
-   <p> N<sup>2</sup> + H<sup>2</sup> &rarr; NH<sup>3</sup></p>
-</body>
-</html>''',
+        codeExample: '''
+<!-- writing a chemical equation -->
+    
+<p> N<sup>2</sup> + H<sup>2</sup> &rarr; NH<sup>3</sup></p>
+   ''',
         // outPutExample: "null",
         outPutExample: "true",
         fact: "null",
