@@ -143,7 +143,6 @@ const Map<String, List<LessonModel>> allLessons = {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web page Title</title>
 </head>
@@ -228,13 +227,13 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
   ],
- // A
- //  Lot
- //  Of
- //  lessons
- //  to
- //  come
- //  here
+  // A
+  //  Lot
+  //  Of
+  //  lessons
+  //  to
+  //  come
+  //  here
   //Thirty seventh lesson (HTML Subscript Text)
   "HTML Subscript Text": <LessonModel>[
     LessonModel(
@@ -251,7 +250,7 @@ const Map<String, List<LessonModel>> allLessons = {
         warning: "null"),
     LessonModel(
         header: "Example -",
-        article: <String>["null" ],
+        article: <String>["null"],
         codeExample: '''
 <!-- writing a mathematical equation -->
     
@@ -261,9 +260,9 @@ const Map<String, List<LessonModel>> allLessons = {
         outPutExample: "true",
         fact: "null",
         update: "null",
-        note: "The <sub> element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
+        note:
+            "The <sub> element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
         warning: "null"),
-
   ],
   //Thirty eighth lesson (Html Superscript Text)
   "Html Superscript Text": <LessonModel>[
@@ -281,7 +280,7 @@ const Map<String, List<LessonModel>> allLessons = {
         warning: "null"),
     LessonModel(
         header: "Example -",
-        article: <String>["null" ],
+        article: <String>["null"],
         codeExample: '''
 <!-- writing a chemical equation -->
     
@@ -291,8 +290,8 @@ const Map<String, List<LessonModel>> allLessons = {
         outPutExample: "true",
         fact: "null",
         update: "null",
-        note: "The '<sup>' element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
+        note:
+            "The '<sup>' element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
         warning: "null"),
-
   ],
 };

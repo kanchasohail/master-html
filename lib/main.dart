@@ -21,6 +21,8 @@ Future<void> main() async {
   pref = await SharedPreferences.getInstance();
   // This will remove the splash icon only after the initialization of firebase ;
   // FlutterNativeSplash.remove();
+
+  await Future.delayed(const Duration(milliseconds: 1400));
   runApp(const MyApp());
 }
 
