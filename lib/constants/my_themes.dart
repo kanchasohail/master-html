@@ -2,7 +2,6 @@ import 'consts.dart';
 
 class MyThemes {
   static final darkTheme = ThemeData(
-    primarySwatch: darkThemePrimaryColor,
     scaffoldBackgroundColor: darkBodyColor,
     textSelectionTheme:
         const TextSelectionThemeData(selectionHandleColor: Colors.transparent),

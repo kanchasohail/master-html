@@ -17,14 +17,11 @@ class Routes {
 //Codes main screen
       case CodesMainScreen.routeName:
         CodeCubit.codeCubitCodeString = settings.arguments as String?;
-        return MaterialPageRoute(
-            builder: (context) => const CodesMainScreen());
+        return MaterialPageRoute(builder: (context) => const CodesMainScreen());
 //Settings screen
       case SettingScreen.routeName:
         return MaterialPageRoute(builder: (context) => const SettingScreen());
-//Learning screen
-//       case LearningScreen.routeName:
-//         return MaterialPageRoute(builder: (context) =>  const LearningScreen());
+
 //Result screen
       case ResultScreen.routeName:
         final Map<String, dynamic> argumentsData =

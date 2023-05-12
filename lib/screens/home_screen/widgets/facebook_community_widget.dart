@@ -12,10 +12,10 @@ Widget facebookCommunityWidget(){
         if (await launchUrl(facebook)) {
         } else {}
       },
-      child: Card(
+      child: const Card(
         child: Row(
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.all(8.0),
               child: Icon(
                 Icons.facebook_outlined,
@@ -23,10 +23,10 @@ Widget facebookCommunityWidget(){
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
                     "Join our community on",
                     style: TextStyle(

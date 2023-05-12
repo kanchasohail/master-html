@@ -15,14 +15,15 @@ class LessonCubit extends Cubit<LessonState> {
   LessonCubit() : super(LessonInitialState());
 
   List<String> completedLessonsList = [];
+
   //This method gets the list of completed lessons
-  List<String> getListOfCompletedLessons(){
-    completedLessonsList =  pref.getStringList(completedLessonsListKey) ?? [];
-    return completedLessonsList ;
+  List<String> getListOfCompletedLessons() {
+    completedLessonsList = pref.getStringList(completedLessonsListKey) ?? [];
+    return completedLessonsList;
   }
 
   //This method check if the use passed or failed the quiz
-  bool didPassQuiz({required String resultText , required String lessonName}) {
+  bool didPassQuiz({required String resultText, required String lessonName}) {
     if (resultText == perfectConstString) {
       passThisLesson(lessonName: lessonName);
       return true;
@@ -46,17 +47,15 @@ class LessonCubit extends Cubit<LessonState> {
   }
 
   //This method is for moving forward to the next lesson
-  void nextLesson({required BuildContext context }) {
+  void nextLesson({required BuildContext context}) {
     Navigator.of(context).pop();
     Navigator.of(context).popAndPushNamed(LearningScreen.routeName);
   }
 
- //This method will mark the lesson as completed and update everything required
-  void passThisLesson({required String lessonName}){
-    if(!completedLessonsList.contains(lessonName)){
-      final int lessonNameIndex = AllLessonsList.indexOf(lessonName) ;
-      print(lessonNameIndex);
-      print(lessonName);
+  //This method will mark the lesson as completed and update everything required
+  void passThisLesson({required String lessonName}) {
+    if (!completedLessonsList.contains(lessonName)) {
+      final int lessonNameIndex = AllLessonsList.indexOf(lessonName);
       pref.setInt(onGoingLessonIndexKey, lessonNameIndex + 1);
       completedLessonsList.add(lessonName);
       pref.setStringList(completedLessonsListKey, completedLessonsList);
@@ -69,12 +68,11 @@ class LessonCubit extends Cubit<LessonState> {
   int get onGoingLessonIndex {
     return pref.getInt(onGoingLessonIndexKey) ?? 0;
   }
-
 }
 
 //These are the state classes for this cubit
 abstract class LessonState {}
 
 class LessonInitialState extends LessonState {}
-class LessonNextState extends LessonState {}
 
+class LessonNextState extends LessonState {}

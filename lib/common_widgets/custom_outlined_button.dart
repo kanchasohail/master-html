@@ -2,7 +2,6 @@ import '../constants/consts.dart';
 
 Widget customOutlinedButton({required VoidCallback onPressed , required String buttonText}){
   return Container(
-    // margin: const EdgeInsets.only(top: 20.0 , bottom: 12 , right: 16 , left: 16),
     decoration: BoxDecoration(
         border: Border.all(color: orangeColor , width: 0.2),
         borderRadius: BorderRadius.circular(4)

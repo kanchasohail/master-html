@@ -25,19 +25,5 @@ const Color darkSettingsHeaderColor = Color(0xff15151a);
 const Color darkSettingsOptionColor = Color(0xff1e1e21);
 const Color darkBodyMediumTextColor = Colors.white;
 
-// this map is for dark theme primary color
-const Map<int, Color> _darkThemeColorsMap = {
-  50: Color.fromRGBO(136, 14, 79, .1),
-  100: Color.fromRGBO(136, 14, 79, .2),
-  200: Color.fromRGBO(136, 14, 79, .3),
-  300: Color.fromRGBO(136, 14, 79, .4),
-  400: Color.fromRGBO(136, 14, 79, .5),
-  500: Color.fromRGBO(136, 14, 79, .6),
-  600: Color.fromRGBO(136, 14, 79, .7),
-  700: Color.fromRGBO(136, 14, 79, .8),
-  800: Color.fromRGBO(136, 14, 79, .9),
-  900: Color.fromRGBO(136, 14, 79, 1),
-};
 
-const MaterialColor darkThemePrimaryColor =
-    MaterialColor(0xFF880E4F, _darkThemeColorsMap);
+

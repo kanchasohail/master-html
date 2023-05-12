@@ -92,10 +92,13 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
   //Quiz for the sixth lesson(HTML Comments)
   "HTML Comments": [
     {
-      "question":
-      "Why should we use comments in HTML?",
+      "question": "Why should we use comments in HTML?",
       "correct_answer": "To write something important",
-      "options": ["To write something important", "For code decoration", "To make our code faster"]
+      "options": [
+        "To write something important",
+        "For code decoration",
+        "To make our code faster"
+      ]
     },
     {
       "question": "Which one is comment tag in HTML?",
@@ -105,11 +108,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     {
       "question": "Are Comments displayed by browsers?",
       "correct_answer": "Yes",
-      "options": [
-        "Yes",
-        "No",
-        "Sometimes"
-      ]
+      "options": ["Yes", "No", "Sometimes"]
     }
   ],
 
@@ -124,48 +123,46 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
   //Thirty seventh lesson (HTML Subscript Text)
   "HTML Subscript Text": [
     {
-      "question":
-      "Where are subscript texts placed?",
+      "question": "Where are subscript texts placed?",
       "correct_answer": "Below Baseline",
       "options": ["Above Baseline", "Below Baseline", "Normal Baseline"]
     },
     {
       "question": "How do the superscript texts look?",
       "correct_answer": "Bigger than usual text",
-      "options": ["Bigger than usual text", "Smaller than usual text", "Normal text"]
+      "options": [
+        "Bigger than usual text",
+        "Smaller than usual text",
+        "Normal text"
+      ]
     },
     {
       "question": "Which one below is superscript element?",
       "correct_answer": "<sub>",
-      "options": [
-        "<sup>",
-        "<sub>",
-        "<superscript>"
-      ]
+      "options": ["<sup>", "<sub>", "<superscript>"]
     }
   ],
 
   //Thirty eighth lesson (Html Superscript Text)
   "Html Superscript Text": [
     {
-      "question":
-      "Where are superscript texts placed?",
+      "question": "Where are superscript texts placed?",
       "correct_answer": "Above Baseline",
       "options": ["Above Baseline", "Below Baseline", "Normal Baseline"]
     },
     {
       "question": "How do the superscript texts look?",
       "correct_answer": "Smaller than usual text",
-      "options": ["Bigger than usual text", "Smaller than usual text", "Normal text"]
+      "options": [
+        "Bigger than usual text",
+        "Smaller than usual text",
+        "Normal text"
+      ]
     },
     {
       "question": "Which one below is superscript element?",
       "correct_answer": "<sup>",
-      "options": [
-        "<sup>",
-        "<sub>",
-        "<superscript>"
-      ]
+      "options": ["<sup>", "<sub>", "<superscript>"]
     }
   ],
 };
