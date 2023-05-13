@@ -6,6 +6,10 @@ Widget customButton({required String text , required Color backgroundColor ,requ
         visualDensity: const VisualDensity(
           vertical: 2,
         ),
+        padding: const EdgeInsets.symmetric(vertical: 6.5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(24)
+        ),
         backgroundColor: backgroundColor),
     onPressed: onPressed,
     child: Text(
