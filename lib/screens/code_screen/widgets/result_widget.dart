@@ -10,32 +10,26 @@ class ResultWidget extends StatelessWidget {
   final Function loadLocalHtml;
 
   final String htmlCode;
-  late String finalCode;
+  late final String finalCode;
 
   //This method will add the view port so that the content get zoomed
   void addViewPort(String htmlCode) {
-    if (!htmlCode.contains("<!DOCTYPE html>") &&
-        !htmlCode.contains("<!doctype html>")) {
+    if (!htmlCode.contains(RegExp(r'<head[\s\S]*?</head>'))) {
       finalCode = htmlCode;
     } else {
-      if (htmlCode.contains('<meta name="viewport" content="width=device-width, initial-scale=1.0">')) {
-        finalCode = htmlCode;
-      } else {
-        const String headerContent = '''<!DOCTYPE html>
- <html>
+      const String headerContent = '''
  <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Web page Title</title>
  </head>''';
-        finalCode = htmlCode.replaceRange(0, 75, headerContent);
-      }
+      finalCode =
+          htmlCode.replaceAll(RegExp(r'<head[\s\S]*?</head>'), headerContent);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     addViewPort(htmlCode);
-    // loadLocalHtml(htmlCode);
     loadLocalHtml(finalCode);
     return WebViewWidget(
       controller: _controller,
