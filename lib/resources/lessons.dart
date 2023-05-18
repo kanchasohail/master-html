@@ -142,8 +142,6 @@ const Map<String, List<LessonModel>> allLessons = {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web page Title</title>
 </head>
 <body>
@@ -160,6 +158,63 @@ const Map<String, List<LessonModel>> allLessons = {
         article: <String>[
           "we have learned most of the example above, the remaining part is explained here."
         ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+  ],
+
+  "HTML Elements": <LessonModel>[
+    LessonModel(
+        header: "HTML Elements",
+        article: <String>[
+          "An HTML Element usually consists of a starting tag, element content and then ending tag or also known as closing tags.",
+        ],
+        codeExample: " <p>This is element content</p>",
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "null",
+        article: <String>[
+          "Here '<p>' is a starting tag, 'This is element content' is the content and '</p>' is the ending tag.",
+          "For better and clear understanding, let's take a look at a screenshot -",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+
+    // <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
+    LessonModel(
+        header: "Nested HTML Elements",
+        article: <String>["There are some cases where we may use more than one HTML Element. That's where we nest one HTML Element inside another. This is how it looks like."],
+        codeExample: "<p><i>I'm an italic paragraph</i></p>",
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Empty Elements -",
+        article: <String>[
+          "Some elements in HTML doesn't have an ending tag and element content. They are called empty Elements.",
+          "Some of the commonly used empty Elements are listed below.",
+          "     • <link>",
+          "     • <img>",
+          "     • <meta>",
+          "     • <br>",
+          "     • <input>",
+          "Some likes to put a forward slash '/' before the greater than symbol.",
+          "But if you want to use it or not, both are correct and will work without any issues.",
+        ],
+        // codeExample: "null",
         codeExample: "null",
         outPutExample: "null",
         fact: "null",
@@ -188,9 +243,9 @@ const Map<String, List<LessonModel>> allLessons = {
     LessonModel(
         header: "Why use comments in HTML?",
         article: <String>[
-          "Comments are a short form of keeping Notes in an HTML file.",
-          "It can also be used as a way to tell other developers that what a part of the code is doing or why is it there.",
-          "Comments in HTML looks like this <!-- comment goes here -->",
+          "Comments can be used to explain the code, it acts as note to make the code more readable.",
+          "It can also be used to prevent execution when testing alternative code.",
+          "Comments in HTML looks like this <!- - comment goes here - ->",
           "Below we will see an example on how comments in HTML look like and proper use case."
         ],
         codeExample: "null",

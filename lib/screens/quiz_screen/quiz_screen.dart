@@ -116,7 +116,7 @@ class QuizScreen extends StatelessWidget {
                                 ...quiz[quizCubit.currentQuestionIndex]
                                     .options
                                     .map(
-                                      (option) => Padding(
+                                      (option) => option != "null" ? Padding(
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 5.0),
                                         child: optionContainer(
@@ -135,7 +135,7 @@ class QuizScreen extends StatelessWidget {
                                                           .currentQuestionIndex]
                                                       .correctAnswer);
                                             }),
-                                      ),
+                                      ) : const SizedBox(),
                                     )
                                     .toList(),
                                 const SizedBox(height: 20),

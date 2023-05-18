@@ -113,7 +113,16 @@ class CodeCubit extends Cubit<CodeState> {
 
   //This getter will get the mainEditorCode from the device shared pref
   static String getMainEditorCode() {
-    return pref.getString(mainCodeStringKey) ?? "";
+    return pref.getString(mainCodeStringKey) ?? '''<!DOCTYPE html>
+<html>
+<head>
+    <title>Web Page Title</title>
+</head>
+<body>
+    <h1>Hello world header</h1>
+    <p>Hello world paragraph</p>
+</body>
+</html>''';
   }
 
   //This method will save the code in sharedPref
@@ -127,7 +136,7 @@ class CodeCubit extends Cubit<CodeState> {
     if (isDarkMode != null && !isDarkMode) {
       return pref.getString(currentCodeLightThemeStringKey) ?? "Isbl";
     } else {
-      return pref.getString(currentCodeDarkThemeStringKey) ?? "vs2015";
+      return pref.getString(currentCodeDarkThemeStringKey) ?? "Hybrid";
     }
   }
 
@@ -227,11 +236,9 @@ class CodeCubit extends Cubit<CodeState> {
   }
 }
 
-List<String> darkCodeThemesList = ['vs2015', 'Monokai', 'Hybrid', 'Ocean'];
+List<String> darkCodeThemesList = [ 'Hybrid', 'vs2015', 'Monokai', 'Ocean'];
 List<String> lightCodeThemesList = ['Isbl', 'Idea', 'Ascetic', 'Default'];
 
-// vs2015 (default), monokai-sublime, hybrid, ocean
-// Isbl editor light, idea, ascetic, default
 //These are the state classes for this cubit
 abstract class CodeState {}
 
