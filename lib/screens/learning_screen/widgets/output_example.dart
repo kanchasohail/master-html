@@ -16,7 +16,7 @@ Widget outputExample ({required String codeExample , required double fontSize}){
           elevation: 4,
           color: const Color(0xffdbdbdb),
           child: Padding(
-            padding: const EdgeInsets.only(left: 8 , right: 8 , bottom: 20),
+            padding: const EdgeInsets.only(left: 8 , right: 8 , bottom: 18 , top: 8),
             child: Html(
               style: {
                 "body": Style(

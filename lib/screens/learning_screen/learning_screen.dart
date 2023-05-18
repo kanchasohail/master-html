@@ -150,7 +150,7 @@ class LearningScreen extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Padding(
+                                         if(element.header != "null")   Padding(
                                               padding: EdgeInsets.only(
                                                   top: currentFontSize < 16
                                                       ? 13.0

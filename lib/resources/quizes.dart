@@ -67,7 +67,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
   "HTML Boilerplate": [
     {
       "question":
-          "Which version of HTML is currently in use from Introduction2?",
+      "Which version of HTML is currently in use from Introduction2?",
       "correct_answer": "HTML 5",
       "options": ["HTML 4", "HTML 5", "HTML 6"]
     },
@@ -83,6 +83,42 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
         "Hyper Transformative markup language",
         "Hyper text markup language",
         "Hyper real programming language"
+      ]
+    }
+  ],
+
+  "HTML Elements": [
+    {
+      "question": "Which version of HTML is currently in use?",
+      "correct_answer": "HTML5",
+      "options": ["HTML4", "HTML5", "null"]
+    },
+    {
+      "question": "Which element specifies a title for the web page?",
+      "correct_answer": "title",
+      "options": ["title", "head", "meta"]
+    },
+    {
+      "question": "How to tell the browser that our file is HTML5 file?",
+      "correct_answer": "By declaring <!DOCTYPE html>",
+      "options": [
+        "By declaring <!DOCTYPE html>",
+        "Writing <head> element twice",
+        "null"
+      ]
+    },
+    {
+      "question": "What kind of language is HTML?",
+      "correct_answer": "Markup Language",
+      "options": ["Programming language", "Gaming language", "Markup Language"]
+    },
+    {
+      "question": "What does HTML stand for?",
+      "correct_answer": "Hyper Text Markup Language",
+      "options": [
+        "Hyper Transformative Markup Language",
+        "Hyper Text Markup Language",
+        "null"
       ]
     }
   ],
@@ -107,7 +143,8 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     },
     {
       "question": "Are Comments displayed by browsers?",
-      "correct_answer": "Yes",
+      "correct_answer": ""
+          "No",
       "options": ["Yes", "No", "Sometimes"]
     }
   ],
@@ -128,7 +165,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
       "options": ["Above Baseline", "Below Baseline", "Normal Baseline"]
     },
     {
-      "question": "How do the superscript texts look?",
+      "question": "How do the subscript texts look?",
       "correct_answer": "Bigger than usual text",
       "options": [
         "Bigger than usual text",
@@ -137,7 +174,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
       ]
     },
     {
-      "question": "Which one below is superscript element?",
+      "question": "Which one below is subscript element?",
       "correct_answer": "<sub>",
       "options": ["<sup>", "<sub>", "<superscript>"]
     }
