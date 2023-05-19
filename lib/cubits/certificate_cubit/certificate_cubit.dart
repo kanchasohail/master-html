@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:master_html/common_widgets/snack_bar.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
@@ -27,21 +28,15 @@ class CertificateCubit extends Cubit<CertificateState> {
     if (bytes == null) return null;
     await saveCertificate(bytes!).then((val) {
       if (val.isNotEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(
-            "Certificate downloaded successfully!",
-            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-          backgroundColor: Colors.green,
-        ));
+        showSnackBar(
+            ctx: context,
+            messageText: "Certificate downloaded successfully!",
+            bgColor: greenColor);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(
-            "Failed to save Certificate!",
-            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-          backgroundColor: Colors.red,
-        ));
+        showSnackBar(
+            ctx: context,
+            messageText: "Failed to save Certificate!",
+            bgColor: redColor);
       }
       return "_";
     });

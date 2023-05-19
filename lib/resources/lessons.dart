@@ -183,6 +183,7 @@ const Map<String, List<LessonModel>> allLessons = {
         article: <String>[
           "Here '<p>' is a starting tag, 'This is element content' is the content and '</p>' is the ending tag.",
           "For better and clear understanding, let's take a look at a screenshot -",
+          "photo3",
         ],
         codeExample: "null",
         outPutExample: "null",
@@ -202,7 +203,7 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
     LessonModel(
-        header: "Empty Elements -",
+        header: "Empty Elements",
         article: <String>[
           "Some elements in HTML doesn't have an ending tag and element content. They are called empty Elements.",
           "Some of the commonly used empty Elements are listed below.",

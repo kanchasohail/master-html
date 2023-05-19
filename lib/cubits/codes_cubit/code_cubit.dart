@@ -11,6 +11,7 @@ import 'package:flutter_highlight/themes/ocean.dart';
 import 'package:flutter_highlight/themes/isbl-editor-light.dart';
 import 'package:flutter_highlight/themes/vs2015.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:master_html/common_widgets/snack_bar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
@@ -64,21 +65,15 @@ class CodeCubit extends Cubit<CodeState> {
     if (bytes == null) return null;
     await saveResultImage(bytes!).then((val) {
       if (val.isNotEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(
-            "Result Image downloaded successfully!",
-            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-          backgroundColor: Colors.green,
-        ));
+        showSnackBar(
+            ctx: context,
+            messageText: "Result Image downloaded successfully!",
+            bgColor: greenColor);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text(
-            "Failed to save Result Image!",
-            style: TextStyle(fontWeight: FontWeight.w600, color: Colors.white),
-          ),
-          backgroundColor: Colors.red,
-        ));
+        showSnackBar(
+            ctx: context,
+            messageText: "Failed to save Result Image!",
+            bgColor: redColor);
       }
       return "_";
     });
@@ -113,7 +108,8 @@ class CodeCubit extends Cubit<CodeState> {
 
   //This getter will get the mainEditorCode from the device shared pref
   static String getMainEditorCode() {
-    return pref.getString(mainCodeStringKey) ?? '''<!DOCTYPE html>
+    return pref.getString(mainCodeStringKey) ??
+        '''<!DOCTYPE html>
 <html>
 <head>
     <title>Web Page Title</title>
@@ -236,7 +232,7 @@ class CodeCubit extends Cubit<CodeState> {
   }
 }
 
-List<String> darkCodeThemesList = [ 'Hybrid', 'vs2015', 'Monokai', 'Ocean'];
+List<String> darkCodeThemesList = ['Hybrid', 'vs2015', 'Monokai', 'Ocean'];
 List<String> lightCodeThemesList = ['Isbl', 'Idea', 'Ascetic', 'Default'];
 
 //These are the state classes for this cubit

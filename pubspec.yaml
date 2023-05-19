@@ -46,7 +46,7 @@ dev_dependencies:
   flutter_lints: ^2.0.1
 flutter_native_splash:
   color: "#000000"
-  branding: assets/branding_logo.png
+#  branding: assets/branding_logo.png
   image: assets/splash_logo.png
 
 flutter_icons:

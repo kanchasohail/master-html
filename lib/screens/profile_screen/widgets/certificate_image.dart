@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/common_widgets/custom_button.dart';
 import 'package:widgets_to_image/widgets_to_image.dart';
 
+import '../../../common_widgets/snack_bar.dart';
 import '../../../constants/consts.dart';
 import '../../../cubits/certificate_cubit/certificate_cubit.dart';
 import '../../../cubits/lesson_cubit/lesson_cubit.dart';
@@ -183,7 +184,11 @@ class CertificateImage extends StatelessWidget {
                   context: context,
                   onPressed: !showCertificate
                       ? () {
-                          _showSnackBar(context);
+                          showSnackBar(
+                              ctx: context,
+                              messageText:
+                                  "Complete all the lessons to unlock the certificate!",
+                              bgColor: orangeColor);
                         }
                       : () {
                           certificateCubit.captureCertificateWidget(
@@ -198,7 +203,11 @@ class CertificateImage extends StatelessWidget {
                   context: context,
                   onPressed: !showCertificate
                       ? () {
-                          _showSnackBar(context);
+                          showSnackBar(
+                              ctx: context,
+                              messageText:
+                                  "Complete all the lessons to unlock the certificate!",
+                              bgColor: orangeColor);
                         }
                       : () {
                           certificateCubit.saveAndShareCertificate(
@@ -210,14 +219,4 @@ class CertificateImage extends StatelessWidget {
       ],
     );
   }
-}
-
-void _showSnackBar(BuildContext context) {
-  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-    content: Text(
-      "Complete all the lessons to unlock the certificate!",
-      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-    ),
-    backgroundColor: orangeColor,
-  ));
 }
