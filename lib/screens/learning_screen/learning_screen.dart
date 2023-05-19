@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:master_html/common_widgets/custom_outlined_button.dart';
 import 'package:master_html/common_widgets/side_drawer/side_drawer.dart';
+import 'package:master_html/common_widgets/snack_bar.dart';
 import 'package:master_html/cubits/ad_cubit/ad_cubit.dart';
 import 'package:master_html/cubits/fonts_cubit/fonts_cubit.dart';
 import 'package:master_html/cubits/learning_cubit/learning_cubit.dart';
@@ -150,29 +151,31 @@ class LearningScreen extends StatelessWidget {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                         if(element.header != "null")   Padding(
-                                              padding: EdgeInsets.only(
-                                                  top: currentFontSize < 16
-                                                      ? 13.0
-                                                      : 15,
-                                                  right: 12,
-                                                  left: 12,
-                                                  bottom: currentFontSize < 16
-                                                      ? 4.5
-                                                      : 5),
-                                              child: Text(
-                                                element.header,
-                                                style: TextStyle(
-                                                    fontSize: currentFontSize +
-                                                        5 /* was 22 before */,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: isDarkMode
-                                                        ? const Color(
-                                                            0xffe6e6e6)
-                                                        : const Color(
-                                                            0xff2C2C2C)),
+                                            if (element.header != "null")
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                    top: currentFontSize < 16
+                                                        ? 15
+                                                        : 18,
+                                                    right: 12,
+                                                    left: 12,
+                                                    bottom: currentFontSize < 16
+                                                        ? 4.5
+                                                        : 5),
+                                                child: Text(
+                                                  element.header,
+                                                  style: TextStyle(
+                                                      fontSize: currentFontSize +
+                                                          5 /* was 22 before */,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: isDarkMode
+                                                          ? const Color(
+                                                              0xffe6e6e6)
+                                                          : const Color(
+                                                              0xff2C2C2C)),
+                                                ),
                                               ),
-                                            ),
                                             ...element.article
                                                 .map(
                                                   (article) => Padding(
@@ -211,7 +214,8 @@ class LearningScreen extends StatelessWidget {
                                               outputExample(
                                                   codeExample:
                                                       element.codeExample,
-                                                  fontSize: currentFontSize),
+                                                  fontSize: currentFontSize,
+                                                  isDarkMode: isDarkMode),
                                             factContainer(
                                                 factText: element.fact,
                                                 fontSize: currentFontSize,
@@ -272,13 +276,11 @@ class LearningScreen extends StatelessWidget {
                                                 QuizScreen.routeName,
                                                 arguments: lessonName);
                                           } else {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(const SnackBar(
-                                              content: Text(
-                                                  "Please connect to internet to play the quiz !" , style: TextStyle(fontWeight: FontWeight.bold),),
-                                              backgroundColor:
-                                                  orangeColor,
-                                            ));
+                                            showSnackBar(
+                                                ctx: context,
+                                                messageText:
+                                                    "Please connect to internet to play the quiz !",
+                                                bgColor: orangeColor);
                                           }
                                         });
                                       },
