@@ -60,7 +60,6 @@ const Map<String, List<LessonModel>> allLessons = {
           "• The <h1> element defines a large heading.",
           "• The <p> element defines a paragraph.",
         ],
-        // codeExample: "null",
         codeExample: "null",
         outPutExample: "null",
         fact: "null",
@@ -127,7 +126,6 @@ const Map<String, List<LessonModel>> allLessons = {
         article: <String>[
           "In programming, boilerplate code, or simply boilerplate, are sections of code that are repeated in multiple places with little to no difference.",
           "This is why rather than writing the same code over and over again, programmers take boilerplate code whenever needed and use it in their code. Note that it is important to understand what the code does and why it's needed and not just blindly copy and paste code.",
-          "Following is HTML boilerplate code that is used in all HTML files. Some of the codes aren't required but due to their widespread use and functionalities, we have added them in our code editor and you should too whenever you are creating a new HTML file!",
         ],
         codeExample: "null",
         outPutExample: "null",
@@ -154,9 +152,9 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
     LessonModel(
-        header: "Boilerplate code breakdown - ",
+        header: "null",
         article: <String>[
-          "we have learned most of the example above, the remaining part is explained here."
+          "In the next lesson we will learn about HTML Element."
         ],
         codeExample: "null",
         outPutExample: "null",
@@ -165,7 +163,7 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
   ],
-
+  //Fourth lesson (Html Elements)
   "HTML Elements": <LessonModel>[
     LessonModel(
         header: "HTML Elements",
@@ -195,7 +193,9 @@ const Map<String, List<LessonModel>> allLessons = {
     // <!-- <meta name="viewport" content="width=device-width, initial-scale=1">  -->
     LessonModel(
         header: "Nested HTML Elements",
-        article: <String>["There are some cases where we may use more than one HTML Element. That's where we nest one HTML Element inside another. This is how it looks like."],
+        article: <String>[
+          "There are some cases where we may use more than one HTML Element. That's where we nest one HTML Element inside another. This is how it looks like."
+        ],
         codeExample: "<p><i>I'm an italic paragraph</i></p>",
         outPutExample: "true",
         fact: "null",
@@ -224,10 +224,62 @@ const Map<String, List<LessonModel>> allLessons = {
         warning: "null"),
   ],
 
-  //Fourth Lesson
-  //Fifth Lesson
-  //Sixth Lesson
-  //Third lesson (Html Comments)
+  //Third lesson (HTML Attributes)
+  "HTML Attributes": <LessonModel>[
+    LessonModel(
+        header: "HTML Attributes",
+        article: <String>[
+          "HTML attributes are used to add other informations to an HTML Element.",
+          "We can use attributes to modify an element or give the element some special type of values.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Important Things to Remember -",
+        article: <String>[
+          "• HTML attributes are only applied to start tags and will never be on end tags.",
+          "• An HTML elements can have multiple attributes.",
+          "• There are some attributes that can be used on all HTML Elements though they may not have effects on some elements. They are called Global Attributes.",
+          "An HTML attribute is composed of - an attribute name, an equal = sign  and a value surrounded by quotation marks.",
+          "It looks like this: 'theattributename =\"value\"'. Here is a screenshot of an attribute :",
+          "photo4",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Attributes Examples",
+        article: <String>[
+          "In this part of the lesson we are going to learn some HTML Attributes with examples.",
+          "In this example we have added a header with '<h1>' element and gave it orange color using 'style' attribute. Here 'style' is the attribute and 'orange' is the value.",
+        ],
+        codeExample: "<h1 style=\"color:orange\";>Hello world header</h1>",
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Multiple value Attributes Example - ",
+        article: <String>[
+          "In this example we have added a paragraph element that has multiple attribute values.",
+        ],
+        codeExample: "<p style=\"font-size: 35px; color: red;\">I'm a paragraph and my font size is 35 pixels</p>",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+  ],
+
+  //Sixth lesson (Html Comments)
   "HTML Comments": <LessonModel>[
     LessonModel(
         header: "What are comments in HTML?",

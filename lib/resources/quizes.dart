@@ -86,7 +86,7 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
       ]
     }
   ],
-
+  //Quiz for the fourth lesson(HTML Elements)
   "HTML Elements": [
     {
       "question": "Which version of HTML is currently in use?",
@@ -123,8 +123,31 @@ const Map<String, List<Map<String, dynamic>>> allQuiz = {
     }
   ],
 
-  //Quiz for the fourth lesson(HTML Boilerplate)
-  //Quiz for the fifth lesson(HTML Boilerplate)
+  //Quiz for the fifth lesson(HTML Attributes)
+  "HTML Attributes": [
+    {
+      "question": "Why should we use comments in HTML?",
+      "correct_answer": "To write something important",
+      "options": [
+        "To write something important",
+        "For code decoration",
+        "To make our code faster"
+      ]
+    },
+    {
+      "question": "Which one is comment tag in HTML?",
+      "correct_answer": "<!-- -->",
+      "options": ["<comment></comment>", "<xx- -xx>", "<!-- -->"]
+    },
+    {
+      "question": "Are Comments displayed by browsers?",
+      "correct_answer": ""
+          "No",
+      "options": ["Yes", "No", "Sometimes"]
+    }
+  ],
+
+
   //Quiz for the sixth lesson(HTML Comments)
   "HTML Comments": [
     {

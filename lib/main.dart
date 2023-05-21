@@ -19,8 +19,6 @@ late SharedPreferences pref;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   pref = await SharedPreferences.getInstance();
-  // This will remove the splash icon only after the initialization of firebase ;
-  // FlutterNativeSplash.remove();
 
   await Future.delayed(const Duration(milliseconds: 1400));
   runApp(const MyApp());
@@ -28,6 +26,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(

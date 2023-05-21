@@ -2,4 +2,5 @@
    "photo1",
    "photo2",
    "photo3",
+   "photo4",
  ];
