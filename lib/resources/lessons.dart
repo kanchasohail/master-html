@@ -241,9 +241,9 @@ const Map<String, List<LessonModel>> allLessons = {
     LessonModel(
         header: "Important Things to Remember -",
         article: <String>[
-          "• HTML attributes are only applied to start tags and will never be on end tags.",
-          "• An HTML elements can have multiple attributes.",
-          "• There are some attributes that can be used on all HTML Elements though they may not have effects on some elements. They are called Global Attributes.",
+          "HTML attributes are only applied to start tags and will never be on end tags.",
+          "An HTML elements can have multiple attributes.",
+          "There are some attributes that can be used on all HTML Elements though they may not have effects on some elements. They are called Global Attributes.",
           "An HTML attribute is composed of - an attribute name, an equal = sign  and a value surrounded by quotation marks.",
           "It looks like this: 'theattributename =\"value\"'. Here is a screenshot of an attribute :",
           "photo4",
@@ -271,8 +271,9 @@ const Map<String, List<LessonModel>> allLessons = {
         article: <String>[
           "In this example we have added a paragraph element that has multiple attribute values.",
         ],
-        codeExample: "<p style=\"font-size: 35px; color: red;\">I'm a paragraph and my font size is 35 pixels</p>",
-        outPutExample: "null",
+        codeExample:
+            '''<p style="font-size: 35px; color: red;">I'm a paragraph and my font size is 35 pixels</p>''',
+        outPutExample: "true",
         fact: "null",
         update: "null",
         note: "null",
@@ -335,6 +336,173 @@ const Map<String, List<LessonModel>> allLessons = {
         note: "null",
         warning: "null"),
   ],
+
+  //Seventh lesson (HTML Headings)
+  "HTML Headings": <LessonModel>[
+    LessonModel(
+        header: "HTML Headings -",
+        article: <String>[
+          "HTML Headings usually contain a title of the main topic of a certain section of a webpage.",
+          "HTML Headings are crucial because when one searches something on search engines like Google, headings help search engines to find your website and represent to them.",
+          "HTML Headings are block-level elements.",
+        ],
+        codeExample: '''<h1> Heading 1 </h1>
+
+<h2> Heading 2 </h2>
+
+<h3> Heading 3 </h3>
+
+<h4> Heading 4 </h4>
+
+<h5> Heading 5 </h5>
+
+<h6> Heading 6 </h6>''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "null",
+        article: <String>[
+          "As you can see on the example that the elements used are the <h1>, <h2>, <h3>, <h4>, <h5> and <h6>.",
+          "It's important to remember that there's no heading after <h6>.",
+          "You should have noticed that the size of a heading depends on its corresponding number after the h. And the lower the number the larger the font-size.",
+          "There should be only one <h1> in a web page.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+  ],
+
+  //Eighth lesson (HTML Paragraphs)
+  "HTML Paragraphs": <LessonModel>[
+    LessonModel(
+        header: "HTML Paragraphs",
+        article: <String>[
+          "HTML paragraphs are used to represent regular text in the website.",
+          "The <p> element defines HTML paragraphs.",
+          "HTML paragraphs are block-level element.",
+        ],
+        codeExample: '''<p>This is a paragraph in HTML</p>''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Styling paragraph",
+        article: <String>[
+          "We can apply different kind of inline styles on paragraphs. Below we will see examples of some of them.",
+        ],
+        codeExample:
+            '''<p style="text-align: center;">This is a centered paragraph<p>
+
+<p style="color: red;">This is a red paragraph</p>
+
+<p style="font-size: 25px;">This is a 25px font sized paragraph</p>
+
+<p style="font-weight: bold;">This is a paragraph with bold font font</p>''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+  ],
+
+  //Ninth lesson (HTML Styling)
+  "HTML Styling": <LessonModel>[
+    LessonModel(
+        header: "HTML Styling",
+        article: <String>[
+          "We can use styling to change the appearance of any HTML element. We can their change default values.",
+          "For example, the default color of text is black but using style we can change it to red. The default text size is 16px but we can change it to 20px and whatever we like.",
+        ],
+        codeExample: "null",
+        outPutExample: "null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Internal Style Sheet",
+        article: <String>[
+          "Internal Style Sheet is composed Cascading Style Sheet (CSS) rule-set. And we can add as many rules on as many elements as we want.",
+          "A CSS rule-set consists of an element selector and a declaration block closed by curly braces that contains CSS declarations separated by semicolons.",
+          "They are all enclosed inside the <style> element with its type=\"value\" attribute which is included inside the <head> element.",
+          "Internal Style Sheet Example -",
+        ],
+        codeExample: '''<style type="text/css">
+
+P {
+       color: red;
+       font-size: 20px;
+}
+
+</style>''',
+        outPutExample:"null",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Inline Styling",
+        article: <String>[
+          "We can also style an element using the 'style' attribute and declaration inside the element and it is similar to internal styling.",
+        ],
+        codeExample: '''
+<p style="color: red;">This is a paragraph that is yellow</p>
+
+<p style="background-color: yellow;">This is a paragraph with yellow background</p>
+''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Font/Text sizing Example -",
+        article: <String>[
+          "null",
+        ],
+        codeExample:
+            '''
+<p style="font-size: 12px;">This is 12px font sized text</p>
+
+<p>This is default font sized text</p>
+
+<p style="font-size: 20px;">This is 20px font sized text</p>
+
+<p style="font-size: 30px;">This is 30px font sized text</p>
+''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Text Alignment Example -",
+        article: <String>[
+          "null",
+        ],
+        codeExample: '''
+<p style="text-align: left"> I am aligned left </p>
+        
+<p style="text-align: center"> I am aligned center. </p>
+
+<p style="text-align: right"> I am aligned right. </p>
+''',
+        outPutExample: "true",
+        fact: "null",
+        update: "null",
+        note:
+            "There will be a lot of Internal and inline Styling throughout the whole course so keep going and enjoy!",
+        warning: "null"),
+  ],
+
   // A
   //  Lot
   //  Of

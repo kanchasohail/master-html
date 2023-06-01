@@ -5,7 +5,6 @@ final List<String> AllLessonsList = [
   'HTML Elements',
   'HTML Attributes',
   'HTML Comments',
-  'HTML Colors',
   'HTML Headings',
   'HTML Paragraphs',
   'HTML Styling',
