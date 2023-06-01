@@ -11,8 +11,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -25,8 +24,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
 
@@ -45,8 +43,7 @@ const Map<String, List<LessonModel>> allLessons = {
  </body>
  </html>''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -62,8 +59,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -74,9 +70,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "HTML is a markup language and not a programming language.",
-        update: "null",
-        note: "null",
+        note: "HTML is a markup language and not a programming language.",
         warning: "null"),
   ],
 
@@ -97,8 +91,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -113,8 +106,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -129,8 +121,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -147,8 +138,7 @@ const Map<String, List<LessonModel>> allLessons = {
 </body>
 </html>''',
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -158,8 +148,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -172,8 +161,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: " <p>This is element content</p>",
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -185,8 +173,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
 
@@ -198,8 +185,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "<p><i>I'm an italic paragraph</i></p>",
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -218,8 +204,7 @@ const Map<String, List<LessonModel>> allLessons = {
         // codeExample: "null",
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -234,8 +219,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -250,8 +234,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -262,8 +245,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "<h1 style=\"color:orange\";>Hello world header</h1>",
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -274,8 +256,7 @@ const Map<String, List<LessonModel>> allLessons = {
         codeExample:
             '''<p style="font-size: 35px; color: red;">I'm a paragraph and my font size is 35 pixels</p>''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -290,8 +271,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -304,8 +284,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -320,8 +299,7 @@ const Map<String, List<LessonModel>> allLessons = {
 
 <p>This is another paragraph</p>''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -331,8 +309,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -358,8 +335,7 @@ const Map<String, List<LessonModel>> allLessons = {
 
 <h6> Heading 6 </h6>''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -372,8 +348,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -389,8 +364,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: '''<p>This is a paragraph in HTML</p>''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -407,8 +381,7 @@ const Map<String, List<LessonModel>> allLessons = {
 
 <p style="font-weight: bold;">This is a paragraph with bold font font</p>''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
   ],
@@ -423,8 +396,7 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -443,9 +415,8 @@ P {
 }
 
 </style>''',
-        outPutExample:"null",
-        fact: "null",
-        update: "null",
+        outPutExample: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -459,8 +430,7 @@ P {
 <p style="background-color: yellow;">This is a paragraph with yellow background</p>
 ''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -468,8 +438,7 @@ P {
         article: <String>[
           "null",
         ],
-        codeExample:
-            '''
+        codeExample: '''
 <p style="font-size: 12px;">This is 12px font sized text</p>
 
 <p>This is default font sized text</p>
@@ -479,8 +448,7 @@ P {
 <p style="font-size: 30px;">This is 30px font sized text</p>
 ''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -496,8 +464,7 @@ P {
 <p style="text-align: right"> I am aligned right. </p>
 ''',
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note:
             "There will be a lot of Internal and inline Styling throughout the whole course so keep going and enjoy!",
         warning: "null"),
@@ -520,8 +487,7 @@ P {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -534,8 +500,7 @@ P {
    ''',
         // outPutExample: "null",
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note:
             "The <sub> element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
         warning: "null"),
@@ -550,8 +515,7 @@ P {
         ],
         codeExample: "null",
         outPutExample: "null",
-        fact: "null",
-        update: "null",
+        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -564,8 +528,7 @@ P {
    ''',
         // outPutExample: "null",
         outPutExample: "true",
-        fact: "null",
-        update: "null",
+        
         note:
             "The '<sup>' element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
         warning: "null"),

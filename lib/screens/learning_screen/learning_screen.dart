@@ -51,8 +51,6 @@ class LearningScreen extends StatelessWidget {
             article: e.article,
             codeExample: e.codeExample,
             outPutExample: e.outPutExample,
-            fact: e.fact,
-            update: e.update,
             note: e.note,
             warning: e.warning))
         .toList();
@@ -216,27 +214,6 @@ class LearningScreen extends StatelessWidget {
                                                       element.codeExample,
                                                   fontSize: currentFontSize,
                                                   isDarkMode: isDarkMode),
-                                            factContainer(
-                                                factText: element.fact,
-                                                fontSize: currentFontSize,
-                                                fontFamily: currentFontFamily,
-                                                containerColor:
-                                                    const Color(0xff0A272F),
-                                                leadingIcon: const Icon(
-                                                    Icons.lightbulb_outlined,
-                                                    size: 20),
-                                                leadingText:
-                                                    "Interesting Fact -"),
-                                            factContainer(
-                                                factText: element.update,
-                                                fontSize: currentFontSize,
-                                                fontFamily: currentFontFamily,
-                                                containerColor:
-                                                    const Color(0xff230807),
-                                                leadingIcon: const Icon(
-                                                    Icons.warning_amber_sharp,
-                                                    size: 20),
-                                                leadingText: "Update -"),
                                             factContainer(
                                                 factText: element.note,
                                                 fontSize: currentFontSize,
