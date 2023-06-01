@@ -4,8 +4,6 @@ class LessonModel {
       required this.article,
       required this.codeExample,
       required this.outPutExample,
-      required this.fact,
-      required this.update,
       required this.note,
       required this.warning});
 
@@ -16,10 +14,6 @@ class LessonModel {
   final String codeExample;
 
   final String outPutExample;
-
-  final String fact;
-
-  final String update;
 
   final String note;
 
