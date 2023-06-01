@@ -14,7 +14,10 @@ Widget factContainer({required String factText , required double fontSize , requ
       child: Wrap(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          leadingIcon,
+          Padding(
+            padding: const EdgeInsets.only(left: 2, top: 2),
+            child: leadingIcon,
+          ),
           const SizedBox(width: 5),
           Text(leadingText , style: TextStyle(fontSize: fontSize + 3 , fontFamily: 'RobotoMedium' , color: const Color(0xffe6e6e6)),),
           // width: MediaQuery.of(context).orientation == Orientation.portrait ? deviceWidth - 90 : deviceWidth - 120 ,

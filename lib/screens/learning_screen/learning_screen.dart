@@ -242,9 +242,10 @@ class LearningScreen extends StatelessWidget {
                                                 fontSize: currentFontSize,
                                                 fontFamily: currentFontFamily,
                                                 containerColor:
-                                                    const Color(0xff291903),
+                                                    // const Color(0xff291903),
+                                                    const Color(0xff090721),
                                                 leadingIcon: const Icon(
-                                                    Icons.warning_amber_sharp,
+                                                    Icons.note_alt_outlined,
                                                     size: 20),
                                                 leadingText: "Note -"),
                                             factContainer(
