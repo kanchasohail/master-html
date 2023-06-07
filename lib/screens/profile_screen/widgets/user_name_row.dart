@@ -61,7 +61,8 @@ class UserNameRow extends StatelessWidget {
                           ),
                           style: const TextStyle(fontSize: 18),
                           controller: userNameCubit.nameController,
-                        ));
+                        )
+                    );
                   } else {
                     return Text(
                       userNameCubit.userName ?? "Your Name",
