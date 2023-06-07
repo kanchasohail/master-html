@@ -11,7 +11,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -24,7 +23,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
 
@@ -43,7 +41,6 @@ const Map<String, List<LessonModel>> allLessons = {
  </body>
  </html>''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -59,7 +56,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -91,22 +87,18 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
         header: "How do I create a HTML file?",
         article: <String>[
-          "In order to create a html file you have to give the file '.html' extension for example 'Home.html' or 'contact.html'. Otherwise it wouldn't work and browsers or code editors won't recognize the file.",
-          "Below you can see us creating a HTML file named 'index.html' inside "
-              'My First Website'
-              "folder on a code editor - ",
+          "In order to create a html file you have to give the file.html extension for example Home.html or contact.html. Otherwise it wouldn't work and browsers or code editors won't recognize the file.",
+          "Below you can see us creating a HTML file named index.html inside My First Website folder on a code editor -",
           "photo1",
           "photo2",
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
   ],
@@ -121,7 +113,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -138,7 +129,6 @@ const Map<String, List<LessonModel>> allLessons = {
 </body>
 </html>''',
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -148,7 +138,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
   ],
@@ -161,19 +150,17 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: " <p>This is element content</p>",
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
         header: "null",
         article: <String>[
-          "Here '<p>' is a starting tag, 'This is element content' is the content and '</p>' is the ending tag.",
+          "Here <p> is a starting tag, 'This is element content' is the content and </p> is the ending tag.",
           "For better and clear understanding, let's take a look at a screenshot -",
           "photo3",
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
 
@@ -185,7 +172,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "<p><i>I'm an italic paragraph</i></p>",
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -198,13 +184,12 @@ const Map<String, List<LessonModel>> allLessons = {
           "     • <meta>",
           "     • <br>",
           "     • <input>",
-          "Some likes to put a forward slash '/' before the greater than symbol.",
+          "Some likes to put a forward slash / before the greater than symbol.",
           "But if you want to use it or not, both are correct and will work without any issues.",
         ],
         // codeExample: "null",
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
   ],
@@ -219,7 +204,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -234,29 +218,26 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
         header: "Attributes Examples",
         article: <String>[
           "In this part of the lesson we are going to learn some HTML Attributes with examples.",
-          "In this example we have added a header with '<h1>' element and gave it orange color using 'style' attribute. Here 'style' is the attribute and 'orange' is the value.",
+          "In this example we have added a header with <h1> element and gave it orange color using style attribute. Here style is the attribute and orange is the value.",
         ],
         codeExample: "<h1 style=\"color:orange\";>Hello world header</h1>",
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
-        header: "Multiple value Attributes Example - ",
+        header: "Multiple value Attributes Example -",
         article: <String>[
           "In this example we have added a paragraph element that has multiple attribute values.",
         ],
         codeExample:
             '''<p style="font-size: 35px; color: red;">I'm a paragraph and my font size is 35 pixels</p>''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
   ],
@@ -271,7 +252,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -284,7 +264,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -299,7 +278,6 @@ const Map<String, List<LessonModel>> allLessons = {
 
 <p>This is another paragraph</p>''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -309,7 +287,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
   ],
@@ -335,7 +312,6 @@ const Map<String, List<LessonModel>> allLessons = {
 
 <h6> Heading 6 </h6>''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -348,7 +324,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
   ],
@@ -364,7 +339,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: '''<p>This is a paragraph in HTML</p>''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -381,7 +355,6 @@ const Map<String, List<LessonModel>> allLessons = {
 
 <p style="font-weight: bold;">This is a paragraph with bold font font</p>''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
   ],
@@ -396,7 +369,6 @@ const Map<String, List<LessonModel>> allLessons = {
         ],
         codeExample: "null",
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -416,13 +388,12 @@ P {
 
 </style>''',
         outPutExample: "null",
-        
         note: "null",
         warning: "null"),
     LessonModel(
         header: "Inline Styling",
         article: <String>[
-          "We can also style an element using the 'style' attribute and declaration inside the element and it is similar to internal styling.",
+          "We can also style an element using the style attribute and declaration inside the element and it is similar to internal styling.",
         ],
         codeExample: '''
 <p style="color: red;">This is a paragraph that is yellow</p>
@@ -430,7 +401,6 @@ P {
 <p style="background-color: yellow;">This is a paragraph with yellow background</p>
 ''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -448,7 +418,6 @@ P {
 <p style="font-size: 30px;">This is 30px font sized text</p>
 ''',
         outPutExample: "true",
-        
         note: "null",
         warning: "null"),
     LessonModel(
@@ -464,9 +433,108 @@ P {
 <p style="text-align: right"> I am aligned right. </p>
 ''',
         outPutExample: "true",
-        
         note:
             "There will be a lot of Internal and inline Styling throughout the whole course so keep going and enjoy!",
+        warning: "null"),
+  ],
+  //Tenth lesson ()
+  //Eleventh Lesson ()
+
+  //Twelfth lesson (HTML Line Breaks)
+  "HTML Line Breaks": <LessonModel>[
+    LessonModel(
+        header: "HTML Line Break",
+        article: <String>[
+          "A Line break puts a break in a line starts a new line.",
+          "The <br> element defines an HTML line break. It's an Empty Element so there's no ending tag.",
+          "We can put as many line break as we want.",
+        ],
+        codeExample: '''  <p>Without line break</p>
+  <p>without line break</p> 
+ 
+  <p>With line break</p>
+  <br>
+  <p>With line break</p>
+
+  <p>Multiple line breaks</p>
+  <br><br><br>
+  <p>Multiple line breaks</p>''',
+        outPutExample: "true",
+        note: "null",
+        warning: "null"),
+  ],
+
+  //Thirteenth lesson (HTML Horizontal Rule)
+  "HTML Horizontal Rule": <LessonModel>[
+    LessonModel(
+        header: "HTML Horizontal Rule",
+        article: <String>[
+          "Horizontal Rule displays a line on the browser screen. It's an empty Element.",
+          "The <hr> defines an HTML Horizontal Rule.",
+        ],
+        codeExample: '''<h2>This is a header</h2>
+<hr>
+<p>This is a paragraph</p>''',
+        outPutExample: "true",
+        note: "null",
+        warning: "null"),
+    LessonModel(
+        header: "Styling Horizontal Rule",
+        article: <String>[
+          "You can style a Horizontal Rule however you want by using styling properties.",
+        ],
+        codeExample: '''
+        
+     <hr style="color: red; height: 5px;">
+   
+     <hr style="width: 70%; color="black" />
+   ''',
+        outPutExample: "true",
+        note: "null",
+        warning: "null"),
+  ],
+
+  //Fourteenth lesson (HTML Text Formatting)
+  "HTML Text Formatting": <LessonModel>[
+    LessonModel(
+        header: "HTML Text Formatting",
+        article: <String>[
+          "Formatting text is essential for good appearance of a website.",
+          "Those elements are usually placed inside another element that represents text such as paragraph or header.",
+          "Let's look at some of text formatting elements.",
+          "        • <b> Makes the text appear bold",
+          "        • <u> put underlines below the text",
+          "        • <i> Makes the code appear italicized",
+          "        • <s> strikes through a text",
+          "        • <q> enquotes a text",
+          "        • <code> defines a text as a code",
+          "        • <mark> highlights a text",
+        ],
+        codeExample: '''   <!-- bold Text -->
+   <p><b>I am a bolded text</b></p>
+
+   <!-- underlined Text -->
+   <p><u>I am an underlined text</u></p>
+   
+   <!-- italic Text -->
+   <p><i>I am an italic text</i></p>
+   
+   <!-- striked text -->
+   <p><s>I am a striked text</s></p>
+
+   <!-- quoted text -->
+   <p><q>I am an enquoted text</q></p>
+
+   <!-- code -->
+   <p><code>I am a code text</code></p>
+ 
+   <!-- marked text -->
+   <p><mark>I am a marked text</mark></p>
+  
+   <!-- mixed formatted -->
+   <p><b><u><i>I am a mixed formatted text</i></u></b></p>''',
+        outPutExample: "true",
+        note: "null",
         warning: "null"),
   ],
 
@@ -485,22 +553,12 @@ P {
           "Subscript texts are placed below baseline and smaller than usual.",
           "To make a text appear as subscript, we need to use the <sub> element.",
         ],
-        codeExample: "null",
-        outPutExample: "null",
-        
-        note: "null",
-        warning: "null"),
-    LessonModel(
-        header: "Example -",
-        article: <String>["null"],
         codeExample: '''
 <!-- writing a mathematical equation -->
     
 <p> x<sub>3</sub> + 3x + 2x<sub>2</sub> + 6 </p>
    ''',
-        // outPutExample: "null",
         outPutExample: "true",
-        
         note:
             "The <sub> element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
         warning: "null"),
@@ -513,22 +571,12 @@ P {
           "Superscript texts are placed above baseline and smaller than usual.",
           "To make a text appear as superscript, we need to use the <sup> element.",
         ],
-        codeExample: "null",
-        outPutExample: "null",
-        
-        note: "null",
-        warning: "null"),
-    LessonModel(
-        header: "Example -",
-        article: <String>["null"],
         codeExample: '''
 <!-- writing a chemical equation -->
     
 <p> N<sup>2</sup> + H<sup>2</sup> &rarr; NH<sup>3</sup></p>
    ''',
-        // outPutExample: "null",
         outPutExample: "true",
-        
         note:
             "The '<sup>' element should be used for typographical reasons as shown in the example above and not for appearance or decoration purposes.",
         warning: "null"),

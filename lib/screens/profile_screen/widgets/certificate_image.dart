@@ -132,7 +132,7 @@ class CertificateImage extends StatelessWidget {
                                           Row(
                                             children: [
                                               const Padding(
-                                                padding: EdgeInsets.all(6.0),
+                                                padding: EdgeInsets.only(right: 6.0,top: 6 , bottom: 6),
                                                 child: Icon(
                                                   Icons.info,
                                                   size: 30,

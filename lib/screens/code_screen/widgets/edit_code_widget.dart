@@ -31,7 +31,6 @@ class EditCodeWidget extends StatelessWidget {
                   wrap: isWrapOn,
                   textStyle: const TextStyle(height: 1.4),
                   controller: controller,
-                  // selectionControls: ,
                 ),
               ),
             ),

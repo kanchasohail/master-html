@@ -4,7 +4,7 @@ class MyThemes {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: darkBodyColor,
     textSelectionTheme:
-        const TextSelectionThemeData(selectionHandleColor: Colors.transparent),
+        const TextSelectionThemeData(selectionHandleColor: Colors.blue),
     iconTheme: const IconThemeData(color: orangeColor),
     drawerTheme: const DrawerThemeData(backgroundColor: lightBlack),
     textTheme: const TextTheme(
@@ -46,7 +46,7 @@ class MyThemes {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: lightBodyColor,
     textSelectionTheme:
-        const TextSelectionThemeData(selectionHandleColor: Colors.transparent),
+        const TextSelectionThemeData(selectionHandleColor: Colors.blue),
     iconTheme: const IconThemeData(color: orangeColor),
     appBarTheme: const AppBarTheme(
       backgroundColor: lightAppBarColor,

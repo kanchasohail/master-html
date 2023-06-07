@@ -207,7 +207,8 @@ class LearningScreen extends StatelessWidget {
                                                               .codeExample);
                                                 },
                                                 ctx: context,
-                                                isDarkMode: isDarkMode),
+                                                isDarkMode: isDarkMode ,
+                                            fontSize: currentFontSize),
                                             if (element.outPutExample != "null")
                                               outputExample(
                                                   codeExample:

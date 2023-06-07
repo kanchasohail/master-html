@@ -53,14 +53,14 @@ class ProgressWidgetRow extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8)),
                             content: SizedBox(
-                              height: 180,
+                              height: 170,
                               width: 100,
                               child: Column(
                                 children: [
                                   Row(
                                     children: [
                                       const Padding(
-                                        padding: EdgeInsets.all(6.0),
+                                        padding: EdgeInsets.only(right: 6.0,top: 6 , bottom: 6),
                                         child: Icon(
                                           Icons.info,
                                           size: 30,
