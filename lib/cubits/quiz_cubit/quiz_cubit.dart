@@ -40,13 +40,10 @@ class QuizCubit extends Cubit<QuizState> {
     currentSelectedAnswer = selectedAnswer;
     playedQuiz[currentQuestionIndex][selectedAnswerConstString] =
         selectedAnswer;
-    if (selectedAnswer == correctAnswer) {
-      playedQuiz[currentQuestionIndex][isCorrectConstString] = true;
-      emit(QuizAnsweredState());
-    } else {
-      playedQuiz[currentQuestionIndex][isCorrectConstString] = false;
-      emit(QuizAnsweredState());
-    }
+
+    playedQuiz[currentQuestionIndex][isCorrectConstString] = selectedAnswer == correctAnswer;
+    emit(QuizAnsweredState());
+
   }
 
   // This method is for getting the next question
