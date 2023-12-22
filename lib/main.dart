@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
           title: 'Master Html',
           debugShowCheckedModeBanner: false,
           // showPerformanceOverlay: true,
+          
           theme: MyThemes.lightTheme,
           darkTheme: MyThemes.darkTheme,
           themeMode: themeCubit.themeMode,
