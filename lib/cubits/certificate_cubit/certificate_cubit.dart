@@ -29,14 +29,16 @@ class CertificateCubit extends Cubit<CertificateState> {
     await saveCertificate(bytes!).then((val) {
       if (val.isNotEmpty) {
         showSnackBar(
-            ctx: context,
-            messageText: "Certificate downloaded successfully!",
-            bgColor: greenColor);
+          ctx: context,
+          messageText: "Certificate downloaded successfully!",
+          bgColor: greenColor,
+        );
       } else {
         showSnackBar(
-            ctx: context,
-            messageText: "Failed to save Certificate!",
-            bgColor: redColor);
+          ctx: context,
+          messageText: "Failed to save Certificate!",
+          bgColor: redColor,
+        );
       }
       return "_";
     });
